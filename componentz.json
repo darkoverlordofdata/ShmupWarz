@@ -1,0 +1,48 @@
+{
+  "!": "doran package manager v0.0.7",
+  "name": "shmupwarz",
+  "template": "objc",
+  "version": "0.0.1",
+  "vala": "0.26",
+  "c": "18",
+  "cpp": "17",
+  "authors": [],
+  "description": "shmupwarz-objc",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {},
+  "source": "src",
+  "files": [
+    "src/Game.m",
+    "src/main.m"
+  ],
+  "packages": [],
+  "includes": [
+    "/usr/include",
+    "./vendor",
+    "./include"
+  ],
+  "libraries": [
+    "m",
+    "objfw",
+    "objfwrt",
+    "pthread",
+    "SDL2",
+    "SDL2_image",
+    "SDL2_mixer",
+    "SDL2_ttf",
+    "GL"
+  ],
+  "options": {
+    "VERSION": "0.0.1",
+    "RELEASE_NAME": "shmupwarz"
+  },
+  "definitions": [],
+  "symbols": [],
+  "copy": null,
+  "vapidir": "/src/vapis",
+  "console": false,
+  "cflags": "",
+  "cppflags": "",
+  "links": null
+}

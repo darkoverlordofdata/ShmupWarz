@@ -1,0 +1,62 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "emcc",
+            "args": [
+                "src/main.m",
+                "src/Game.m",
+                "-std=c11",
+                "-L/usr/local/lib",
+                "-I/usr/local/include",
+                "-I./include",
+                "-I./vendor",
+                "-fconstant-string-class=OFConstantString",
+                "-fexceptions",
+                "-fobjc-exceptions",
+                "-funwind-tables",
+                "-Xclang", "-fobjc-runtime=objfw",
+                "-Xclang", "-fblocks",
+                "-Xclang", "-fno-constant-cfstrings",
+                "-O3",
+                "-s", "WASM=1",
+                "-s", "USE_WEBGL2=1",
+                "-s", "ERROR_ON_UNDEFINED_SYMBOLS=0",
+                "-s", "USE_SDL=2",
+                "-s", "USE_SDL_IMAGE=2",
+                "-s", "USE_SDL_MIXER=2",
+                "-s", "USE_SDL_TTF=2",
+                "-s", "SDL2_IMAGE_FORMATS=\'[\"png\"]\'",
+                "-o", "docs/index.html",
+                "--preload-file", "assets"
+            ],
+
+            "problemMatcher": {
+                "owner": "emcc",
+                "fileLocation": ["relative", "${workspaceFolder}"],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+
+            },
+            // "dependsOn":["prebuild"]
+        },
+        // {
+        //     "label": "prebuild",
+        //     "type": "shell",
+        //     "command": "${workspaceFolder}/prebuild",
+        //     "args": [ "${workspaceFolder}" ],
+        //     "group": "build"
+        // }
+    ]
+}
