@@ -27,7 +27,7 @@ initWithPath:(OFString*)path
     return self;
 }
 
-- (OFString*)ToString { return @"Game"; }
+- (OFString*)description { return @"Game"; }
 - (void)Bind { GL.BindTexture(GL_TEXTURE_2D, mId); }
 
 - (void)

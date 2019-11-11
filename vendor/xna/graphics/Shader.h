@@ -10,7 +10,7 @@
 @property (nonatomic, assign) GLuint Id;
 
 - (instancetype)init;
-- (OFString*)ToString;
+- (OFString*)description;
 - (Shader*)Use;
 - (void)CheckCompileErrors:(GLuint)object Type:(OFString*)type;
 - (void)Compile:(const char*) vertexSource Fragment:(const char*) fragmentSource;

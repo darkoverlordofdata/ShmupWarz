@@ -27,7 +27,7 @@
     return self;
 }
 
-- (OFString*)ToString { return @"Shmupwarz"; }
+- (OFString*)description { return @"Shmupwarz"; }
 - (void)SetSystem:(Systems*)systems { mSystems = systems; }
 - (Entity*)GetEntity:(int)index { return Factory.Entities[index]; }
 

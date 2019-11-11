@@ -10,10 +10,6 @@ const int64_t WORD_MASK = 0xffffffff;
 
 @implementation ArtemisBitSet
 
-+ (ArtemisBitSet*) BitSet {
-
-}
-
 - (instancetype)init {
     return [self initWithCapacity:32];
 }
@@ -31,17 +27,17 @@ const int64_t WORD_MASK = 0xffffffff;
     return self;
 }
 
-
+- (void) dealloc {
+    free(mWords);
+}
 
 - (bool) IsEmpty { return mLength == 0; }
 - (uint) Word:(int) index { return mWords[index]; }
 - (int) Length { return mLength; }
-
 - (void) Clear { [self Clear:-1]; }
 
 - (void) Clear:(int) bitIndex {
-    if (bitIndex == -1) 
-    {
+    if (bitIndex == -1)  {
         var wordsInUse = mLength;
         while (wordsInUse>0) 
         {
@@ -67,7 +63,6 @@ const int64_t WORD_MASK = 0xffffffff;
     }
     if (wordsInUse < wordsRequired) 
     {
-        // words.resize(int.max(2 * wordsInUse, wordsRequired));
         mWords = realloc(mWords, sizeof(uint)*Max(2 * wordsInUse, wordsRequired));
         for (int i=wordsInUse, l=mLength; i<l; i++) 
         {
@@ -93,7 +88,9 @@ const int64_t WORD_MASK = 0xffffffff;
 }
 
 
-/** "Returns true if the specified BitSet has any bits set to true that are also set to true in this BitSet." */
+/**
+ * Returns true if the specified BitSet has any bits set to true that are also set to true in this BitSet.
+ */
 - (bool) Intersects:(ArtemisBitSet*) set {
     let wordsInUse = mLength;
 
@@ -103,7 +100,9 @@ const int64_t WORD_MASK = 0xffffffff;
     return false;
 }
 
-/** "Returns the index of the first bit that is set to true that occurs on or after the specified starting index." */
+/** 
+ * Returns the index of the first bit that is set to true that occurs on or after the specified starting index.
+ */
 - (int) NextSetBit:(int) fromIndex {
     var u = fromIndex >> ADDRESS_BITS_PER_WORD;
     let wordsInUse = mLength;

@@ -62,7 +62,7 @@ static inline uint64_t GetTicks() {
 
 - (instancetype)initWithWidth:(int)width 
                        Height:(int)height;
-- (OFString*)ToString;
+- (OFString*)description;
 - (void)Start;
 - (void)Stop;
 - (void)Quit;

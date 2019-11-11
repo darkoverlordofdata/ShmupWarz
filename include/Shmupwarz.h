@@ -28,7 +28,7 @@
 
 - (instancetype)initWithWidth:(int)width 
                        Height:(int)height;
-- (OFString*)ToString;
+- (OFString*)description;
 - (void)SetSystem:(Systems*)systems;
 - (void)Initialize;
 - (void)LoadContent;

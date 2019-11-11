@@ -69,7 +69,7 @@
 
 }
 
-- (OFString*)ToString { return @"Game"; }
+- (OFString*)description { return @"Game"; }
 
 /**
  * Start
