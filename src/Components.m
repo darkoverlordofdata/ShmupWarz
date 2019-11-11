@@ -1,7 +1,4 @@
 #import "Components.h"
-@implementation Component
-@end
-
 
 @implementation Sound 
 @synthesize Chunk = mChunk;

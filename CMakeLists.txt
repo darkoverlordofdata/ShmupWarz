@@ -19,6 +19,8 @@ include ( CMakeToolsHelpers OPTIONAL )
 #
 #   application source
 #
+list ( APPEND C_SOURCES vendor/artemis/ArtemisBitSet.m )
+list ( APPEND C_SOURCES vendor/artemis/ArtemisComponent.m )
 
 list ( APPEND C_SOURCES vendor/xna/Game.m )
 list ( APPEND C_SOURCES vendor/xna/content/ResourceManager.m )

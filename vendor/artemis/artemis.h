@@ -26,13 +26,5 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************************************************************/
 #import <Foundation/Foundation.h>
-#import <SDL2/SDL.h>
-#import <SDL2/SDL_image.h>
-#import <SDL2/SDL_mixer.h>
-#import <SDL2/SDL_ttf.h>
-#import "OpenGL.h"
-#import "Game.h"
-#import "content/ResourceManager.h"
-#import "graphics/Shader.h"
-#import "graphics/SpriteRenderer.h"
-#import "graphics/Texture2D.h"
+#import "ArtemisBitSet.h"
+#import "ArtemisComponent.h"

@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
-#import <OpenGL.h>
 #import <SDL2/SDL.h>
+#import "../OpenGL.h"
 #import "../graphics/Texture2D.h"
 #import "../graphics/Shader.h"
 

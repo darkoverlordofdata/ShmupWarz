@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
-#import <OpenGL.h>
 #import <SDL2/SDL.h>
 #import <tglm/tglm.h>
+#import "../OpenGL.h"
 #import "Texture2D.h"
 #import "Shader.h"
 

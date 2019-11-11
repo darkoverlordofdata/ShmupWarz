@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <xna/xna.h>
+#import <artemis/artemis.h>
 
 
 typedef enum TypeOf {
@@ -28,11 +29,7 @@ typedef enum CategoryOf {
     CATEGORY_PLAYER
 } CategoryOf;
 
-@interface Component : OFObject
-@end
-
-
-@interface Sound : Component 
+@interface Sound : ArtemisComponent 
 {
     Mix_Chunk* mChunk;
 }
@@ -40,7 +37,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithPath:(const char*)path;
 @end
 
-@interface Point2D : Component 
+@interface Point2D : ArtemisComponent 
 {
     double mX;
     double mY;
@@ -50,7 +47,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithX:(double)x Y:(double)y;
 @end
 
-@interface Vector2D : Component 
+@interface Vector2D : ArtemisComponent 
 {
     double mX;
     double mY;
@@ -60,7 +57,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithX:(double)x Y:(double)y;
 @end
 
-@interface Timer : Component 
+@interface Timer : ArtemisComponent 
 {
     double mMs;
 }
@@ -68,7 +65,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithMs:(double)ms;
 @end
 
-@interface Scale : Component 
+@interface Scale : ArtemisComponent 
 {
     double mX;
     double mY;
@@ -78,7 +75,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithX:(double)x Y:(double)y;
 @end
 
-@interface Color : Component 
+@interface Color : ArtemisComponent 
 {
     int mR;
     int mG;
@@ -92,7 +89,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithR:(int)r G:(int)g B:(int)b A:(int)a;
 @end
 
-@interface Health : Component 
+@interface Health : ArtemisComponent 
 {
     double mCurrent;
     double mMaximum;
@@ -102,7 +99,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithCurrent:(double)current Maximum:(double)maximum;
 @end
 
-@interface Tween : Component 
+@interface Tween : ArtemisComponent 
 {
     double mMin;
     double mMax;
@@ -118,7 +115,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithMin:(double)r Max:(double)g Speed:(double)b Repeat:(bool)repeat Active:(bool)active;
 @end
 
-@interface Transform : Component 
+@interface Transform : ArtemisComponent 
 {
     Texture2D* mTexture;
     SDL_Rect mBounds;
@@ -135,7 +132,7 @@ typedef enum CategoryOf {
 - (void)X:(int)x Y:(int)y W:(int)w H:(int)h;
 @end
 
-@interface Identity : Component 
+@interface Identity : ArtemisComponent 
 {
     TypeOf mType;
     CategoryOf mCategory;

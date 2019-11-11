@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
-#import <OpenGL.h>
 #import <SDL2/SDL.h>
 #import <time.h>
+#import "OpenGL.h"
 
 
 #define TicksPerMillisecond  10000.0
