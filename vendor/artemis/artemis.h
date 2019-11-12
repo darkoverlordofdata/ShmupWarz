@@ -26,5 +26,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************************************************************/
 #import <Foundation/Foundation.h>
+#import "ArtemisAspect.h"
+#import "ArtemisBag.h"
 #import "ArtemisBitSet.h"
 #import "ArtemisComponent.h"
+#import "ArtemisComponentType.h"
+// #import "ArtemisEntity.h"
