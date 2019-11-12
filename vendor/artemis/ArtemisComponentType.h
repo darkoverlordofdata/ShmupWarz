@@ -6,9 +6,9 @@
 
 @interface ArtemisComponentType : OFObject
 
-@property(nonatomic,readonly) OFUInteger Index;
+@property(nonatomic,readonly) OFUInteger index;
 
-+(OFUInteger) GetIndexFor:(Class) componentClass;
-+(ArtemisComponentType*) GetTypeFor:(Class) c;
++(OFUInteger) getIndexFor:(Class) componentClass;
++(ArtemisComponentType*) getTypeFor:(Class) c;
 
 @end

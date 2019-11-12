@@ -14,7 +14,7 @@
 @interface ArtemisEntitySystem : OFObject <ArtemisEntityObserver>
 
 @property(nonatomic,assign /** weak */) ArtemisWorld* world;
-@property(nonatomic) BOOL isPassive, isDummy;
+@property(nonatomic) bool isPassive, isDummy;
 @property(nonatomic,retain) ArtemisBag* actives;
 
 /** Objc: needed for subclasses, java doesnt have this problem */
@@ -24,7 +24,7 @@
 -(void) end;
 -(void) process;
 
--(BOOL) checkProcessing;
+-(bool) checkProcessing;
 -(void) processEntities:(OFObject<ArtemisImmutableBag>*) entities;
 
 -(void) initialize;

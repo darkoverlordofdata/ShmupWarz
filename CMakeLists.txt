@@ -19,13 +19,22 @@ include ( CMakeToolsHelpers OPTIONAL )
 #
 #   application source
 #
-list ( APPEND C_SOURCES vendor/Foundation/OFUUID.m )
 
 list ( APPEND C_SOURCES vendor/artemis/ArtemisAspect.m )
 list ( APPEND C_SOURCES vendor/artemis/ArtemisBag.m )
 list ( APPEND C_SOURCES vendor/artemis/ArtemisBitSet.m )
 list ( APPEND C_SOURCES vendor/artemis/ArtemisComponent.m )
+list ( APPEND C_SOURCES vendor/artemis/ArtemisComponentManager.m )
+list ( APPEND C_SOURCES vendor/artemis/ArtemisComponentMapper.m )
 list ( APPEND C_SOURCES vendor/artemis/ArtemisComponentType.m )
+list ( APPEND C_SOURCES vendor/artemis/ArtemisEntity.m )
+list ( APPEND C_SOURCES vendor/artemis/ArtemisEntityManager.m )
+list ( APPEND C_SOURCES vendor/artemis/ArtemisEntitySystem.m )
+list ( APPEND C_SOURCES vendor/artemis/ArtemisManager.m )
+list ( APPEND C_SOURCES vendor/artemis/ArtemisWorld.m )
+list ( APPEND C_SOURCES vendor/artemis/systems/ArtemisEntityProcessingSystem.m )
+
+
 
 list ( APPEND C_SOURCES vendor/xna/Game.m )
 list ( APPEND C_SOURCES vendor/xna/content/ResourceManager.m )

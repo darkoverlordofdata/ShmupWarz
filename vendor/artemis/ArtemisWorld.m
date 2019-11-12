@@ -5,7 +5,14 @@
 #import "ArtemisEntitySystem.h"
 #import "ArtemisEntityObserver.h"
 
-#import "ArtemisWorld_Debug.h"
+// #import "ArtemisWorld_Debug.h"
+@interface ArtemisWorld ()
+
+@property(nonatomic) bool objcDebugEachTick;
+@property(nonatomic) uint64_t objDebugNumTicksSinceStarted;
+
+@end
+
 
 typedef void (^Performer)(OFObject<ArtemisEntityObserver>* observer, ArtemisEntity* entity);
 
@@ -136,10 +143,10 @@ typedef void (^Performer)(OFObject<ArtemisEntityObserver>* observer, ArtemisEnti
 
 -(ArtemisEntitySystem*) setSystem:(ArtemisEntitySystem*) system
 {
-	return [self setSystem:system passive:FALSE];
+	return [self setSystem:system passive:false];
 }
 
--(ArtemisEntitySystem*) setSystem:(ArtemisEntitySystem*) system passive:(BOOL) passive
+-(ArtemisEntitySystem*) setSystem:(ArtemisEntitySystem*) system passive:(bool) passive
 {
 	system.world = self;
 	system.isPassive = passive;

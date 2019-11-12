@@ -1,6 +1,7 @@
 #import "ArtemisComponentMapper.h"
 
 #import "ArtemisBag.h"
+#import "ArtemisEntity.h"
 #import "ArtemisComponentType.h"
 #import "ArtemisWorld.h"
 
@@ -15,7 +16,7 @@
 
 +(ArtemisComponentMapper*) componentMapperForType:(Class) componentClass inWorld:(ArtemisWorld*) world
 {
-	ArtemisComponentMapper* cm = [[ArtemisComponentMapper new] autorelease];
+	ArtemisComponentMapper* cm = [ArtemisComponentMapper new];
 	
 	cm.type = [ArtemisComponentType getTypeFor:componentClass];
 	cm.components = [world.componentManager getComponentsByType:cm.type];
@@ -39,7 +40,7 @@
 	return nil;
 }
 
--(BOOL) has:(ArtemisEntity*) entity
+-(bool) has:(ArtemisEntity*) entity
 {
 	return [self getSafe:entity] != nil;
 }
@@ -53,12 +54,14 @@
 
 - (id)objectForKeyedSubscript: (id)key
 {
-	OFAssert([key isKindOfClass:[ArtemisEntity class]], @"You can only subscript with (int) entity-id's or ArtemisEntity instances");
+	// OFAssert([key isKindOfClass:[ArtemisEntity class]], @"You can only subscript with (int) entity-id's or ArtemisEntity instances");
 	
-	if( [key isKindOfClass:[ArtemisEntity class]])
-		return [self get:(ArtemisEntity*) key];
-	else
-		return nil;
+	// if( [key isKindOfClass:[ArtemisEntity class]])
+	// 	return [self get:(ArtemisEntity*) key];
+	// else
+	// 	return nil;
+	return nil;
+
 }
 
 @end

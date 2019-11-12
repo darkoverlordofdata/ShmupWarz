@@ -16,7 +16,7 @@ static OFMutableDictionary* indices;
 	if( indices == nil )
 	{
 		INDEX = 0;
-		indices = [[OFMutableDictionary dictionary] retain];
+		indices = [OFMutableDictionary dictionary];
 	}
 	
 	id indexObject = [indices objectForKey:esClass];
@@ -77,7 +77,7 @@ static OFMutableDictionary* indices;
 
 -(void)begin { }
 -(void)end { }
--(BOOL)checkProcessing { return FALSE; }
+-(bool)checkProcessing { return false; }
 -(void)processEntities:(OFObject<ArtemisImmutableBag> *)entities { }
 
 -(void) initialize { }
@@ -89,8 +89,8 @@ static OFMutableDictionary* indices;
 	if( self.isDummy )
 		return;
 	
-	BOOL contains = [entity.systemBits get:self.systemIndex];
-	BOOL interested = TRUE;
+	bool contains = [entity.systemBits get:self.systemIndex];
+	bool interested = true;
 	
 	ArtemisBitSet* componentBits = entity.componentBits;
 	
@@ -100,7 +100,7 @@ static OFMutableDictionary* indices;
 		{
 			if( ! [componentBits get:i] )
 			{
-				interested = FALSE;
+				interested = false;
 				break;
 			}
 		}

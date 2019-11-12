@@ -14,8 +14,8 @@
 
 -(ArtemisEntity*) createEntityInstance;
 
--(BOOL) isActive:(EntityID) entityID;
--(BOOL) isEnabled:(EntityID) entityID;
+-(bool) isActive:(EntityID) entityID;
+-(bool) isEnabled:(EntityID) entityID;
 
 -(ArtemisEntity*) getEntity:(EntityID) entityId;
 
