@@ -31,15 +31,30 @@
 - (void)SetSystem:(Systems*)systems { mSystems = systems; }
 - (Entity*)GetEntity:(int)index { return Factory.Entities[index]; }
 
+- (void)Initialize {
+    mWorld = [ArtemisWorld new];
+
+	[mWorld setSystem:[SpawnSystem spawnSystem]];
+	[mWorld setSystem:[InputSystem inputSystem]];
+	[mWorld setSystem:[CollisionSystem collisionSystem]];
+	[mWorld setSystem:[PhysicsSystem physicsSystem]];
+	[mWorld setSystem:[AnimationSystem animationSystem]];
+	[mWorld setSystem:[RemovalSystem removalSystem]];
+    [mWorld initialize];
+
+}
+
 - (void)Draw:(GLfloat) delta {
     GL.ClearColor(1.0f, 0.0f, 0.0f, 1.0f);
     GL.Clear(GL_COLOR_BUFFER_BIT);
-    // for (Entity* e in Factory.Entities) [mSystems DrawSystem:mRenderer Entity:e];
     for (Entity* e in Factory.Active) [mSystems Draw:mRenderer Entity:e];
     SDL_GL_SwapWindow(mWindow);
 }
 
 - (void)Update:(GLfloat) delta {
+
+    mWorld.delta = delta;
+    [mWorld process];
 
     for (Entity* e in Factory.Input)    [mSystems Spawn:e];
     for (Entity* e in Factory.Input)    [mSystems Input:e];
@@ -56,17 +71,13 @@
     [ResourceManager LoadShader:@"particle" Vertex:@"assets/shaders/particle.vs" Fragment:@"assets/shaders/particle.frag"];
 
     // Configure shaders
-    Mat projection = glm_ortho(0.0f, mWidth, mHeight, 0.0f, -1.0f, 1.0f);
+    let projection = glm_ortho(0.0f, mWidth, mHeight, 0.0f, -1.0f, 1.0f);
 
-    let sprite = [ResourceManager GetShader:@"sprite"];
-    [sprite Use];
-    [sprite SetInteger:"sprite" Value:0];
-    [sprite SetMatrix4:"projection" Value:projection];
+    let sprite = [ResourceManager GetShader:@"sprite"]
+        .SetInteger("sprite", 0).SetMatrix4("projection", projection);
 
-    let particle = [ResourceManager GetShader:@"particle"];
-    [particle Use];
-    [particle SetInteger:"particle" Value:0];
-    [particle SetMatrix4:"projection" Value:projection];
+    let particle = [ResourceManager GetShader:@"particle"]
+        .SetInteger("particle", 0).SetMatrix4("projection", projection);
 
     // Load textures
     [ResourceManager LoadTexture:@"background"  Path:@"assets/images/background.png" Alpha:GL_TRUE];

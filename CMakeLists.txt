@@ -19,7 +19,6 @@ include ( CMakeToolsHelpers OPTIONAL )
 #
 #   application source
 #
-
 list ( APPEND C_SOURCES vendor/artemis/ArtemisAspect.m )
 list ( APPEND C_SOURCES vendor/artemis/ArtemisBag.m )
 list ( APPEND C_SOURCES vendor/artemis/ArtemisBitSet.m )
@@ -34,8 +33,6 @@ list ( APPEND C_SOURCES vendor/artemis/ArtemisManager.m )
 list ( APPEND C_SOURCES vendor/artemis/ArtemisWorld.m )
 list ( APPEND C_SOURCES vendor/artemis/systems/ArtemisEntityProcessingSystem.m )
 
-
-
 list ( APPEND C_SOURCES vendor/xna/Game.m )
 list ( APPEND C_SOURCES vendor/xna/content/ResourceManager.m )
 list ( APPEND C_SOURCES vendor/xna/graphics/Shader.m )
@@ -44,6 +41,12 @@ list ( APPEND C_SOURCES vendor/xna/graphics/Texture2D.m )
 list ( APPEND C_SOURCES src/Components.m )
 list ( APPEND C_SOURCES src/Factory.m )
 list ( APPEND C_SOURCES src/Shmupwarz.m )
+list ( APPEND C_SOURCES src/systems/AnimationSystem.m )
+list ( APPEND C_SOURCES src/systems/CollisionSystem.m )
+list ( APPEND C_SOURCES src/systems/InputSystem.m )
+list ( APPEND C_SOURCES src/systems/PhysicsSystem.m )
+list ( APPEND C_SOURCES src/systems/RemovalSystem.m )
+list ( APPEND C_SOURCES src/systems/SpawnSystem.m )
 list ( APPEND C_SOURCES src/Systems.m )
 list ( APPEND C_SOURCES src/main.m )
 # list ( APPEND C_SOURCES src/test.m )

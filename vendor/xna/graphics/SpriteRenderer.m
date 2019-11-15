@@ -51,15 +51,9 @@ DrawSprite:(Texture2D*)texture
     sc.y = bounds->h;
     model = glm_scale(model, sc); // Last scale
 
-
-    // OFLog("model");
-    // OFLog("%f %f %f %f", model[0], model[1], model[2], model[3]);
-    // OFLog("%f %f %f %f", model[4], model[5], model[6], model[7]);
-    // OFLog("%f %f %f %f", model[8], model[9], model[10], model[11]);
-    // OFLog("%f %f %f %f", model[12], model[13], model[14], model[15]);
-
-    [mShader SetMatrix4:"model" Value:model];
-    [mShader SetVector3:"spriteColor" Value:color];
+    mShader
+    .SetMatrix4("model", model)
+    .SetVector3("spriteColor", color);
 
     GL.ActiveTexture(GL_TEXTURE0);
     [texture Bind];

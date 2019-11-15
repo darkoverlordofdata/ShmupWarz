@@ -1,7 +1,14 @@
 #import <Foundation/Foundation.h>
 #import <xna/xna.h>
+#import <artemis/artemis.h>
 #import "Components.h"
 #import "Factory.h"
+#import "systems/AnimationSystem.h"
+#import "systems/CollisionSystem.h"
+#import "systems/InputSystem.h"
+#import "systems/PhysicsSystem.h"
+#import "systems/RemovalSystem.h"
+#import "systems/SpawnSystem.h"
 
 @class Systems;
 
@@ -17,6 +24,7 @@
     OFList* mExplosions;
     OFList* mBangs;
     OFList* mParticles;
+    ArtemisWorld* mWorld;
 }
 @property (nonatomic, retain) OFList* Bullets;
 @property (nonatomic, retain) OFList* Enemies1;

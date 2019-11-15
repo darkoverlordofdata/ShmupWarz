@@ -29,6 +29,11 @@ typedef enum CategoryOf {
     CATEGORY_PLAYER
 } CategoryOf;
 
+@interface Player : ArtemisComponent 
+{
+}
+@end
+
 @interface Sound : ArtemisComponent 
 {
     Mix_Chunk* mChunk;

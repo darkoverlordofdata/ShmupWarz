@@ -1,5 +1,8 @@
 #import "Components.h"
 
+@implementation Player 
+@end
+
 @implementation Sound 
 @synthesize Chunk = mChunk;
 - (instancetype)initWithPath:(const char*)path {
