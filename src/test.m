@@ -1,35 +1,40 @@
 #import <Foundation/Foundation.h>
+#import <xna/xna.h>
+#import <artemis/artemis.h>
+#import "Components.h"
+#import "systems/AnimationSystem.h"
+#import "systems/CollisionSystem.h"
+#import "systems/InputSystem.h"
+#import "systems/PhysicsSystem.h"
+#import "systems/RemovalSystem.h"
+#import "systems/SpawnSystem.h"
 
-  
-#ifdef RELEASE
-@interface MyFirstApp: OFObject <OFApplicationDelegate>
-@end
-
-OF_APPLICATION_DELEGATE(MyFirstApp)
-
-@implementation MyFirstApp
-- (void)applicationDidFinishLaunching
-#else
 int main(int argc, char *argv[]) 
-#endif
 {
 
-    // @autoreleasepool {
-        OFLog("Hello World!");
+    OFLog("Hello World!");
+
+    let world = [ArtemisWorld new];
+	// [world setSystem:[InputSystem inputSystem]];
+	[world setSystem:[CollisionSystem collisionSystem]];
+    [world initialize];
+
+    // let e1 = [world createEntity];
+    // [e1 addComponent:[Player new]];
+    // [world addEntity:e1];
+
+    let e2 = [world createEntity];
+    [e2 addComponent:[[Health alloc]initWithCurrent:40 Maximum:40]];
+    [e2 addComponent:[[Identity alloc]initWithType:TYPE_ENEMY1 Category: CATEGORY_ENEMY]];
+    [e2 addComponent:[[Transform alloc]initWithTexture:NULL Scale:2.0]];
+    [world addEntity:e2];
+
+    // OFLog(@"e1) %d %d %d %@ %@", e1.Id, [e1 isEnabled], [e1 isActive], e1.componentBits, e1.systemBits);
+    OFLog(@"e2) %d %d %d %@ %@", e2.Id, [e2 isEnabled], [e2 isActive], e2.componentBits, e2.systemBits);
 
 
-        // OFData *vertex_data = [[OFData alloc] initWithContentsOfFile:@"assets/shaders/sprite.vs"];
-        // OFString* vertex_str = [[OFString alloc] initWithData:vertex_data encoding:OF_STRING_ENCODING_UTF_8];
+    world.delta = 0.01667;
+    [world process];
 
-        // OFString* 
-        let vertex_str = [[OFString alloc] 
-            initWithData:[[OFData alloc] 
-            initWithContentsOfFile:@"assets/shaders/sprite.vs"] encoding:OF_STRING_ENCODING_UTF_8];
-
-        OFLog(vertex_str);
-    // }
     return 0;
 }
-#ifdef RELEASE
-@end
-#endif

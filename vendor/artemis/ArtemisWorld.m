@@ -22,7 +22,8 @@ typedef void (^Performer)(OFObject<ArtemisEntityObserver>* observer, ArtemisEnti
 @implementation ArtemisComponentMapperInitHelper
 +(void)configTarget:(OFObject *)target inWorld:(ArtemisWorld *)world
 {
-	OFLog(@"IMPOSSIBLE IN OBJECTIVE C: Annotations are a Java-language exclusive feature");
+	/** @see valagame for alternative: ArtemisTemplate */
+	//OFLog(@"IMPOSSIBLE IN OBJECTIVE C: Annotations are a Java-language exclusive feature");
 }
 @end
 
@@ -63,6 +64,7 @@ typedef void (^Performer)(OFObject<ArtemisEntityObserver>* observer, ArtemisEnti
 		
 		self.entityManager = [ArtemisEntityManager entityManager];
 		[self setManager:self.entityManager];
+		self.objcDebugEachTick = true;
     }
     return self;
 }
@@ -76,6 +78,9 @@ typedef void (^Performer)(OFObject<ArtemisEntityObserver>* observer, ArtemisEnti
 	
 	for( OFUInteger i=0; i < self.systemsBag.size; i++ )
 	{
+		/** Inject the component mappers into each system */
+		/** IMPOSSIBLE IN OBJECTIVE C: Annotations are a Java-language exclusive feature */
+		/** @see valagame for alternative: ArtemisTemplate */
 		[ArtemisComponentMapperInitHelper configTarget:[self.systemsBag get:i] inWorld:self];
 		[(ArtemisEntitySystem*)[self.systemsBag get:i] initialize];
 	}
@@ -200,8 +205,6 @@ typedef void (^Performer)(OFObject<ArtemisEntityObserver>* observer, ArtemisEnti
 
 -(void) process
 {
-	if( self.objcDebugEachTick )
-		OFLog(@"Ticking World...");
 	self.objDebugNumTicksSinceStarted++;
 	
 	[self check:self.added withBlock:^(OFObject<ArtemisEntityObserver> *observer, ArtemisEntity *entity) {
