@@ -65,6 +65,8 @@ static OFMutableDictionary* indices;
     return self;
 }
 
+-(void) draw { }
+
 -(void)process
 {
 	if( [self checkProcessing] )

@@ -23,6 +23,7 @@
 -(void) begin;
 -(void) end;
 -(void) process;
+-(void) draw;
 
 -(bool) checkProcessing;
 -(void) processEntities:(OFObject<ArtemisImmutableBag>*) entities;

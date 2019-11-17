@@ -8,6 +8,7 @@
 #import "systems/InputSystem.h"
 #import "systems/PhysicsSystem.h"
 #import "systems/RemovalSystem.h"
+#import "systems/RenderSystem.h"
 #import "systems/SpawnSystem.h"
 
 @class Systems;

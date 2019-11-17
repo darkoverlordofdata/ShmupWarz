@@ -33,6 +33,7 @@
 -(void) disable:(ArtemisEntity*) entity;
 
 -(ArtemisEntitySystem*) setSystem:(ArtemisEntitySystem*) system;
+-(ArtemisEntitySystem*) setSystem:(ArtemisEntitySystem*) system passive:(bool) passive;
 -(void) deleteSystem:(ArtemisEntitySystem*) system;
 -(ArtemisEntitySystem*) getSystem:(Class) c;
 
@@ -40,5 +41,9 @@
  * Process all non-passive systems.
  */
 -(void) process;
+/**
+ * Process all passive systems.
+ */
+-(void) draw;
 
 @end

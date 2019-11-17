@@ -202,6 +202,18 @@ typedef void (^Performer)(OFObject<ArtemisEntityObserver>* observer, ArtemisEnti
 		[entities clear];
 	}
 }
+-(void) draw 
+{
+	for( OFUInteger i = 0; self.systemsBag.size > i; i++ )
+	{
+		ArtemisEntitySystem* system = (ArtemisEntitySystem*) [self.systemsBag get:i];
+		if( system.isPassive )
+		{
+			[system process];
+		}
+	}
+
+}
 
 -(void) process
 {

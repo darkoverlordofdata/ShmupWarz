@@ -25,6 +25,7 @@
 
 -(void)processEntities:(OFObject<ArtemisImmutableBag> *)entities
 {
+	OFLog(@"processEntities %d", entities.size);
 	for (int i = 0, s = entities.size; s > i; i++) {
 		[self process:(ArtemisEntity*)[entities get:i]];
 	}
