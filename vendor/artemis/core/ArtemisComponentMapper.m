@@ -1,6 +1,6 @@
 #import "ArtemisComponentMapper.h"
 
-#import "ArtemisBag.h"
+#import "../util/ArtemisBag.h"
 #import "ArtemisEntity.h"
 #import "ArtemisComponentType.h"
 #import "ArtemisWorld.h"

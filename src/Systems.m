@@ -20,14 +20,14 @@
 - (void) Draw:(SpriteRenderer*) renderer Entity:(Entity*) e {
     if (!e.Active) return;
     var color = (Vec3) { 1, 1, 1 };
-    if (e.Tint) {
-        color[0] = (float)e.Tint.R/255.0;
-        color[1] = (float)e.Tint.G/255.0;
-        color[2] = (float)e.Tint.B/255.0;
-    }
-
+    // if (e.Tint) {
+    //     color[0] = (float)e.Tint.R/255.0;
+    //     color[1] = (float)e.Tint.G/255.0;
+    //     color[2] = (float)e.Tint.B/255.0;
+    // }
+    SDL_Rect bounds = { e.Transform.Bounds.x, e.Transform.Bounds.y, e.Transform.Bounds.w. e.Transform.Bounds.h };
     [renderer DrawSprite: e.Transform.Texture 
-                  Bounds: e.Transform.RefBounds
+                  Bounds: &bounds
                   Rotate: 0.0
                    Color: color];
 
@@ -176,7 +176,8 @@
         for (Entity* bullet in Factory.Health) {
             if (bullet.Active && bullet.Identity.Category == CATEGORY_BULLET) {
 
-                if (SDL_HasIntersection(entity.Transform.RefBounds, bullet.Transform.RefBounds)) {
+                if (SDL_HasIntersection(&entity.Transform.Bounds, &bullet.Transform.Bounds)) {
+                    
                     if (entity.Active && bullet.Active) [self HandleCollision:entity Other:bullet];
                     return;
                 }

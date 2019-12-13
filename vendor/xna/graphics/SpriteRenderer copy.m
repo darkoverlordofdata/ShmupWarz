@@ -20,7 +20,7 @@
 
 - (void)
 DrawSprite:(Texture2D*)texture 
-    Bounds:(SDL_Rect)bounds
+    Bounds:(SDL_Rect*)bounds
     Rotate:(GLfloat)rotate 
      Color:(Vec3)color 
 {
@@ -37,18 +37,18 @@ DrawSprite:(Texture2D*)texture
     static Vec3 zero = { 0, 0, 0 };
     static Vec3 tr = { 0, 0, 0 };
     static Vec3 sc = { 0, 0, 1 };
-    tr.x = bounds.x;
-    tr.y = bounds.y;
+    tr.x = bounds->x;
+    tr.y = bounds->y;
     model = glm_translate(model, tr);  // First translate (transformations are: scale happens first, then rotation and then finall translation happens; reversed order)
-    tr.x = 0.5f * bounds.w;
-    tr.y = 0.5f * bounds.h;
+    tr.x = 0.5f * bounds->w;
+    tr.y = 0.5f * bounds->h;
     model = glm_translate(model, tr); // Move origin of rotation to center of quad
     model = glm_rotate(model, rotate, zero); // Then rotate
-    tr.x = -0.5f * bounds.w;
-    tr.y = -0.5f * bounds.h;
+    tr.x = -0.5f * bounds->w;
+    tr.y = -0.5f * bounds->h;
     model = glm_translate(model, tr); // Move origin back
-    sc.x = bounds.w;
-    sc.y = bounds.h;
+    sc.x = bounds->w;
+    sc.y = bounds->h;
     model = glm_scale(model, sc); // Last scale
 
     mShader

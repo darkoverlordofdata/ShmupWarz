@@ -18,11 +18,13 @@
 
 -(void)initialize
 {
+    OFLog(@"SpawnSystem::initialize");
 	self.transformMapper = [ArtemisComponentMapper componentMapperForType:[Transform class] inWorld:self.world];
 }
 
 -(void)process:(ArtemisEntity *)entity
 {
+    // OFLog(@"SpawnSystem::process");
 	Transform* transform = (Transform*) [self.transformMapper get:entity];
 }
 

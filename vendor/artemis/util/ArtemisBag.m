@@ -19,7 +19,8 @@
 /** Objc: prevent people from bypassing the contructor */
 - (id)init
 {
-    return [self initWithCapacity:10];
+    // return [self initWithCapacity:10];
+    return [self initWithCapacity:64];
 }
 
 -(id)initWithCapacity:(OFInteger) c

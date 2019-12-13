@@ -4,9 +4,9 @@
 #import <Foundation/Foundation.h>
 
 #import "ArtemisAspect.h"
-#import "ArtemisBag.h"
-#import "ArtemisBitSet.h"
-#import "ArtemisImmutableBag.h"
+#import "../util/ArtemisBag.h"
+#import "../util/ArtemisBitSet.h"
+#import "../util/ArtemisImmutableBag.h"
 #import "ArtemisEntityObserver.h"
 
 @class ArtemisWorld;

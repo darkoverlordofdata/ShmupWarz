@@ -17,7 +17,7 @@
 
 
 - (void)DrawSprite:(Texture2D*)texture 
-Bounds:(SDL_Rect)bounds
+Bounds:(SDL_Rect*)bounds
 Rotate:(GLfloat)rotate 
 Color:(Vec3)color;
 - (void)InitRenderData;

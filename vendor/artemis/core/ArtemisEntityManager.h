@@ -3,7 +3,7 @@
  */
 #import <Foundation/Foundation.h>
 
-#import "ArtemisBag.h"
+#import "../util/ArtemisBag.h"
 #import "ArtemisManager.h"
 #import "ArtemisEntity.h"
 

@@ -5,7 +5,7 @@
  */
 #import <Foundation/Foundation.h>
 
-#import "ArtemisBitSet.h"
+#import "../util/ArtemisBitSet.h"
 
 @interface ArtemisAspect : OFObject
 {

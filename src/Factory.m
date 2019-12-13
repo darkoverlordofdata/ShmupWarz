@@ -2,186 +2,159 @@
 @implementation Factory
 
 // entity cache:
-static OFMutableArray* mEntities = nil;
-static OFMutableArray* mActive = nil;
-static OFMutableArray* mInput = nil;
-static OFMutableArray* mSound = nil;
-static OFMutableArray* mVelocity = nil;
-static OFMutableArray* mExpire = nil;
-static OFMutableArray* mTween = nil;
-static OFMutableArray* mHealth = nil;
-
 + (void) initialize {
-    mEntities   = [OFMutableArray new];
-    mActive     = [OFMutableArray new];
-    mInput      = [OFMutableArray new];
-    mSound      = [OFMutableArray new];
-    mVelocity   = [OFMutableArray new];
-    mExpire     = [OFMutableArray new];
-    mTween      = [OFMutableArray new];
-    mHealth     = [OFMutableArray new];
 }
 
-+ (OFMutableArray*) Entities { return mEntities; }
-+ (OFMutableArray*) Active { return mActive; }
-+ (OFMutableArray*) Input { return mInput; }
-+ (OFMutableArray*) Sound { return mSound; }
-+ (OFMutableArray*) Velocity { return mVelocity; }
-+ (OFMutableArray*) Expire { return mExpire; }
-+ (OFMutableArray*) Tween { return mTween; }
-+ (OFMutableArray*) Health { return mHealth; }
++ (void) CreateBackground:(ArtemisWorld*) world Width:(int) width Height:(int) height {
+    let entity = [world createEntity];
+    let identity = [[Identity alloc]initWithType:TYPE_BACKGROUND Category:CATEGORY_BACKGROUND];
+    let transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"background"] Scale:2.0 Center:false];
+    [transform X:0 Y:0 W:width H:height];
+    [entity addComponent:identity];
+    [entity addComponent:transform];
+    [world addEntity:entity];
+    OFLog(@"CreateBackground");
 
-
-+ (void) CreateBackground { 
-    let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"background" Active:true];
-    entity.Identity = [[Identity alloc]initWithType:TYPE_BACKGROUND Category:CATEGORY_BACKGROUND];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"background"] Scale:2.0];
-    [mActive addObject:entity];
-    [mEntities addObject:entity];
 }
 
-+ (Entity*) CreatePlayer { 
-    let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"player" Active:true];
-    entity.Identity = [[Identity alloc]initWithType:TYPE_PLAYER Category:CATEGORY_PLAYER];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"spaceshipspr"]];
-    [mActive addObject:entity];
-    [mInput addObject:entity];
-    [mEntities addObject:entity];
-    return entity;
++ (void) CreatePlayer:(ArtemisWorld*) world X:(int) x Y:(int) y {
+    let entity = [world createEntity];
+    let player = [Player new];
+    let identity = [[Identity alloc]initWithType:TYPE_PLAYER Category:CATEGORY_PLAYER];
+    let transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"spaceship"]];
+
+    [entity addComponent:player];
+    [entity addComponent:identity];
+    [entity addComponent:transform];
+    [world addEntity:entity];
+    OFLog(@"CreatePlayer");
 }
 
-+ (void) CreateBullet { 
-    let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"bullet" Active:false];
-    entity.Identity = [[Identity alloc]initWithType:TYPE_BULLET Category:CATEGORY_BULLET];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"bullet"]];
-    [mSound addObject:entity];
-    [mHealth addObject:entity];
-    [mVelocity addObject:entity];
-    [mEntities addObject:entity];
++ (void) CreateBullet:(ArtemisWorld*) world X:(int) x Y:(int) y {
+    let entity = [world createEntity];
+    let identity = [[Identity alloc]initWithType:TYPE_BULLET Category:CATEGORY_BULLET];
+    let transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"bullet"]];
+    transform.Pos.X = x;
+    transform.Pos.Y = y;
+    transform.Tint = (Vec3) { 0xd2, 0xfa, 0x00, 0xffa };
+    let expires = [[Timer alloc]initWithMs:1.0];
+    let sound = [[Sound alloc]initWithPath:"assets/Sounds/pew.wav"];
+    let health = [[Health alloc]initWithCurrent:2 Maximum:2];
+    let velocity = [[Velocity alloc]initWithX:0 Y:-800];
+
+    [entity addComponent:identity];
+    [entity addComponent:transform];
+    [entity addComponent:expires];
+    [entity addComponent:sound];
+    [entity addComponent:health];
+    [entity addComponent:velocity];
+    [world addEntity:entity];
+    OFLog(@"CreateBullet %@ %d { %d, %d, %d, %d }", entity, entity.isActive, transform.Bounds.x, transform.Bounds.y, transform.Bounds.w, transform.Bounds.h);
 }
 
-+ (void) CreateEnemy1 { 
-    let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"enemy1" Active:false];
-    entity.Identity = [[Identity alloc]initWithType:TYPE_ENEMY1 Category:CATEGORY_ENEMY];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"enemy1"]];
-    [mHealth addObject:entity];
-    [mVelocity addObject:entity];
-    [mEntities addObject:entity];
++ (void) CreateEnemy1:(ArtemisWorld*) world X:(int) x Y:(int) y { 
+    let entity = [world createEntity];
+    let identity = [[Identity alloc]initWithType:TYPE_ENEMY1 Category:CATEGORY_ENEMY];
+    let transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"enemy1"]];
+    transform.Pos.X = x;
+    transform.Pos.Y = y;
+    let health = [[Health alloc]initWithCurrent:10 Maximum:10];
+    let velocity = [[Velocity alloc]initWithX:0 Y:40];
+
+    [entity addComponent:identity];
+    [entity addComponent:transform];
+    [entity addComponent:health];
+    [entity addComponent:velocity];
+    [world addEntity:entity];
+    OFLog(@"CreateEnemy1");
 }
 
-+ (void) CreateEnemy2 { 
-    let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"enemy2" Active:false];
-    entity.Identity = [[Identity alloc]initWithType:TYPE_ENEMY2 Category:CATEGORY_ENEMY];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"enemy2"]];
-    [mHealth addObject:entity];
-    [mVelocity addObject:entity];
-    [mEntities addObject:entity];
++ (void) CreateEnemy2:(ArtemisWorld*) world X:(int) x Y:(int) y { 
+    let entity = [world createEntity];
+    let identity = [[Identity alloc]initWithType:TYPE_ENEMY2 Category:CATEGORY_ENEMY];
+    let transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"enemy2"]];
+    transform.Pos.X = x;
+    transform.Pos.Y = y;
+    let health = [[Health alloc]initWithCurrent:20 Maximum:20];
+    let velocity = [[Velocity alloc]initWithX:0 Y:30];
+
+    [entity addComponent:identity];
+    [entity addComponent:transform];
+    [entity addComponent:health];
+    [entity addComponent:velocity];
+    [world addEntity:entity];
+    OFLog(@"CreateEnemy2");
 }
 
-+ (void) CreateEnemy3 { 
-    let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"enemy3" Active:false];
-    entity.Identity = [[Identity alloc]initWithType:TYPE_ENEMY3 Category:CATEGORY_ENEMY];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"enemy3"]];
-    [mHealth addObject:entity];
-    [mVelocity addObject:entity];
-    [mEntities addObject:entity];
++ (void) CreateEnemy3:(ArtemisWorld*) world X:(int) x Y:(int) y { 
+    let entity = [world createEntity];
+    let identity = [[Identity alloc]initWithType:TYPE_ENEMY3 Category:CATEGORY_ENEMY];
+    let transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"enemy3"]];
+    transform.Pos.X = x;
+    transform.Pos.Y = y;
+    let health = [[Health alloc]initWithCurrent:60 Maximum:60];
+    let velocity = [[Velocity alloc]initWithX:0 Y:20];
+
+    [entity addComponent:identity];
+    [entity addComponent:transform];
+    [entity addComponent:health];
+    [entity addComponent:velocity];
+    [world addEntity:entity];
+    OFLog(@"CreateEnemy3");
 }
 
-+ (void) CreateExplosion { 
-    let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"explosion" Active:false];
-    entity.Identity = [[Identity alloc]initWithType:TYPE_EXPLOSION Category:CATEGORY_EXPLOSION];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"explosion"] Scale:0.6];
-    [mTween addObject:entity];
-    [mEntities addObject:entity];
-}
-
-+ (void) CreateBang { 
-    let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"bang" Active:false];
-    entity.Identity = [[Identity alloc]initWithType:TYPE_BANG Category:CATEGORY_EXPLOSION];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"explosion"] Scale:0.4];
-    [mTween addObject:entity];
-    [mEntities addObject:entity];
-}
-
-+ (void) CreateParticle { 
-    let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"particle" Active:false];
-    entity.Identity = [[Identity alloc]initWithType:TYPE_PARTICLE Category:CATEGORY_PARTICLE];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"star"]];
-    [mTween addObject:entity];
-    [mVelocity addObject:entity];
-    [mEntities addObject:entity];
-}
-
-+ (void) Bullet:(Entity*) entity X:(int) x Y:(int) y { 
-    entity.Transform.Pos.X = x;
-    entity.Transform.Pos.Y = y;
-    entity.Expires = [[Timer alloc]initWithMs:1.0];
-    entity.Sound = [[Sound alloc]initWithPath:"assets/Sounds/pew.wav"];
-    entity.Health = [[Health alloc]initWithCurrent:2 Maximum:2];
-    entity.Tint = [[Color alloc]initWithR:0xd2 G:0xfa B:0x00 A:0xffa];
-    entity.Velocity = [[Vector2D alloc]initWithX:0 Y:-800];
-    entity.Active = true;
-    [mActive addObject:entity];
-}
-
-+ (void) Enemy1:(Entity*) entity X:(int) x Y:(int) y { 
-    entity.Transform.Pos.X = x;
-    entity.Transform.Pos.Y = y;
-    entity.Health = [[Health alloc]initWithCurrent:10 Maximum:10];
-    entity.Velocity = [[Vector2D alloc]initWithX:0 Y:40];
-    entity.Active = true;
-    [mActive addObject:entity];
-}
-
-+ (void) Enemy2:(Entity*) entity X:(int) x Y:(int) y { 
-    entity.Transform.Pos.X = x;
-    entity.Transform.Pos.Y = y;
-    entity.Health = [[Health alloc]initWithCurrent:20 Maximum:20];
-    entity.Velocity = [[Vector2D alloc]initWithX:0 Y:30];
-    entity.Active = true;
-    [mActive addObject:entity];
-}
-
-+ (void) Enemy3:(Entity*) entity X:(int) x Y:(int) y { 
-    entity.Transform.Pos.X = x;
-    entity.Transform.Pos.Y = y;
-    entity.Health = [[Health alloc]initWithCurrent:60 Maximum:60];
-    entity.Velocity = [[Vector2D alloc]initWithX:0 Y:20];
-    entity.Active = true;
-    [mActive addObject:entity];
-}
-
-+ (void) Explosion:(Entity*) entity X:(int) x Y:(int) y { 
++ (void) CreateExplosion:(ArtemisWorld*) world X:(int) x Y:(int) y { 
     let scale = 0.6;
-    entity.Transform.Pos.X = x;
-    entity.Transform.Pos.Y = y;
-    entity.Transform.Bounds = (SDL_Rect){ x, y, entity.Transform.Bounds.w, entity.Transform.Bounds.h };
-    entity.Transform.Scale.X = scale;
-    entity.Transform.Scale.Y = scale;
-    entity.Sound = [[Sound alloc]initWithPath:"assets/Sounds/asplode.wav"];
-    entity.Tween = [[Tween alloc]initWithMin:scale/100.0 Max:scale Speed:-3 Repeat:false Active:false];
-    entity.Tint = [[Color alloc]initWithR:0xd2 G:0xfa B:0xd2 A:0xfa];
-    entity.Expires = [[Timer alloc]initWithMs:0.2];
-    entity.Active = true;
-    [mActive addObject:entity];
+    let entity = [world createEntity];
+    let identity = [[Identity alloc]initWithType:TYPE_EXPLOSION Category:CATEGORY_EXPLOSION];
+    let transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"explosion"] Scale:0.6];
+    transform.Pos.X = x;
+    transform.Pos.Y = y;
+    transform.Bounds = (SDL_Rect){ x, y, transform.Bounds.w, transform.Bounds.h };
+    transform.Scale.X = scale;
+    transform.Scale.Y = scale;
+    transform.Tint = (Vec3) { 0xd2, 0xfa, 0xd2, 0xfa };
+    let sound = [[Sound alloc]initWithPath:"assets/Sounds/asplode.wav"];
+    let tween = [[Tween alloc]initWithMin:scale/100.0 Max:scale Speed:-3 Repeat:false Active:false];
+    let expires = [[Timer alloc]initWithMs:0.2];
+
+    [entity addComponent:identity];
+    [entity addComponent:transform];
+    [entity addComponent:sound];
+    [entity addComponent:tween];
+    [entity addComponent:expires];
+    [world addEntity:entity];
+    OFLog(@"CreateExplosion");
 }
 
-+ (void) Bang:(Entity*) entity X:(int) x Y:(int) y { 
++ (void) CreateBang:(ArtemisWorld*) world X:(int) x Y:(int) y { 
     let scale = 0.2;
-    entity.Transform.Pos.X = x;
-    entity.Transform.Pos.Y = y;
-    entity.Transform.Bounds = (SDL_Rect){ x, y, entity.Transform.Bounds.w, entity.Transform.Bounds.h };
-    entity.Transform.Scale.X = scale;
-    entity.Transform.Scale.Y = scale;
-    entity.Sound = [[Sound alloc]initWithPath:"assets/Sounds/smallasplode.wav"];
-    entity.Tween = [[Tween alloc]initWithMin:scale/100.0 Max:scale Speed:-3 Repeat:false Active:false];
-    entity.Tint = [[Color alloc]initWithR:0xd2 G:0xfa B:0xd2 A:0xfa];
-    entity.Expires = [[Timer alloc]initWithMs:0.2];
-    entity.Active = true;
-    [mActive addObject:entity];
+    let entity = [world createEntity];
+    let identity = [[Identity alloc]initWithType:TYPE_BANG Category:CATEGORY_EXPLOSION];
+    let transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"explosion"] Scale:0.4];
+    transform.Pos.X = x;
+    transform.Pos.Y = y;
+    transform.Bounds = (SDL_Rect){ x, y, transform.Bounds.w, transform.Bounds.h };
+    transform.Scale.X = scale;
+    transform.Scale.Y = scale;
+    transform.Tint = (Vec3) { 0xd2, 0xfa, 0xd2, 0xfa };
+    let sound = [[Sound alloc]initWithPath:"assets/Sounds/smallasplode.wav"];
+    let tween = [[Tween alloc]initWithMin:scale/100.0 Max:scale Speed:-3 Repeat:false Active:false];
+    let expires = [[Timer alloc]initWithMs:0.2];
+
+    [entity addComponent:identity];
+    [entity addComponent:transform];
+    [entity addComponent:sound];
+    [entity addComponent:tween];
+    [entity addComponent:expires];
+    [world addEntity:entity];
+    OFLog(@"CreateBang");
 }
 
-+ (void) Particle:(Entity*) entity X:(int) x Y:(int) y { 
++ (void) CreateParticle:(ArtemisWorld*) world X:(int) x Y:(int) y { 
+    let entity = [world createEntity];
+    let identity = [[Identity alloc]initWithType:TYPE_PARTICLE Category:CATEGORY_PARTICLE];
+    let transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"star"]];
     let Tau = 6.28318;
     double r1 = ((double)rand()/(double)1.0);
     double radians = r1 * (double)Tau;
@@ -190,15 +163,22 @@ static OFMutableArray* mHealth = nil;
     double velocityY = magnitude * sin(radians);
     double scale = (double)(rand() % 10) / 10.0;
 
-    entity.Transform.Pos.X = x;
-    entity.Transform.Pos.Y = y;
-    entity.Transform.Bounds = (SDL_Rect){ x, y, entity.Transform.Bounds.w, entity.Transform.Bounds.h };
-    entity.Transform.Scale.X = scale;
-    entity.Transform.Scale.Y = scale;
-    entity.Velocity = [[Vector2D alloc]initWithX:velocityX Y:velocityY];
-    entity.Expires = [[Timer alloc]initWithMs:0.75];
-    entity.Active = true;
-    [mActive addObject:entity];
+    transform.Pos.X = x;
+    transform.Pos.Y = y;
+    transform.Bounds = (SDL_Rect){ x, y, transform.Bounds.w, transform.Bounds.h };
+    transform.Scale.X = scale;
+    transform.Scale.Y = scale;
+    let velocity = [[Velocity alloc]initWithX:velocityX Y:velocityY];
+    let expires = [[Timer alloc]initWithMs:0.75];
+
+    [entity addComponent:identity];
+    [entity addComponent:transform];
+    [entity addComponent:expires];
+    [entity addComponent:velocity];
+    [world addEntity:entity];
+    OFLog(@"CreateParticle");
 }
+
+
 
 @end

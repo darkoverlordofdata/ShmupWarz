@@ -37,7 +37,9 @@ typedef enum CategoryOf {
 @interface Sound : ArtemisComponent 
 {
     Mix_Chunk* mChunk;
+    OFString* mPath;
 }
+@property (nonatomic, retain) OFString* Path;
 @property (nonatomic, assign) Mix_Chunk* Chunk;
 - (instancetype)initWithPath:(const char*)path;
 @end
@@ -62,12 +64,18 @@ typedef enum CategoryOf {
 - (instancetype)initWithX:(double)x Y:(double)y;
 @end
 
+@interface Velocity : Vector2D 
+@end
+
+
 @interface Timer : ArtemisComponent 
 {
     double mMs;
+    bool mDec;
 }
 @property (nonatomic, assign) double Ms;
 - (instancetype)initWithMs:(double)ms;
+- (instancetype)initWithMs:(double)ms Skip:(bool)skip;
 @end
 
 @interface Scale : ArtemisComponent 
@@ -126,14 +134,19 @@ typedef enum CategoryOf {
     SDL_Rect mBounds;
     Vector2D* mPos;
     Vector2D* mScale;
+    Vec3 mTint;
+    bool mCenter;
 }
 @property (nonatomic, retain) Texture2D* Texture;
 @property (nonatomic, assign) SDL_Rect Bounds;
 @property (nonatomic, assign, readonly) SDL_Rect* RefBounds;
 @property (nonatomic, retain) Vector2D* Pos;
 @property (nonatomic, retain) Vector2D* Scale;
+@property (nonatomic, assign) Vec3 Tint;
+@property (nonatomic, assign) bool Center;
 - (instancetype)initWithTexture:(Texture2D*)texture;
 - (instancetype)initWithTexture:(Texture2D*)texture Scale:(double)scale;
+- (instancetype)initWithTexture:(Texture2D*)texture Scale:(double)scale Center:(bool)center;
 - (void)X:(int)x Y:(int)y W:(int)w H:(int)h;
 @end
 
@@ -156,7 +169,7 @@ typedef enum CategoryOf {
     Transform* mTransform;
     Identity* mIdentity;
     Sound* mSound;
-    Color* mTint;
+    // Color* mTint;
     Timer* mExpires;
     Health* mHealth;
     Tween* mTween;
@@ -170,7 +183,7 @@ typedef enum CategoryOf {
 @property (nonatomic, retain, nullable) Transform* Transform;
 @property (nonatomic, retain, nullable) Identity* Identity;
 @property (nonatomic, retain, nullable) Sound* Sound;
-@property (nonatomic, retain, nullable) Color* Tint;
+// @property (nonatomic, retain, nullable) Color* Tint;
 @property (nonatomic, retain, nullable) Timer* Expires;
 @property (nonatomic, retain, nullable) Health* Health;
 @property (nonatomic, retain, nullable) Tween* Tween;

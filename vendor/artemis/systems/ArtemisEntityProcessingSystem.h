@@ -3,8 +3,8 @@
  */
 #import <Foundation/Foundation.h>
 
-#import "../ArtemisAspect.h"
-#import "../ArtemisEntitySystem.h"
+#import "../core/ArtemisAspect.h"
+#import "../core/ArtemisEntitySystem.h"
 
 @interface ArtemisEntityProcessingSystem : ArtemisEntitySystem
 

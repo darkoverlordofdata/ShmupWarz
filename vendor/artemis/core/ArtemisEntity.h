@@ -3,10 +3,10 @@
  */
 #import <Foundation/Foundation.h>
 
-#import "ArtemisBitSet.h"
+#import "../util/ArtemisBitSet.h"
 #import "ArtemisComponent.h"
 #import "ArtemisComponentType.h"
-#import "ArtemisBag.h"
+#import "../util/ArtemisBag.h"
 
 @class ArtemisWorld;
 
@@ -33,6 +33,8 @@ typedef OFUInteger EntityID; // ObjC to be clear - to support 64bit we need to m
 -(ArtemisEntity*) removeComponent:(ArtemisComponent*) component;
 /** ObjC: must rename */
 -(ArtemisEntity*) removeComponentOfType:(ArtemisComponentType*) component;
+-(void) reset;
+
 
 /** FIXME: missing: the templated version of removeComponentOfType */
 

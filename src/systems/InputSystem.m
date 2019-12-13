@@ -1,5 +1,4 @@
 #import "systems/InputSystem.h"
-#import "Components.h"
 
 // #import "ArtemisComponentMapper.h"
 
@@ -9,6 +8,9 @@
 @end
 
 @implementation InputSystem
+
+static const double FireRate = 0.1;
+
 
 +(InputSystem *)inputSystem
 {
@@ -29,22 +31,16 @@
 	Transform* transform = (Transform*) [self.transformMapper get:entity];
 	Player* player = (Player*) [self.playerMapper get:entity];
 
-    OFLog(@"InputSystem::process %s", entity.Id);
-
-    // transform.Pos.X = mGame.MouseX;
-    // transform.Pos.Y = mGame.MouseY;
-    // if ([mGame GetKey:SDL_SCANCODE_Z] || mGame.MouseDown) {
-    //     mTimeToFire -= mGame.Delta;
-    //     if (mTimeToFire < 0.0) {
-    //         [mGame.Bullets appendObject: [[Vector2D alloc]
-    //             initWithX:transform.Pos.X-27
-    //                     Y:transform.Pos.Y+2 ]];
-    //         [mGame.Bullets appendObject: [[Vector2D alloc]
-    //             initWithX:transform.Pos.X+27
-    //                     Y:transform.Pos.Y+2 ]];
-    //         mTimeToFire = FireRate;
-    //     }
-    // }
+    transform.Pos.X = Shmupwarz.Instance.MouseX;
+    transform.Pos.Y = Shmupwarz.Instance.MouseY;
+    if ([Shmupwarz.Instance GetKey:SDL_SCANCODE_Z] || Shmupwarz.Instance.MouseDown) {
+        mTimeToFire -= Shmupwarz.Instance.Delta;
+        if (mTimeToFire < 0.0) {
+            [Factory CreateBullet:Shmupwarz.Instance.World X:transform.Pos.X-27 Y:transform.Pos.Y+2];
+            [Factory CreateBullet:Shmupwarz.Instance.World X:transform.Pos.X+27 Y:transform.Pos.Y+2];
+            mTimeToFire = FireRate;
+        }
+    }
 }
 
 @end
