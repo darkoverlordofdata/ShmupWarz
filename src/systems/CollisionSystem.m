@@ -20,7 +20,7 @@
 
 -(void)initialize
 {
-    OFLog(@"CollisionSystem::initialize");
+    NSLog(@"CollisionSystem::initialize");
 	self.healthMapper = [ArtemisComponentMapper componentMapperForType:[Health class] inWorld:self.world];
 	self.identityMapper = [ArtemisComponentMapper componentMapperForType:[Identity class] inWorld:self.world];
 	self.transformMapper = [ArtemisComponentMapper componentMapperForType:[Transform class] inWorld:self.world];
@@ -28,9 +28,9 @@
 
 -(bool)checkProcessing { return true; }
 
--(void)processEntities:(OFObject<ArtemisImmutableBag> *)entities
+-(void)processEntities:(NSObject<ArtemisImmutableBag> *)entities
 {
-    // OFLog(@"CollisionSystem::processEntities");
+    // NSLog(@"CollisionSystem::processEntities");
 	for (int i = 0, s = entities.size; s > i; i++) {
 		[self process:(ArtemisEntity*)[entities get:i]];
     }
@@ -38,7 +38,7 @@
 
 -(void) process:(ArtemisEntity*) entity
 {
-    // OFLog(@"CollisionSystem::process");
+    // NSLog(@"CollisionSystem::process");
     Health* health = (Health*) [self.healthMapper get:entity];
     Identity* identity = (Identity*) [self.identityMapper get:entity];
     Transform* transform = (Transform*) [self.transformMapper get:entity];

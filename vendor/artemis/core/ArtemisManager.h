@@ -4,12 +4,12 @@
  ObjC: doesnt have abstract classes, so this is customized slightly
  
  */
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 
 #import "ArtemisEntityObserver.h"
 @class ArtemisWorld;
 
-@interface ArtemisManager : OFObject <ArtemisEntityObserver>
+@interface ArtemisManager : NSObject <ArtemisEntityObserver>
 
 /** objc: has to be public */
 @property(nonatomic,retain) ArtemisWorld* world;

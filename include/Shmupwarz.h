@@ -1,4 +1,4 @@
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 #import <xna/xna.h>
 #import <artemis/artemis.h>
 #import "Components.h"
@@ -24,7 +24,7 @@
 
 - (instancetype)initWithWidth:(int)width 
                        Height:(int)height;
-- (OFString*)description;
+- (NSString*)description;
 - (void)SetSystem:(Systems*)systems;
 - (void)Initialize;
 - (void)LoadContent;

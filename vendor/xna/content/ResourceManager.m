@@ -2,70 +2,70 @@
 
 @implementation ResourceManager;
 
-static OFMutableDictionary* _shaders = nil;
-static OFMutableDictionary* _textures = nil;
+static NSMutableDictionary* _shaders = nil;
+static NSMutableDictionary* _textures = nil;
 
 + (void) initialize {
     if (self == [ResourceManager class]) {
-        _shaders = [[OFMutableDictionary alloc] init];
-        _textures = [[OFMutableDictionary alloc] init];
+        _shaders = [[NSMutableDictionary alloc] init];
+        _textures = [[NSMutableDictionary alloc] init];
     }
 }
 
-+ (OFMutableDictionary*)Shaders { return _shaders; }
-+ (OFMutableDictionary*)Textures { return _textures; }
++ (NSMutableDictionary*)Shaders { return _shaders; }
++ (NSMutableDictionary*)Textures { return _textures; }
 
 
-+ (Shader*) LoadShader:(OFString*) name 
-    Vertex:(OFString*) vertex 
-  Fragment:(OFString*) fragment 
++ (Shader*) LoadShader:(NSString*) name 
+    Vertex:(NSString*) vertex 
+  Fragment:(NSString*) fragment 
 {
     [_shaders setObject: [ResourceManager LoadShaderFromFile:vertex Fragment:fragment] forKey: name];
     return [_shaders objectForKey: name];
 }
 
-+ (Shader*) GetShader:(OFString*)name 
++ (Shader*) GetShader:(NSString*)name 
 {
     return [_shaders objectForKey: name];
 }
 
-+ (Texture2D*) LoadTexture:(OFString*) name 
-       Path:(OFString*) path 
++ (Texture2D*) LoadTexture:(NSString*) name 
+       Path:(NSString*) path 
       Alpha:(GLboolean) alpha 
 {
     [_textures setObject: [ResourceManager LoadTextureFromFile:path Alpha:alpha] forKey: name];
     return [_shaders objectForKey: name];
 }
 
-+ (Texture2D*) GetTexture:(OFString*)name 
++ (Texture2D*) GetTexture:(NSString*)name 
 {
     return [_textures objectForKey: name];
 }
 
 + (void) Clear 
 {
-    for (OFString *key in _textures) {
+    for (NSString *key in _textures) {
         Texture2D *texture = [_textures objectForKey:key];
         GL.DeleteTextures(1, texture.Id);
     }
 
-    for (OFString *key in _shaders) {
+    for (NSString *key in _shaders) {
         Shader *shader = [_shaders objectForKey:key];
         GL.DeleteProgram(shader.Id);
     }
 }
 
-+ (Shader*) LoadShaderFromFile:(OFString*) vertex 
-          Fragment:(OFString*) fragment 
++ (Shader*) LoadShaderFromFile:(NSString*) vertex 
+          Fragment:(NSString*) fragment 
 {
 
-    let vertex_str = [[OFString alloc] 
-        initWithData:[[OFData alloc]
-        initWithContentsOfFile:vertex] encoding:OF_STRING_ENCODING_UTF_8];
+    let vertex_str = [[NSString alloc] 
+        initWithData:[[NSData alloc]
+        initWithContentsOfFile:vertex] encoding:NSUTF8StringEncoding];
 
-    let fragment_str = [[OFString alloc] 
-        initWithData:[[OFData alloc] 
-        initWithContentsOfFile:fragment] encoding:OF_STRING_ENCODING_UTF_8];
+    let fragment_str = [[NSString alloc] 
+        initWithData:[[NSData alloc] 
+        initWithContentsOfFile:fragment] encoding:NSUTF8StringEncoding];
 
     let shader = [[Shader alloc] init];
     [shader Compile:[vertex_str UTF8String] Fragment:[fragment_str UTF8String]];
@@ -73,7 +73,7 @@ static OFMutableDictionary* _textures = nil;
 
 }
 
-+ (Texture2D*) LoadTextureFromFile:(OFString*) path 
++ (Texture2D*) LoadTextureFromFile:(NSString*) path 
               Alpha:(GLboolean) alpha 
 {
 

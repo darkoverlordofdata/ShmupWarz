@@ -8,7 +8,7 @@
 #import "../Components.h"
 
 @interface InputSystem : ArtemisEntityProcessingSystem {
-double mTimeToFire;
+double mTimeTNSire;
 
 }
 

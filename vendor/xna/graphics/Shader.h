@@ -1,9 +1,9 @@
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 #import <SDL2/SDL.h>
 #import <tglm/tglm.h>
 #import "../OpenGL.h"
 
-@interface Shader : OFObject  
+@interface Shader : NSObject  
 {
     GLuint mId; 
 }
@@ -17,9 +17,9 @@
 @property (readonly, nonatomic, copy) Shader* (^SetMatrix4)(char* name, Mat value);
 
 - (instancetype)init;
-- (OFString*)description;
+- (NSString*)description;
 - (Shader*)use;
-- (void)checkCompileErrors:(GLuint)object Type:(OFString*)type;
+- (void)checkCompileErrors:(GLuint)object Type:(NSString*)type;
 - (void)Compile:(const char*) vertexSource Fragment:(const char*) fragmentSource;
 - (Shader*)setInteger:(const char*)name  Value:(GLint)value;
 - (Shader*)setInteger:(const char*)name  Value:(GLint)value  UseShader:(GLboolean) useShader;

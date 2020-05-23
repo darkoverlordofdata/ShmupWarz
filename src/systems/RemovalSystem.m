@@ -12,7 +12,7 @@
 
 +(RemovalSystem *)removalSystem
 {
-    OFLog(@"RemovalSystem::initialize");
+    NSLog(@"RemovalSystem::initialize");
 	RemovalSystem* m = [[RemovalSystem alloc] initWithAspect:[ArtemisAspect aspectForAll:@[ [Transform class] ]]];
 	
 	return m;
@@ -26,7 +26,7 @@
 
 -(void)process:(ArtemisEntity *)entity
 {
-    // OFLog(@"RemovalSystem::process");
+    // NSLog(@"RemovalSystem::process");
 	Transform* transform = (Transform*) [self.transformMapper get:entity];
 	Timer* expires = (Timer*) [self.timerMapper get:entity];
 
@@ -35,7 +35,7 @@
 	if (expires.Ms < 0) {
 		// [entity disable];
 		[entity deleteFromWorld];
-        OFLog(@"deleteFromWorld %@ %d", entity, entity.isActive);
+        NSLog(@"deleteFromWorld %@ %d", entity, entity.isActive);
 	}
 
 }

@@ -8,10 +8,10 @@
 @synthesize InternalFormat = mInternalFormat;
 @synthesize ImageFormat = mImageFormat;
 
-- (instancetype)initWithPath:(OFString*)path { return [self initWithPath:path Alpha:true]; }
+- (instancetype)initWithPath:(NSString*)path { return [self initWithPath:path Alpha:true]; }
 
 - (instancetype)
-initWithPath:(OFString*)path 
+initWithPath:(NSString*)path 
        Alpha:(bool)alpha 
 {
     if ((self = [super init])) {
@@ -27,7 +27,7 @@ initWithPath:(OFString*)path
     return self;
 }
 
-- (OFString*)description { return @"Texture2D"; }
+- (NSString*)description { return @"Texture2D"; }
 - (void)Bind { GL.BindTexture(GL_TEXTURE_2D, mId); }
 
 - (void)

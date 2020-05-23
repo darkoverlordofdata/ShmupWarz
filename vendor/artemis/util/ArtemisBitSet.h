@@ -1,7 +1,7 @@
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 
 
-@interface ArtemisBitSet : OFObject {
+@interface ArtemisBitSet : NSObject {
     int mLength;
     uint* mWords;
 }
@@ -18,7 +18,7 @@
 - (bool) get:(int) bitIndex;
 - (bool) intersects:(ArtemisBitSet*) set;
 - (int) nextSetBit:(int) fromIndex;
-- (uint) numberOfTrailingZeros:(uint)i;
+- (uint) numberNSTrailingZeros:(uint)i;
 
 @end
 

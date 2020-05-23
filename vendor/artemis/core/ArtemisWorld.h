@@ -7,7 +7,7 @@
 
 @class ArtemisEntitySystem;
 
-@interface ArtemisWorld : OFObject
+@interface ArtemisWorld : NSObject
 
 @property (nonatomic) float delta;
 

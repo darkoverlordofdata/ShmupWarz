@@ -3,19 +3,19 @@
  
  Implements ImmutableBag protocol so that it CAN BE an immutable AS WELL AS a mutable
  */
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 
 #import "ArtemisImmutableBag.h"
 
-@interface ArtemisBag : OFObject <ArtemisImmutableBag>
+@interface ArtemisBag : NSObject <ArtemisImmutableBag>
 
 
 +(ArtemisBag*) bag;
 
--(id)initWithCapacity:(OFInteger) c;
+-(id)initWithCapacity:(NSInteger) c;
 
--(OFObject*) remove:(OFUInteger) index;
--(OFObject*) removeLast;
+-(NSObject*) remove:(NSUInteger) index;
+-(NSObject*) removeLast;
 /** Have to rename method, Objc doesn't support overloading, it's too basic/weak a language */
 -(bool) removeFirst:(id) item;
 
@@ -23,20 +23,20 @@
 
 -(bool) removeAll:(ArtemisBag*) otherBag;
 
--(OFObject*) get:(OFUInteger) index;
+-(NSObject*) get:(NSUInteger) index;
 
-@property(nonatomic,readonly) OFUInteger size, capacity;
+@property(nonatomic,readonly) NSUInteger size, capacity;
 
--(bool) isIndexWithinBounds:(OFUInteger) bounds;
+-(bool) isIndexWithinBounds:(NSUInteger) bounds;
 
 @property(nonatomic,readonly) bool isEmpty;
 
--(void) add:(OFObject*) item;
+-(void) add:(NSObject*) item;
 
 /** Have to rename for objc */
--(void) setItem:(OFObject*) item atIndex:(OFUInteger) index;
+-(void) setItem:(NSObject*) item atIndex:(NSUInteger) index;
 
--(void) ensureCapacity:(OFUInteger) index;
+-(void) ensureCapacity:(NSUInteger) index;
 
 -(void) clear;
 

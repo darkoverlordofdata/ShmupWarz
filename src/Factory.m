@@ -13,7 +13,7 @@
     [entity addComponent:identity];
     [entity addComponent:transform];
     [world addEntity:entity];
-    OFLog(@"CreateBackground");
+    NSLog(@"CreateBackground");
 
 }
 
@@ -27,7 +27,7 @@
     [entity addComponent:identity];
     [entity addComponent:transform];
     [world addEntity:entity];
-    OFLog(@"CreatePlayer");
+    NSLog(@"CreatePlayer");
 }
 
 + (void) CreateBullet:(ArtemisWorld*) world X:(int) x Y:(int) y {
@@ -49,7 +49,7 @@
     [entity addComponent:health];
     [entity addComponent:velocity];
     [world addEntity:entity];
-    OFLog(@"CreateBullet %@ %d { %d, %d, %d, %d }", entity, entity.isActive, transform.Bounds.x, transform.Bounds.y, transform.Bounds.w, transform.Bounds.h);
+    NSLog(@"CreateBullet %@ %d { %d, %d, %d, %d }", entity, entity.isActive, transform.Bounds.x, transform.Bounds.y, transform.Bounds.w, transform.Bounds.h);
 }
 
 + (void) CreateEnemy1:(ArtemisWorld*) world X:(int) x Y:(int) y { 
@@ -66,7 +66,7 @@
     [entity addComponent:health];
     [entity addComponent:velocity];
     [world addEntity:entity];
-    OFLog(@"CreateEnemy1");
+    NSLog(@"CreateEnemy1");
 }
 
 + (void) CreateEnemy2:(ArtemisWorld*) world X:(int) x Y:(int) y { 
@@ -83,7 +83,7 @@
     [entity addComponent:health];
     [entity addComponent:velocity];
     [world addEntity:entity];
-    OFLog(@"CreateEnemy2");
+    NSLog(@"CreateEnemy2");
 }
 
 + (void) CreateEnemy3:(ArtemisWorld*) world X:(int) x Y:(int) y { 
@@ -100,7 +100,7 @@
     [entity addComponent:health];
     [entity addComponent:velocity];
     [world addEntity:entity];
-    OFLog(@"CreateEnemy3");
+    NSLog(@"CreateEnemy3");
 }
 
 + (void) CreateExplosion:(ArtemisWorld*) world X:(int) x Y:(int) y { 
@@ -124,7 +124,7 @@
     [entity addComponent:tween];
     [entity addComponent:expires];
     [world addEntity:entity];
-    OFLog(@"CreateExplosion");
+    NSLog(@"CreateExplosion");
 }
 
 + (void) CreateBang:(ArtemisWorld*) world X:(int) x Y:(int) y { 
@@ -148,7 +148,7 @@
     [entity addComponent:tween];
     [entity addComponent:expires];
     [world addEntity:entity];
-    OFLog(@"CreateBang");
+    NSLog(@"CreateBang");
 }
 
 + (void) CreateParticle:(ArtemisWorld*) world X:(int) x Y:(int) y { 
@@ -176,7 +176,7 @@
     [entity addComponent:expires];
     [entity addComponent:velocity];
     [world addEntity:entity];
-    OFLog(@"CreateParticle");
+    NSLog(@"CreateParticle");
 }
 
 

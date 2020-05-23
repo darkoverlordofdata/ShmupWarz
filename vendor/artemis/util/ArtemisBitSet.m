@@ -118,7 +118,7 @@ const int64_t WORD_MASK = 0xffffffff;
     while (true) 
     {
         if (word != 0)
-            return (int)((u * BITS_PER_WORD) + [self numberOfTrailingZeros:word]);
+            return (int)((u * BITS_PER_WORD) + [self numberNSTrailingZeros:word]);
         if (++u == wordsInUse)
             return -1;
         word = mWords[u];
@@ -126,7 +126,7 @@ const int64_t WORD_MASK = 0xffffffff;
 
 }
 
-- (uint) numberOfTrailingZeros:(uint)i {
+- (uint) numberNSTrailingZeros:(uint)i {
     if (i == 0) return 32;
     uint x = i;
     uint y;
@@ -139,8 +139,8 @@ const int64_t WORD_MASK = 0xffffffff;
 
 }
 
-- (OFString *)description {
-	OFMutableString* s = [OFMutableString string];
+- (NSString *)description {
+	NSMutableString* s = [NSMutableString string];
     let size = mLength * BITS_PER_WORD;
 	
 	[s appendFormat:@"[BitSet(%li):", size];

@@ -25,7 +25,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************************************************************/
-#import <Foundation/Foundation.h>
+
+#import <XCore.h>
 #import <SDL2/SDL.h>
 #import <SDL2/SDL_image.h>
 #import <SDL2/SDL_mixer.h>

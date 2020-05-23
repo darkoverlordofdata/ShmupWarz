@@ -28,7 +28,7 @@
 /**
  * port of https://github.com/adamgit/ArtemisObjC/
  */
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 #import "util/ArtemisBag.h"
 #import "util/ArtemisBitSet.h"
 #import "util/ArtemisImmutableBag.h"
@@ -52,3 +52,4 @@
 // #import "systems/ArtemisIntervalEntityProcessingSystem.h"
 // #import "systems/ArtemisIntervalEntitySystem.h"
 // #import "systems/ArtemisVoidEntitySystem.h"
+

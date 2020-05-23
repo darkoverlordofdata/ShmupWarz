@@ -1,16 +1,16 @@
 /**
  http://code.google.com/p/artemis-framework/source/browse/src/com/artemis/ComponentMapper.java
  */
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 
 @class ArtemisWorld, ArtemisComponentType, ArtemisEntity;
 
-@interface ArtemisComponentMapper : OFObject
+@interface ArtemisComponentMapper : NSObject
 
 +(ArtemisComponentMapper*) componentMapperForType:(Class) componentClass inWorld:(ArtemisWorld*) world;
 
--(OFObject*) get:(ArtemisEntity*) entity;
--(OFObject*) getSafe:(ArtemisEntity*) entity;
+-(NSObject*) get:(ArtemisEntity*) entity;
+-(NSObject*) getSafe:(ArtemisEntity*) entity;
 -(bool) has:(ArtemisEntity*) entity;
 
 #pragma mark - ObjectiveC syntactic sugar that's very powerful...
@@ -20,7 +20,7 @@
  
  You can only subscript with (int) entity-id's or ArtemisEntity instances
  */
-- (id)objectAtIndexedSubscript: (OFUInteger)index;
+- (id)objectAtIndexedSubscript: (NSUInteger)index;
 
 /**
  Implements "self[ (ArtemisEntity*) a ]", ... etc

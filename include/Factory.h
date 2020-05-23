@@ -1,8 +1,8 @@
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 #import <xna/xna.h>
 #import <Components.h>
 
-@interface Factory : OFObject  {}
+@interface Factory : NSObject  {}
 
 
 

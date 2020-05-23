@@ -8,7 +8,7 @@
 @synthesize Path = mPath;
 - (instancetype)initWithPath:(const char*)path {
     if (self = [super init]) {
-        mPath = [[OFString alloc]initWithUTF8String:path];
+        mPath = [[NSString alloc]initWithUTF8String:path];
         mChunk = Mix_LoadWAV(path);
     }
     return self;
@@ -178,7 +178,7 @@
 @synthesize Health = mHealth;
 @synthesize Tween = mTween;
 @synthesize Velocity = mVelocity;
-- (instancetype)initWithId:(int)id Name:(OFString*)name Active:(bool)active {
+- (instancetype)initWithId:(int)id Name:(NSString*)name Active:(bool)active {
     if (self = [super init]) {
         mId = id;
         mName = name;

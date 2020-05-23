@@ -6,7 +6,7 @@
 {
     if (self = [super init]) {
         mGame = game;
-        mTimeToFire = 0.0;
+        mTimeTNSire = 0.0;
         mEnemyT1 = 1.0;
         mEnemyT2 = 4.0;
         mEnemyT3 = 6.0;
@@ -41,15 +41,15 @@
     entity.Transform.Pos.X = mGame.MouseX;
     entity.Transform.Pos.Y = mGame.MouseY;
     if ([mGame GetKey:SDL_SCANCODE_Z] || mGame.MouseDown) {
-        mTimeToFire -= mGame.Delta;
-        if (mTimeToFire < 0.0) {
+        mTimeTNSire -= mGame.Delta;
+        if (mTimeTNSire < 0.0) {
             [mGame.Bullets appendObject: [[Vector2D alloc]
                 initWithX:entity.Transform.Pos.X-27
                         Y:entity.Transform.Pos.Y+2 ]];
             [mGame.Bullets appendObject: [[Vector2D alloc]
                 initWithX:entity.Transform.Pos.X+27
                         Y:entity.Transform.Pos.Y+2 ]];
-            mTimeToFire = FireRate;
+            mTimeTNSire = FireRate;
         }
     }
 }

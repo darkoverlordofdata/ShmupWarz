@@ -1,7 +1,7 @@
 /**
  http://code.google.com/p/artemis-framework/source/browse/src/com/artemis/Entity.java
  */
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 
 #import "../util/ArtemisBitSet.h"
 #import "ArtemisComponent.h"
@@ -10,9 +10,9 @@
 
 @class ArtemisWorld;
 
-typedef OFUInteger EntityID; // ObjC to be clear - to support 64bit we need to make this OFUInteger. Calling it EntityID simply makes it easier to find this comment (and write clearer code!)
+typedef NSUInteger EntityID; // ObjC to be clear - to support 64bit we need to make this NSUInteger. Calling it EntityID simply makes it easier to find this comment (and write clearer code!)
 
-@interface ArtemisEntity : OFObject
+@interface ArtemisEntity : NSObject
 
 /** ObjC: doesnt support protected, moved this to static */
 +(ArtemisEntity*) entityInWorld:(ArtemisWorld*) world withId:(EntityID) newID;
@@ -29,21 +29,21 @@ typedef OFUInteger EntityID; // ObjC to be clear - to support 64bit we need to m
 @property(nonatomic,retain,readonly) ArtemisBitSet* componentBits, * systemBits;
 
 -(ArtemisEntity*) addComponent:( ArtemisComponent*) component;
--(ArtemisEntity*) addComponent:( ArtemisComponent*) component ofType:(ArtemisComponentType*) componentType;
+-(ArtemisEntity*) addComponent:( ArtemisComponent*) component NSType:(ArtemisComponentType*) componentType;
 -(ArtemisEntity*) removeComponent:(ArtemisComponent*) component;
 /** ObjC: must rename */
--(ArtemisEntity*) removeComponentOfType:(ArtemisComponentType*) component;
+-(ArtemisEntity*) removeComponentNSType:(ArtemisComponentType*) component;
 -(void) reset;
 
 
-/** FIXME: missing: the templated version of removeComponentOfType */
+/** FIXME: missing: the templated version of removeComponentNSType */
 
 @property(nonatomic) bool isActive, isEnabled;
 
 /** ObjC: slight rename */
--(ArtemisComponent*) componentOfType:(ArtemisComponentType*) componentType;
+-(ArtemisComponent*) componentNSType:(ArtemisComponentType*) componentType;
 
-/** FIXME: missing: the templated version of componentOfType: */
+/** FIXME: missing: the templated version of componentNSType: */
 
 -(ArtemisBag*) getComponentsIntoBag:(ArtemisBag*) fillBag;
 
@@ -59,7 +59,7 @@ typedef OFUInteger EntityID; // ObjC to be clear - to support 64bit we need to m
  * This UUID is unique per entity (re-used entities get a new UUID).
  * @return uuid instance for this entity.
  */
-@property(nonatomic,retain) OFString* uuid;
+@property(nonatomic,retain) NSString* uuid;
 
 @property(nonatomic,readonly, assign /** NB: weak ref */) ArtemisWorld* world;
 

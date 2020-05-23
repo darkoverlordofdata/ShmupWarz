@@ -1,14 +1,14 @@
 /**
  http://code.google.com/p/artemis-framework/source/browse/src/com/artemis/ComponentType.java
  */
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 
 
-@interface ArtemisComponentType : OFObject
+@interface ArtemisComponentType : NSObject
 
-@property(nonatomic,readonly) OFUInteger index;
+@property(nonatomic,readonly) NSUInteger index;
 
-+(OFUInteger) getIndexFor:(Class) componentClass;
++(NSUInteger) getIndexFor:(Class) componentClass;
 +(ArtemisComponentType*) getTypeFor:(Class) c;
 
 @end

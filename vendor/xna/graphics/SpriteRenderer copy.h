@@ -1,18 +1,18 @@
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 #import <SDL2/SDL.h>
 #import <tglm/tglm.h>
 #import "../OpenGL.h"
 #import "Texture2D.h"
 #import "Shader.h"
 
-@interface SpriteRenderer : OFObject  
+@interface SpriteRenderer : NSObject  
 {
     Shader *mShader; 
     GLuint mQuadVAO;
 }
 
 - (instancetype)initWithShader:(Shader*)shader;
-- (OFString*)description;
+- (NSString*)description;
 
 
 

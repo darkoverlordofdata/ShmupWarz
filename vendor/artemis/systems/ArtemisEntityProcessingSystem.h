@@ -1,7 +1,7 @@
 /**
  http://code.google.com/p/artemis-framework/source/browse/src/com/artemis/systems/EntityProcessingSystem.java
  */
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 
 #import "../core/ArtemisAspect.h"
 #import "../core/ArtemisEntitySystem.h"

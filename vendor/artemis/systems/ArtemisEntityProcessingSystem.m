@@ -23,7 +23,7 @@
 	// subclasses to override
 }
 
--(void)processEntities:(OFObject<ArtemisImmutableBag> *)entities
+-(void)processEntities:(NSObject<ArtemisImmutableBag> *)entities
 {
 	for (int i = 0, s = entities.size; s > i; i++) {
 		[self process:(ArtemisEntity*)[entities get:i]];

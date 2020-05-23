@@ -1,7 +1,7 @@
 /**
  http://code.google.com/p/artemis-framework/source/browse/src/com/artemis/ComponentManager.java
  */
-#import <Foundation/Foundation.h>
+#import <XCore.h>
 
 #import "../util/ArtemisBag.h"
 #import "../util/ArtemisBitSet.h"
@@ -13,11 +13,11 @@
 /** ObjC: for safety, use this instead of relying on default undefined constrcutors */
 +(ArtemisComponentManager*) componentManager;
 
--(void) addComponent:(ArtemisComponent*) component ofType:(ArtemisComponentType*) componentType toEntity:(ArtemisEntity*) entity;
+-(void) addComponent:(ArtemisComponent*) component NSType:(ArtemisComponentType*) componentType toEntity:(ArtemisEntity*) entity;
 -(void) removeComponent:(ArtemisComponentType*) componentType fromEntity:(ArtemisEntity*) entity;
 
 -(ArtemisBag*) getComponentsByType:(ArtemisComponentType*) componentType;
--(ArtemisComponent*) getComponentOfType:(ArtemisComponentType*) componentType fromEntity:(ArtemisEntity*) entity;
+-(ArtemisComponent*) getComponentNSType:(ArtemisComponentType*) componentType fromEntity:(ArtemisEntity*) entity;
 -(ArtemisBag*) getComponentsFor:(ArtemisEntity*) entity intoBag:(ArtemisBag*) fillBag;
 
 -(void) clean;
