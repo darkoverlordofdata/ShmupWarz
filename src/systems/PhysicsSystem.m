@@ -26,12 +26,15 @@
 
 -(void)process:(ArtemisEntity *)entity
 {
-    // NSLog(@"PhysicsSystem::process");
 	Transform* transform = (Transform*) [self.transformMapper get:entity];
 	Velocity* velocity = (Velocity*) [self.velocityMapper get:entity];
+    NSLog(@"PhysicsSystem->process - (%f, %f)",  
+		transform.Pos.X, transform.Pos.Y);
 
 	transform.Pos.X += velocity.X * Shmupwarz.Instance.Delta;
 	transform.Pos.Y += velocity.Y * Shmupwarz.Instance.Delta;
+    NSLog(@"PhysicsSystem->process + (%f, %f)",  
+		transform.Pos.X, transform.Pos.Y);
 
 }
 

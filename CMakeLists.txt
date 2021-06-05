@@ -15,23 +15,17 @@ set ( RELEASE_NAME shmupwarz )
 #
 include ( CMakeToolsHelpers OPTIONAL )
 
+#
+#   libraries - sources & packages
+#
+if (EXISTS ${CMAKE_SOURCE_DIR}/data AND NOT DEFINED ZEROG )
+    add_subdirectory (data)
+    list ( APPEND RESOURCES ${resources_gresource_xml_C_FILE} )
+endif ()
 
 #
 #   application source
 #
-list ( APPEND C_SOURCES vendor/artemis/util/ArtemisBag.m )
-list ( APPEND C_SOURCES vendor/artemis/util/ArtemisBitSet.m )
-list ( APPEND C_SOURCES vendor/artemis/core/ArtemisAspect.m )
-list ( APPEND C_SOURCES vendor/artemis/core/ArtemisComponent.m )
-list ( APPEND C_SOURCES vendor/artemis/core/ArtemisComponentManager.m )
-list ( APPEND C_SOURCES vendor/artemis/core/ArtemisComponentMapper.m )
-list ( APPEND C_SOURCES vendor/artemis/core/ArtemisComponentType.m )
-list ( APPEND C_SOURCES vendor/artemis/core/ArtemisEntity.m )
-list ( APPEND C_SOURCES vendor/artemis/core/ArtemisEntityManager.m )
-list ( APPEND C_SOURCES vendor/artemis/core/ArtemisEntitySystem.m )
-list ( APPEND C_SOURCES vendor/artemis/core/ArtemisManager.m )
-list ( APPEND C_SOURCES vendor/artemis/core/ArtemisWorld.m )
-list ( APPEND C_SOURCES vendor/artemis/systems/ArtemisEntityProcessingSystem.m )
 
 list ( APPEND C_SOURCES vendor/xna/Game.m )
 list ( APPEND C_SOURCES vendor/xna/content/ResourceManager.m )
@@ -41,14 +35,7 @@ list ( APPEND C_SOURCES vendor/xna/graphics/Texture2D.m )
 list ( APPEND C_SOURCES src/Components.m )
 list ( APPEND C_SOURCES src/Factory.m )
 list ( APPEND C_SOURCES src/Shmupwarz.m )
-list ( APPEND C_SOURCES src/systems/AnimationSystem.m )
-list ( APPEND C_SOURCES src/systems/CollisionSystem.m )
-list ( APPEND C_SOURCES src/systems/InputSystem.m )
-list ( APPEND C_SOURCES src/systems/PhysicsSystem.m )
-list ( APPEND C_SOURCES src/systems/RemovalSystem.m )
-list ( APPEND C_SOURCES src/systems/RenderSystem.m )
-list ( APPEND C_SOURCES src/systems/SpawnSystem.m )
-# list ( APPEND C_SOURCES src/Systems.m )
+list ( APPEND C_SOURCES src/Systems.m )
 list ( APPEND C_SOURCES src/main.m )
 # list ( APPEND C_SOURCES src/test.m )
 #
@@ -71,10 +58,11 @@ set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -lSDL2" )
 set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -lSDL2_image" )
 set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -lSDL2_mixer" )
 set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -lSDL2_ttf" )
+set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -lGLEW" )
 set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -lGL" )
 
 
-set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DOBJFW" )
+
 set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fexceptions" )
 set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fobjc-exceptions" )
 set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -funwind-tables" )
@@ -95,8 +83,9 @@ include_directories(AFTER ${INCLUDES})
 #
 add_executable ( ${PROJECT_NAME} ${C_SOURCES} ${RESOURCES} )
 
-target_link_libraries ( ${PROJECT_NAME} m objfw objfwrt pthread SDL2 SDL2_image SDL2_mixer SDL2_ttf GL  )
+target_link_libraries ( ${PROJECT_NAME} m objfw objfwrt pthread SDL2 SDL2_image SDL2_mixer SDL2_ttf GLEW GL  )
 install (TARGETS ${PROJECT_NAME} RUNTIME DESTINATION . )
 
 include (CPack)
 
+# (generated from template: objc. Do not modify. )

@@ -1,19 +1,25 @@
 #import <XCore.h>
 #import <xna/xna.h>
-#import "Systems.h"
+#import <artemis/artemis.h>
 #import "Components.h"
 #import "Factory.h"
+#import "systems/AnimationSystem.h"
+#import "systems/CollisionSystem.h"
+#import "systems/InputSystem.h"
+#import "systems/PhysicsSystem.h"
+#import "systems/RemovalSystem.h"
+#import "systems/RenderSystem.h"
+#import "systems/SpawnSystem.h"
 
 @class Systems;
 
 @interface Shmupwarz : Game 
 {
     Entity* mPlayer;
-    Systems*  mSystems;
-
+    id mSystems;
+    ArtemisWorld* mWorld;
 }
-@property (nonatomic) float delta;
-@property (nonatomic, readonly, retain) Systems* System;
+@property (nonatomic, readonly, retain) ArtemisWorld* World;
 @property (class, nonatomic, retain, readonly) Shmupwarz* Instance;
 
 - (instancetype)initWithWidth:(int)width 

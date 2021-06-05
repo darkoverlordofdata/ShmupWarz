@@ -241,11 +241,12 @@ typedef void (^Performer)(NSObject<ArtemisEntityObserver>* observer, ArtemisEnti
 	}];
 	
 	[self.componentManager clean];
-	
+
+
 	for( NSUInteger i = 0; self.systemsBag.size > i; i++ )
 	{
 		ArtemisEntitySystem* system = (ArtemisEntitySystem*) [self.systemsBag get:i];
-		if( ! system.isPassive )
+		if( ! [system isPassive] )
 		{
 			[system process];
 		}

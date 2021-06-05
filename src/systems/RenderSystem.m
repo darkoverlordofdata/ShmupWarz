@@ -20,7 +20,7 @@
 
 -(void)initialize
 {
-    NSLog(@"RenderSystem::initialize");
+    // NSLog(@"RenderSystem::initialize");
     self.renderer = [[SpriteRenderer alloc]initWithShader:[ResourceManager GetShader:@"sprite"]];
 	self.transformMapper = [ArtemisComponentMapper componentMapperForType:[Transform class] inWorld:self.world];
 	// self.identityMapper = [ArtemisComponentMapper componentMapperForType:[Identity class] inWorld:self.world];

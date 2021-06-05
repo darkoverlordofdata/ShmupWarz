@@ -1,6 +1,5 @@
 #import "Shmupwarz.h"
 #import "Components.h"
-#import "Systems.h"
 #import "tglm/tglm.h"
 
 @implementation Shmupwarz
@@ -21,6 +20,7 @@ static Shmupwarz* _instance = nil;
 }
 
 - (NSString*)description { return @"Shmupwarz"; }
+- (void)SetSystem:(Systems*)systems { mSystems = systems; }
 
 - (void)Initialize {
 }
@@ -28,27 +28,25 @@ static Shmupwarz* _instance = nil;
 - (void)Draw:(GLfloat) delta {
     GL.ClearColor(1.0f, 0.0f, 0.0f, 1.0f);
     GL.Clear(GL_COLOR_BUFFER_BIT);
-    [System Draw:[renderer withEntity:entity]];
+    [mWorld draw];
     SDL_GL_SwapWindow(mWindow);
 }
 
 - (void)Update:(GLfloat) delta {
-    self.delta = delta;
-
-    [System Spawn:entity];
-    [System Input:entity];
-    [System Collision:entity];
-    [System Sound:entity];
-    [System Physics:entity];
-    [System Tween:entity];
-    [System Kill:entity];
-    [System Recycle:entity];
-
+    mWorld.delta = delta;
+    [mWorld process];
 }
 
 - (void)LoadContent {
 
-    mSystems = [[Systems alloc]initWithGame:self];
+    mWorld = [ArtemisWorld new];
+	[mWorld setSystem:[RenderSystem renderSystem]passive:true];
+	[mWorld setSystem:[SpawnSystem spawnSystem]];
+	[mWorld setSystem:[InputSystem inputSystem]];
+	[mWorld setSystem:[CollisionSystem collisionSystem]];
+	[mWorld setSystem:[PhysicsSystem physicsSystem]];
+	[mWorld setSystem:[AnimationSystem animationSystem]];
+	[mWorld setSystem:[RemovalSystem removalSystem]];
 
     // Load shaders
     [ResourceManager LoadShader:@"sprite"   Vertex:@"assets/shaders/sprite.vs"   Fragment:@"assets/shaders/sprite.frag"];
