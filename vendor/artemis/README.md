@@ -11,7 +11,7 @@ https://github.com/adamgit/ArtemisObjC/issues/4
 
 ### Version:
  - Artemis doesn't use GitHub :(, so we cannot directly track with graphs etc.
- - Currently, this port is based NSf version: http://code.google.com/p/artemis-framework/source/detail?r=2fa7aea9bd6295563cf6f2120b6be2b99ccd9cd6
+ - Currently, this port is based off version: http://code.google.com/p/artemis-framework/source/detail?r=2fa7aea9bd6295563cf6f2120b6be2b99ccd9cd6
  - (visit http://code.google.com/p/artemis-framework/source/list for the latest version numbers of original Artemis, and see how old/new that is)
 
 # Instructions
@@ -43,7 +43,7 @@ I've used <strong>identical names to the Java Artemis</strong>, apart from three
 
 # Support
 
-I will review and accept pull requests, so long as they stick to the above rules, and reference the NSficial Artemis hash they refer to.
+I will review and accept pull requests, so long as they stick to the above rules, and reference the official Artemis hash they refer to.
 
 You can try logging Issues here, but I probably don't have time to respond. Other readers may be able to help you, if you're lucky.
 

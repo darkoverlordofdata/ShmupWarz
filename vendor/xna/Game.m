@@ -69,7 +69,7 @@
 
 }
 
-- (NSString*)description { return @"Game"; }
+- (OFString*)description { return @"Game"; }
 
 /**
  * Start
@@ -177,7 +177,7 @@
         mPreviousTicks = (long)currentTicks;
 
         // If we're in the fixed timestep mode and not enough time has elapsed
-        // to perform an update we sleep NSf the the remaining time to save battery
+        // to perform an update we sleep off the the remaining time to save battery
         // life and/or release CPU time to other threads and processes.
         if (mIsFixedTimeStep && mAccumulatedElapsedTime < mTargetElapsedTime)
         {
@@ -261,7 +261,7 @@
 
 
 - (void) dealloc {
-    NSLog(@"Bye");
+    OFLog("Bye");
     [self Dispose];
 }
 /**

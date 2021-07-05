@@ -2,20 +2,20 @@
 
 @interface ArtemisComponentType()
 @property(nonatomic) Class Type;
-@property(nonatomic,readwrite) NSUInteger index;
+@property(nonatomic,readwrite) OFUInteger index;
 @end
 
 @implementation ArtemisComponentType
 
 static int INDEX;
-static NSMutableDictionary* componentTypes;
+static OFMutableDictionary* componentTypes;
 
 - (id)initWithType:(Class) type
 {
 	if( componentTypes == nil )
 	{
 		INDEX = 0;
-		componentTypes = [NSMutableDictionary dictionary];
+		componentTypes = [OFMutableDictionary dictionary];
 	}
 	
     self = [super init];
@@ -26,9 +26,9 @@ static NSMutableDictionary* componentTypes;
     return self;
 }
 
-- (NSString *)description
+- (OFString *)description
 {
-	return [NSString stringWithFormat:@"ComponentType[%@] (%lu)", self.Type, (unsigned long)self.index];
+	return [OFString stringWithFormat:@"ComponentType[%@] (%lu)", self.Type, (unsigned long)self.index];
 }
 
 + (ArtemisComponentType*) getTypeFor:(Class) c
@@ -38,13 +38,13 @@ static NSMutableDictionary* componentTypes;
 	if (type == nil)
 	{
 		type = [[ArtemisComponentType alloc] initWithType:c];
-		[componentTypes setObject:type forKey:(id<NSCopying>)c]; // ObjC: looks wrong but IS NSFICIALLY legal and correct (ask Apple!)
+		[componentTypes setObject:type forKey:(id<OFCopying>)c]; // ObjC: looks wrong but IS OFFICIALLY legal and correct (ask Apple!)
 	}
 	
 	return type;
 }
 
-+ (NSUInteger) getIndexFor:(Class) c
++ (OFUInteger) getIndexFor:(Class) c
 {
 	return ((ArtemisComponentType*)[self getTypeFor:c]).index;
 }

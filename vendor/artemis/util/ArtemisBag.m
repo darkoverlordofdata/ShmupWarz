@@ -3,8 +3,8 @@
 @interface ArtemisBag()
 
 /** FIXME: not implemented as high performance yet */
-@property(nonatomic,retain) NSMutableArray* data;
-@property(nonatomic) NSUInteger filledItems;
+@property(nonatomic,retain) OFMutableArray* data;
+@property(nonatomic) OFUInteger filledItems;
 @end
 
 @implementation ArtemisBag
@@ -23,30 +23,30 @@
     return [self initWithCapacity:64];
 }
 
--(id)initWithCapacity:(NSInteger) c
+-(id)initWithCapacity:(OFInteger) c
 {
     self = [super init];
     if (self) {
-        self.data = [NSMutableArray arrayWithCapacity:c];
+        self.data = [OFMutableArray arrayWithCapacity:c];
 		self.filledItems = 0;
 		for( int i=0; i<c; i++ ) // ObjC: Note Apple's nasty nsarray capacity isn't readable
 		{
-			[self.data addObject:[NSNull null]];
+			[self.data addObject:[OFNull null]];
 		}
     }
     return self;
 }
 
--(NSObject*) remove:(NSUInteger) index
+-(OFObject*) remove:(OFUInteger) index
 {
-	NSObject* item = [self.data objectAtIndex:index];
+	OFObject* item = [self.data objectAtIndex:index];
 	
 	/** FIXME: not implemented as high performance yet */
 	
 	return item;
 }
 
--(NSObject*) removeLast
+-(OFObject*) removeLast
 {
 	if( self.size > 0 )
 	{
@@ -65,14 +65,14 @@
 	
 	/** FIXME: not implemented as high performance yet */
 	
-	for( NSUInteger i = 0; i < self.size; i++ )
+	for( OFUInteger i = 0; i < self.size; i++ )
 	{
 		id itemOriginal = [self.data objectAtIndex:i];
 		
 		if( itemOriginal == item )
 		{
 			[self.data replaceObjectAtIndex:i withObject:[self.data objectAtIndex:self.size-1]];
-			[self.data replaceObjectAtIndex:self.size-1 withObject:[NSNull null]];
+			[self.data replaceObjectAtIndex:self.size-1 withObject:[OFNull null]];
 			self.filledItems--;
 			
 			return true;
@@ -98,7 +98,7 @@
 	
 	/** FIXME: not implemented as high performance yet */
 	
-	NSUInteger oldSize = self.size;
+	OFUInteger oldSize = self.size;
 	for (id obj in otherBag.data) {
 		[self.data removeObject:obj];
 	}
@@ -107,23 +107,23 @@
 	return modified;
 }
 
--(NSObject*) get:(NSUInteger) index
+-(OFObject*) get:(OFUInteger) index
 {
-	NSObject* value = [self.data objectAtIndex:index];
-	return ( value == [NSNull null]) ? nil : value; /** ObjC: have to convert NSNull to nil */
+	OFObject* value = [self.data objectAtIndex:index];
+	return ( value == [OFNull null]) ? nil : value; /** ObjC: have to convert OFNull to nil */
 }
 
--(NSUInteger)size
+-(OFUInteger)size
 {
 	return self.filledItems;
 }
 
--(NSUInteger)capacity
+-(OFUInteger)capacity
 {
 	return self.data.count;
 }
 
--(bool) isIndexWithinBounds:(NSUInteger) bounds
+-(bool) isIndexWithinBounds:(OFUInteger) bounds
 {
 	return bounds < self.capacity;
 }
@@ -133,7 +133,7 @@
 	return self.size == 0;
 }
 
--(void) add:(NSObject*) item
+-(void) add:(OFObject*) item
 {
 	if( self.size == self.capacity )
 	{
@@ -145,7 +145,7 @@
 }
 
 /** Have to rename for objc */
--(void) setItem:(NSObject*) item atIndex:(NSUInteger) index
+-(void) setItem:(OFObject*) item atIndex:(OFUInteger) index
 {
 	if( index > self.capacity)
 	{
@@ -156,7 +156,7 @@
 	self.filledItems++;
 }
 
--(void) ensureCapacity:(NSUInteger) index
+-(void) ensureCapacity:(OFUInteger) index
 {
 	if( index > self.capacity )
 		[self growTo: index * 2];
@@ -170,9 +170,9 @@
 
 -(void) addAll:(ArtemisBag*) otherBag
 {
-	for( NSObject* item in otherBag.data )
+	for( OFObject* item in otherBag.data )
 	{
-		if( item != nil && item != [NSNull null] )
+		if( item != nil && item != [OFNull null] )
 		{
 			[self add:item];
 		}
@@ -183,18 +183,18 @@
 
 -(void) grow
 {
-	NSUInteger newCapacity = ( self.capacity * 3 ) / 2 + 1;
+	OFUInteger newCapacity = ( self.capacity * 3 ) / 2 + 1;
 	[self growTo: newCapacity];
 }
 
 /** Must rename, Objc too crappy to allow poly */
--(void) growTo:(NSUInteger) newCapacity
+-(void) growTo:(OFUInteger) newCapacity
 {
-	NSUInteger currentCapacity = self.capacity;
+	OFUInteger currentCapacity = self.capacity;
 	
-	for( NSUInteger i=currentCapacity; i<newCapacity; i++ )
+	for( OFUInteger i=currentCapacity; i<newCapacity; i++ )
 	{
-		[self.data addObject:[NSNull null]]; // but do NOT change the filledItems count
+		[self.data addObject:[OFNull null]]; // but do NOT change the filledItems count
 	}
 }
 

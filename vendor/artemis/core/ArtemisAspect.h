@@ -3,11 +3,11 @@
  
  BUG IN Artemis main: it names the parameters "types" when they are NOT types, but "component class-objects"
  */
-#import <XCore.h>
+#import <Foundation/Foundation.h>
 
 #import "../util/ArtemisBitSet.h"
 
-@interface ArtemisAspect : NSObject
+@interface ArtemisAspect : OFObject
 {
     ArtemisBitSet* _allSet, * _exclusionSet, * _oneSet;
 };
@@ -16,13 +16,13 @@
 
 +(ArtemisAspect*) aspectEmpty;
 
--(ArtemisAspect*) all:(NSArray*) componentClasses;
--(ArtemisAspect*) exclude:(NSArray*) componentClasses;
--(ArtemisAspect*) one:(NSArray*) componentClasses;
+-(ArtemisAspect*) all:(OFArray*) componentClasses;
+-(ArtemisAspect*) exclude:(OFArray*) componentClasses;
+-(ArtemisAspect*) one:(OFArray*) componentClasses;
 
-+(ArtemisAspect*) aspectFor:(NSArray*) componentClasses;
-+(ArtemisAspect*) aspectForAll:(NSArray*) componentClasses;
++(ArtemisAspect*) aspectFor:(OFArray*) componentClasses;
++(ArtemisAspect*) aspectForAll:(OFArray*) componentClasses;
 
-+(ArtemisAspect*) aspectForOne:(NSArray*) componentClasses;
++(ArtemisAspect*) aspectForOne:(OFArray*) componentClasses;
 
 @end

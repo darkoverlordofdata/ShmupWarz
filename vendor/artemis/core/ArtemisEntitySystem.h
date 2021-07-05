@@ -1,7 +1,7 @@
 /**
  
  */
-#import <XCore.h>
+#import <Foundation/Foundation.h>
 
 #import "ArtemisAspect.h"
 #import "../util/ArtemisBag.h"
@@ -11,7 +11,7 @@
 
 @class ArtemisWorld;
 
-@interface ArtemisEntitySystem : NSObject <ArtemisEntityObserver>
+@interface ArtemisEntitySystem : OFObject <ArtemisEntityObserver>
 
 @property(nonatomic,assign /** weak */) ArtemisWorld* world;
 @property(nonatomic) bool isPassive, isDummy;
@@ -26,7 +26,7 @@
 -(void) draw;
 
 -(bool) checkProcessing;
--(void) processEntities:(NSObject<ArtemisImmutableBag>*) entities;
+-(void) processEntities:(OFObject<ArtemisImmutableBag>*) entities;
 
 -(void) initialize;
 -(void) inserted:(ArtemisEntity*) entity;

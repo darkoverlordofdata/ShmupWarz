@@ -21,7 +21,7 @@ static const double FireRate = 0.1;
 
 -(void)initialize
 {
-    NSLog(@"InputSystem::initialize");
+    OFLog(@"InputSystem::initialize");
 	self.playerMapper = [ArtemisComponentMapper componentMapperForType:[Player class] inWorld:self.world];
 	self.transformMapper = [ArtemisComponentMapper componentMapperForType:[Transform class] inWorld:self.world];
 }
@@ -34,11 +34,11 @@ static const double FireRate = 0.1;
     transform.Pos.X = Shmupwarz.Instance.MouseX;
     transform.Pos.Y = Shmupwarz.Instance.MouseY;
     if ([Shmupwarz.Instance GetKey:SDL_SCANCODE_Z] || Shmupwarz.Instance.MouseDown) {
-        mTimeTNSire -= Shmupwarz.Instance.Delta;
-        if (mTimeTNSire < 0.0) {
+        mTimeToFire -= Shmupwarz.Instance.Delta;
+        if (mTimeToFire < 0.0) {
             [Factory CreateBullet:Shmupwarz.Instance.World X:transform.Pos.X-27 Y:transform.Pos.Y+2];
             [Factory CreateBullet:Shmupwarz.Instance.World X:transform.Pos.X+27 Y:transform.Pos.Y+2];
-            mTimeTNSire = FireRate;
+            mTimeToFire = FireRate;
         }
     }
 }

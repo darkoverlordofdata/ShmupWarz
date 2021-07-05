@@ -25,12 +25,12 @@
 	return cm;
 }
 
--(NSObject*) get:(ArtemisEntity*) entity
+-(OFObject*) get:(ArtemisEntity*) entity
 {
 	return [self.components get: entity.Id];
 }
 
--(NSObject*) getSafe:(ArtemisEntity*) entity
+-(OFObject*) getSafe:(ArtemisEntity*) entity
 {
 	if( [self.components isIndexWithinBounds: entity.Id] )
 	{
@@ -47,16 +47,16 @@
 
 #pragma mark - ObjectiveC syntactic sugar that's very powerful...
 
-- (id)objectAtIndexedSubscript: (NSUInteger)index
+- (id)objectAtIndexedSubscript: (OFUInteger)index
 {
 	return [self.components get:index];
 }
 
 - (id)objectForKeyedSubscript: (id)key
 {
-	// NSAssert([key isKindNSClass:[ArtemisEntity class]], @"You can only subscript with (int) entity-id's or ArtemisEntity instances");
+	// OFAssert([key isKindOfClass:[ArtemisEntity class]], @"You can only subscript with (int) entity-id's or ArtemisEntity instances");
 	
-	// if( [key isKindNSClass:[ArtemisEntity class]])
+	// if( [key isKindOfClass:[ArtemisEntity class]])
 	// 	return [self get:(ArtemisEntity*) key];
 	// else
 	// 	return nil;

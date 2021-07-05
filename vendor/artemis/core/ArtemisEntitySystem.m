@@ -2,29 +2,29 @@
 
 #import "ArtemisWorld.h"
 
-@interface ArtemisSystemIndexManager : NSObject
+@interface ArtemisSystemIndexManager : OFObject
 +(int) getIndexFor:(Class) esClass;
 @end
 
 @implementation ArtemisSystemIndexManager
 
 static int INDEX;
-static NSMutableDictionary* indices;
+static OFMutableDictionary* indices;
 
 +(int) getIndexFor:(Class) esClass
 {
 	if( indices == nil )
 	{
 		INDEX = 0;
-		indices = [NSMutableDictionary dictionary];
+		indices = [OFMutableDictionary dictionary];
 	}
 	
 	id indexObject = [indices objectForKey:esClass];
 	int index;
-	if( indexObject == nil || indexObject == [NSNull null])
+	if( indexObject == nil || indexObject == [OFNull null])
 	{
 		index = INDEX++;
-		[indices setObject:@(index) forKey:(id<NSCopying>)esClass]; // looks wrong but Apple approves NSficially
+		[indices setObject:@(index) forKey:(id<OFCopying>)esClass]; // looks wrong but Apple approves officially
 	}
 	else
 		index = [indexObject intValue];
@@ -80,7 +80,7 @@ static NSMutableDictionary* indices;
 -(void)begin { }
 -(void)end { }
 -(bool)checkProcessing { return false; }
--(void)processEntities:(NSObject<ArtemisImmutableBag> *)entities { }
+-(void)processEntities:(OFObject<ArtemisImmutableBag> *)entities { }
 
 -(void) initialize { }
 -(void) inserted:(ArtemisEntity*) entity { }

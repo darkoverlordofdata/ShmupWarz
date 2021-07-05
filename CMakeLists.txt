@@ -74,7 +74,6 @@ set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -lSDL2_ttf" )
 set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -lGL" )
 
 
-set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DOBJFW" )
 set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fexceptions" )
 set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fobjc-exceptions" )
 set ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -funwind-tables" )

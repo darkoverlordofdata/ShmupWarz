@@ -1,11 +1,11 @@
 /**
  http://code.google.com/p/artemis-framework/source/browse/src/com/artemis/EntityObserver.java
  */
-#import <XCore.h>
+#import <Foundation/Foundation.h>
 
 @class ArtemisEntity;
 
-@protocol ArtemisEntityObserver <NSObject>
+@protocol ArtemisEntityObserver <OFObject>
 
 -(void) added:(ArtemisEntity*) entity;
 -(void) changed:(ArtemisEntity*) entity;

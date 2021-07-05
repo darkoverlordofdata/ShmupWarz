@@ -19,7 +19,7 @@ static Shmupwarz* _instance = nil;
     return self;
 }
 
-- (NSString*)description { return @"Shmupwarz"; }
+- (OFString*)description { return @"Shmupwarz"; }
 - (void)SetSystem:(Systems*)systems { mSystems = systems; }
 
 - (void)Initialize {

@@ -1,8 +1,8 @@
 /**
  http://code.google.com/p/artemis-framework/source/browse/src/com/artemis/Component.java
  */
-#import <XCore.h>
+#import <Foundation/Foundation.h>
 
-@interface ArtemisComponent : NSObject
+@interface ArtemisComponent : OFObject
 
 @end

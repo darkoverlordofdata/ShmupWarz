@@ -19,14 +19,14 @@
 
 -(void)initialize
 {
-    // NSLog(@"AnimationSystem::initialize");
+    // OFLog(@"AnimationSystem::initialize");
 	self.tweenMapper = [ArtemisComponentMapper componentMapperForType:[Tween class] inWorld:self.world];
 	self.transformMapper = [ArtemisComponentMapper componentMapperForType:[Transform class] inWorld:self.world];
 }
 
 -(void)process:(ArtemisEntity *)entity
 {
-    NSLog(@"AnimationSystem::process");
+    OFLog(@"AnimationSystem::process");
 	Tween* tween = (Tween*) [self.tweenMapper get:entity];
 	Transform* transform = (Transform*) [self.transformMapper get:entity];
 

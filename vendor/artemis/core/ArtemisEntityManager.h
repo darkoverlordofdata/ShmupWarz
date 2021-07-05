@@ -1,7 +1,7 @@
 /**
  http://code.google.com/p/artemis-framework/source/browse/src/com/artemis/EntityManager.java
  */
-#import <XCore.h>
+#import <Foundation/Foundation.h>
 
 #import "../util/ArtemisBag.h"
 #import "ArtemisManager.h"

@@ -14,26 +14,26 @@
 @end
 
 
-typedef void (^Performer)(NSObject<ArtemisEntityObserver>* observer, ArtemisEntity* entity);
+typedef void (^Performer)(OFObject<ArtemisEntityObserver>* observer, ArtemisEntity* entity);
 
-@interface ArtemisComponentMapperInitHelper : NSObject
-+(void) configTarget:(NSObject*) target inWorld:(ArtemisWorld*) world;
+@interface ArtemisComponentMapperInitHelper : OFObject
++(void) configTarget:(OFObject*) target inWorld:(ArtemisWorld*) world;
 @end
 @implementation ArtemisComponentMapperInitHelper
-+(void)configTarget:(NSObject *)target inWorld:(ArtemisWorld *)world
++(void)configTarget:(OFObject *)target inWorld:(ArtemisWorld *)world
 {
 	/** @see valagame for alternative: ArtemisTemplate */
-	//NSLog(@"IMPOSSIBLE IN OBJECTIVE C: Annotations are a Java-language exclusive feature");
+	//OFLog(@"IMPOSSIBLE IN OBJECTIVE C: Annotations are a Java-language exclusive feature");
 }
 @end
 
 @interface ArtemisWorld()
 @property(nonatomic,retain) ArtemisBag* added, * changed, * deleted, * enable, * disable;
 
-@property(nonatomic,retain) NSMutableDictionary* managers;
+@property(nonatomic,retain) OFMutableDictionary* managers;
 @property(nonatomic,retain) ArtemisBag* managersBag;
 
-@property(nonatomic,retain) NSMutableDictionary* systems;
+@property(nonatomic,retain) OFMutableDictionary* systems;
 @property(nonatomic,retain) ArtemisBag* systemsBag;
 
 #pragma mark - ObjectiveC customizations
@@ -47,10 +47,10 @@ typedef void (^Performer)(NSObject<ArtemisEntityObserver>* observer, ArtemisEnti
 {
     if (self = [super init])
     {
-		self.managers = [NSMutableDictionary dictionary];
+		self.managers = [OFMutableDictionary dictionary];
 		self.managersBag = [ArtemisBag bag];
 		
-		self.systems = [NSMutableDictionary dictionary];
+		self.systems = [OFMutableDictionary dictionary];
 		self.systemsBag = [ArtemisBag bag];
 		
 		self.added = [ArtemisBag bag];
@@ -71,12 +71,12 @@ typedef void (^Performer)(NSObject<ArtemisEntityObserver>* observer, ArtemisEnti
 
 -(void) initialize
 {
-	for( NSUInteger i=0; i < self.managersBag.size; i++ )
+	for( OFUInteger i=0; i < self.managersBag.size; i++ )
 	{
 		[(ArtemisManager*)[self.managersBag get:i] initialize];
 	}
 	
-	for( NSUInteger i=0; i < self.systemsBag.size; i++ )
+	for( OFUInteger i=0; i < self.systemsBag.size; i++ )
 	{
 		/** Inject the component mappers into each system */
 		/** IMPOSSIBLE IN OBJECTIVE C: Annotations are a Java-language exclusive feature */
@@ -142,7 +142,7 @@ typedef void (^Performer)(NSObject<ArtemisEntityObserver>* observer, ArtemisEnti
 	return [self.entityManager getEntity:entityId];
 }
 
--(NSObject<ArtemisImmutableBag>*) getSystems
+-(OFObject<ArtemisImmutableBag>*) getSystems
 {
 	return self.systemsBag;
 }
@@ -157,7 +157,7 @@ typedef void (^Performer)(NSObject<ArtemisEntityObserver>* observer, ArtemisEnti
 	system.world = self;
 	system.isPassive = passive;
 	
-	[self.systems setObject:system forKey:(id<NSCopying>)[system class]]; // Looks wrong, but Apple NSFICIALLY approves
+	[self.systems setObject:system forKey:(id<OFCopying>)[system class]]; // Looks wrong, but Apple OFFICIALLY approves
 	[self.systemsBag add:system];
 	
 	return system;
@@ -171,17 +171,17 @@ typedef void (^Performer)(NSObject<ArtemisEntityObserver>* observer, ArtemisEnti
 
 -(void) notifySystems:(ArtemisEntity*) entity withBlock:(Performer) performer
 {
-	for( NSUInteger i=0, s = self.systemsBag.size; s > i; i++ )
+	for( OFUInteger i=0, s = self.systemsBag.size; s > i; i++ )
 	{
-		performer( (NSObject<ArtemisEntityObserver>*)[self.systemsBag get:i], entity );
+		performer( (OFObject<ArtemisEntityObserver>*)[self.systemsBag get:i], entity );
 	}
 }
 
 -(void) notifyManagers:(ArtemisEntity*) entity withBlock:(Performer) performer
 {
-	for( NSUInteger i=0, s = self.managersBag.size; s > i; i++ )
+	for( OFUInteger i=0, s = self.managersBag.size; s > i; i++ )
 	{
-		performer( (NSObject<ArtemisEntityObserver>*)[self.managersBag get:i], entity );
+		performer( (OFObject<ArtemisEntityObserver>*)[self.managersBag get:i], entity );
 	}
 }
 
@@ -194,7 +194,7 @@ typedef void (^Performer)(NSObject<ArtemisEntityObserver>* observer, ArtemisEnti
 {
 	if( ! entities.isEmpty )
 	{
-		for( NSUInteger i = 0; entities.size > i; i++ )
+		for( OFUInteger i = 0; entities.size > i; i++ )
 		{
 			ArtemisEntity* entity = (ArtemisEntity*)[entities get:i];
 			[self notifyManagers:entity withBlock:performer];
@@ -205,7 +205,7 @@ typedef void (^Performer)(NSObject<ArtemisEntityObserver>* observer, ArtemisEnti
 }
 -(void) draw 
 {
-	for( NSUInteger i = 0; self.systemsBag.size > i; i++ )
+	for( OFUInteger i = 0; self.systemsBag.size > i; i++ )
 	{
 		ArtemisEntitySystem* system = (ArtemisEntitySystem*) [self.systemsBag get:i];
 		if( system.isPassive )
@@ -220,29 +220,29 @@ typedef void (^Performer)(NSObject<ArtemisEntityObserver>* observer, ArtemisEnti
 {
 	self.objDebugNumTicksSinceStarted++;
 	
-	[self check:self.added withBlock:^(NSObject<ArtemisEntityObserver> *observer, ArtemisEntity *entity) {
+	[self check:self.added withBlock:^(OFObject<ArtemisEntityObserver> *observer, ArtemisEntity *entity) {
 		[observer added:entity];
 	}];
 	
-	[self check:self.changed withBlock:^(NSObject<ArtemisEntityObserver> *observer, ArtemisEntity *entity) {
+	[self check:self.changed withBlock:^(OFObject<ArtemisEntityObserver> *observer, ArtemisEntity *entity) {
 		[observer changed:entity];
 	}];
 	
-	[self check:self.disable withBlock:^(NSObject<ArtemisEntityObserver> *observer, ArtemisEntity *entity) {
+	[self check:self.disable withBlock:^(OFObject<ArtemisEntityObserver> *observer, ArtemisEntity *entity) {
 		[observer disabled:entity];
 	}];
 	
-	[self check:self.enable withBlock:^(NSObject<ArtemisEntityObserver> *observer, ArtemisEntity *entity) {
+	[self check:self.enable withBlock:^(OFObject<ArtemisEntityObserver> *observer, ArtemisEntity *entity) {
 		[observer enabled:entity];
 	}];
 	
-	[self check:self.deleted withBlock:^(NSObject<ArtemisEntityObserver> *observer, ArtemisEntity *entity) {
+	[self check:self.deleted withBlock:^(OFObject<ArtemisEntityObserver> *observer, ArtemisEntity *entity) {
 		[observer deleted:entity];
 	}];
 	
 	[self.componentManager clean];
 	
-	for( NSUInteger i = 0; self.systemsBag.size > i; i++ )
+	for( OFUInteger i = 0; self.systemsBag.size > i; i++ )
 	{
 		ArtemisEntitySystem* system = (ArtemisEntitySystem*) [self.systemsBag get:i];
 		if( ! system.isPassive )

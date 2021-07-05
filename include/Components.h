@@ -1,4 +1,4 @@
-#import <XCore.h>
+#import <Foundation/Foundation.h>
 #import <xna/xna.h>
 #import <artemis/artemis.h>
 
@@ -37,9 +37,9 @@ typedef enum CategoryOf {
 @interface Sound : ArtemisComponent 
 {
     Mix_Chunk* mChunk;
-    NSString* mPath;
+    OFString* mPath;
 }
-@property (nonatomic, retain) NSString* Path;
+@property (nonatomic, retain) OFString* Path;
 @property (nonatomic, assign) Mix_Chunk* Chunk;
 - (instancetype)initWithPath:(const char*)path;
 @end
@@ -160,10 +160,10 @@ typedef enum CategoryOf {
 - (instancetype)initWithType:(TypeOf)type Category:(CategoryOf)category;
 @end
 
-@interface Entity : NSObject 
+@interface Entity : OFObject 
 {
     int mId;
-    NSString* mName;
+    OFString* mName;
     bool mActive;
 
     Transform* mTransform;
@@ -178,7 +178,7 @@ typedef enum CategoryOf {
     
 }
 @property (nonatomic, assign) int Id;
-@property (nonatomic, retain) NSString* Name;
+@property (nonatomic, retain) OFString* Name;
 @property (nonatomic, assign) bool Active;
 @property (nonatomic, retain, nullable) Transform* Transform;
 @property (nonatomic, retain, nullable) Identity* Identity;
@@ -188,5 +188,5 @@ typedef enum CategoryOf {
 @property (nonatomic, retain, nullable) Health* Health;
 @property (nonatomic, retain, nullable) Tween* Tween;
 @property (nonatomic, retain, nullable) Vector2D* Velocity;
-- (instancetype)initWithId:(int)id Name:(NSString*)name Active:(bool)active;
+- (instancetype)initWithId:(int)id Name:(OFString*)name Active:(bool)active;
 @end

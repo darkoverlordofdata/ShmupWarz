@@ -12,7 +12,7 @@
 
 +(PhysicsSystem *)physicsSystem
 {
-    NSLog(@"PhysicsSystem::initialize");
+    OFLog(@"PhysicsSystem::initialize");
 	PhysicsSystem* m = [[PhysicsSystem alloc] initWithAspect:[ArtemisAspect aspectForAll:@[ [Transform class], [Velocity class] ]]];
 	
 	return m;
@@ -26,7 +26,7 @@
 
 -(void)process:(ArtemisEntity *)entity
 {
-    // NSLog(@"PhysicsSystem::process");
+    // OFLog(@"PhysicsSystem::process");
 	Transform* transform = (Transform*) [self.transformMapper get:entity];
 	Velocity* velocity = (Velocity*) [self.velocityMapper get:entity];
 

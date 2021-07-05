@@ -24,51 +24,51 @@
 	return newValue;
 }
 
--(ArtemisAspect*) all:(NSArray*) componentClasses
+-(ArtemisAspect*) all:(OFArray*) componentClasses
 {
 	if( componentClasses.count < 1 )
-		NSLog(@"WARNING: you created an Aspect of type ALL with zero elements");
+		OFLog(@"WARNING: you created an Aspect of type ALL with zero elements");
 	
 	for( Class cClass in componentClasses )
 	{
-		[self.allSet set:(NSInteger)[ArtemisComponentType getIndexFor:cClass] to:true];
+		[self.allSet set:(OFInteger)[ArtemisComponentType getIndexFor:cClass] to:true];
 	}
 	
 	return self;
 }
 
--(ArtemisAspect*) exclude:(NSArray*) componentClasses
+-(ArtemisAspect*) exclude:(OFArray*) componentClasses
 {
 	if( componentClasses.count < 1 )
-		NSLog(@"WARNING: you created an Aspect of type EXCLUDE with zero elements");
+		OFLog(@"WARNING: you created an Aspect of type EXCLUDE with zero elements");
 	
 	for( Class cClass in componentClasses )
 	{
-		[self.exclusionSet set:(NSInteger)[ArtemisComponentType getIndexFor:cClass] to:true];
+		[self.exclusionSet set:(OFInteger)[ArtemisComponentType getIndexFor:cClass] to:true];
 	}
 	
 	return self;
 }
 
--(ArtemisAspect*) one:(NSArray*) componentClasses
+-(ArtemisAspect*) one:(OFArray*) componentClasses
 {
 	if( componentClasses.count < 1 )
-		NSLog(@"WARNING: you created an Aspect of type ONE with zero elements");
+		OFLog(@"WARNING: you created an Aspect of type ONE with zero elements");
 	
 	for( Class cClass in componentClasses )
 	{
-		[self.oneSet set:(NSInteger)[ArtemisComponentType getIndexFor:cClass] to:true];
+		[self.oneSet set:(OFInteger)[ArtemisComponentType getIndexFor:cClass] to:true];
 	}
 	
 	return self;
 }
 
-+(ArtemisAspect*) aspectFor:(NSArray*) componentClasses
++(ArtemisAspect*) aspectFor:(OFArray*) componentClasses
 {
 	return [self aspectForAll:componentClasses];
 }
 
-+(ArtemisAspect*) aspectForAll:(NSArray*) componentClasses
++(ArtemisAspect*) aspectForAll:(OFArray*) componentClasses
 {
 	ArtemisAspect* aspect = [ArtemisAspect aspectEmpty];
 	
@@ -77,7 +77,7 @@
 	return aspect;
 }
 
-+(ArtemisAspect*) aspectForOne:(NSArray*) componentClasses
++(ArtemisAspect*) aspectForOne:(OFArray*) componentClasses
 {
 	ArtemisAspect* aspect = [ArtemisAspect aspectEmpty];
 	
@@ -86,9 +86,9 @@
 	return aspect;
 }
 
--(NSString *)description
+-(OFString *)description
 {
-	NSMutableString* s = [NSMutableString string];
+	OFMutableString* s = [OFMutableString string];
 	
 	[s appendString:@"[Aspect:"];
 

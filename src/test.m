@@ -1,4 +1,4 @@
-#import <XCore.h>
+#import <Foundation/Foundation.h>
 #import <xna/xna.h>
 #import <artemis/artemis.h>
 #import "Components.h"
@@ -12,7 +12,7 @@
 int main(int argc, char *argv[]) 
 {
 
-    NSLog("Hello World!");
+    OFLog("Hello World!");
 
     let world = [ArtemisWorld new];
 	// [world setSystem:[InputSystem inputSystem]];
@@ -29,8 +29,8 @@ int main(int argc, char *argv[])
     [e2 addComponent:[[Transform alloc]initWithTexture:NULL Scale:2.0]];
     [world addEntity:e2];
 
-    // NSLog(@"e1) %d %d %d %@ %@", e1.Id, [e1 isEnabled], [e1 isActive], e1.componentBits, e1.systemBits);
-    NSLog(@"e2) %d %d %d %@ %@", e2.Id, [e2 isEnabled], [e2 isActive], e2.componentBits, e2.systemBits);
+    // OFLog(@"e1) %d %d %d %@ %@", e1.Id, [e1 isEnabled], [e1 isActive], e1.componentBits, e1.systemBits);
+    OFLog(@"e2) %d %d %d %@ %@", e2.Id, [e2 isEnabled], [e2 isActive], e2.componentBits, e2.systemBits);
 
 
     world.delta = 0.01667;

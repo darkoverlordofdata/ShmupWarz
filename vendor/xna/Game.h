@@ -1,4 +1,4 @@
-#import <XCore.h>
+#import <Foundation/Foundation.h>
 #import <SDL2/SDL.h>
 #import <time.h>
 #import "OpenGL.h"
@@ -21,7 +21,7 @@ static inline uint64_t GetTicks() {
     return ((ts * 1000000L) + us) * 10;
 }
 
-@interface Game : NSObject  
+@interface Game : OFObject  
 {
     bool mKeys[SCAN_MASK]; // flag per scan code
     bool mIsRunning;
@@ -29,7 +29,7 @@ static inline uint64_t GetTicks() {
     float mMouseX;
     float mMouseY;
     SDL_Window* mWindow;
-    NSString* mTitle;
+    OFString* mTitle;
     GLuint mWidth;
     GLuint mHeight;
     double mDelta;
@@ -58,11 +58,11 @@ static inline uint64_t GetTicks() {
 @property (nonatomic, assign) GLuint Width;
 @property (nonatomic, assign) GLuint Height;
 @property (nonatomic, assign) SDL_Window* Window;
-@property (nonatomic, retain) NSString* Title;
+@property (nonatomic, retain) OFString* Title;
 
 - (instancetype)initWithWidth:(int)width 
                        Height:(int)height;
-- (NSString*)description;
+- (OFString*)description;
 - (void)Start;
 - (void)Stop;
 - (void)Quit;

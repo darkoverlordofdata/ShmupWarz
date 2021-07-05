@@ -34,37 +34,37 @@
 {
 	[self.systemBits clear];
 	[self.componentBits clear];
-	self.uuid = [NSString new]; //UUID];
+	self.uuid = [OFString new]; //UUID];
 }
 
--(NSString *)description
+-(OFString *)description
 {
-	return [NSString stringWithFormat:@"Entity[%lu]", (unsigned long)self.Id];
+	return [OFString stringWithFormat:@"Entity[%lu]", (unsigned long)self.Id];
 }
 
 -(ArtemisEntity*) addComponent:( ArtemisComponent*) component
 {
-	[self addComponent:component NSType:[ArtemisComponentType getTypeFor:[component class]]];
+	[self addComponent:component ofType:[ArtemisComponentType getTypeFor:[component class]]];
 	
 	return self;
 }
 
--(ArtemisEntity*) addComponent:( ArtemisComponent*) component NSType:(ArtemisComponentType*) componentType
+-(ArtemisEntity*) addComponent:( ArtemisComponent*) component ofType:(ArtemisComponentType*) componentType
 {
-	[self.componentManager addComponent:component NSType:componentType toEntity:self];
+	[self.componentManager addComponent:component ofType:componentType toEntity:self];
 	
 	return self;
 }
 
 -(ArtemisEntity*) removeComponent:(ArtemisComponent*) component
 {
-	[self removeComponentNSClass:[component class]];
+	[self removeComponentOfClass:[component class]];
 
 	return self;
 }
 
 /** ObjC: must rename */
--(ArtemisEntity*) removeComponentNSType:(ArtemisComponentType*) component
+-(ArtemisEntity*) removeComponentOfType:(ArtemisComponentType*) component
 {
 	[self.componentManager removeComponent:component fromEntity:self];
 	
@@ -72,7 +72,7 @@
 }
 
 /** ObjC: must rename */
--(ArtemisEntity*) removeComponentNSClass:(Class) componentClass
+-(ArtemisEntity*) removeComponentOfClass:(Class) componentClass
 {
 	[self.componentManager removeComponent:[ArtemisComponentType getTypeFor:componentClass] fromEntity:self];
 	
@@ -91,12 +91,12 @@
 }
 
 /** ObjC: slight rename */
--(ArtemisComponent*) componentNSType:(ArtemisComponentType*) componentType
+-(ArtemisComponent*) componentOfType:(ArtemisComponentType*) componentType
 {
-	return [self.componentManager getComponentNSType:componentType fromEntity:self];
+	return [self.componentManager getComponentOfType:componentType fromEntity:self];
 }
 
-/** FIXME: missing: the templated version of componentNSType: */
+/** FIXME: missing: the templated version of componentOfType: */
 
 -(ArtemisBag*) getComponentsIntoBag:(ArtemisBag*) fillBag
 {

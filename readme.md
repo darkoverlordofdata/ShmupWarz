@@ -5,9 +5,7 @@ Hmm, I've never even known anyone who owns an Apple product, so ObjectiveC? Well
 
 Features:
 
-* Uses GNUstep or ObjFW objective-c framework:
-    * CMakeList.txt = ObjFW
-    * GNUMakefile = GNUstep
+* ObjFW objective-c framework
 * a custom gl loader using sdl - no glew/glu/glut or anything else, just gl.h
 * tglm (tiny glm) - clang native vector matrix math
 * compiled using c18 std with clang 10

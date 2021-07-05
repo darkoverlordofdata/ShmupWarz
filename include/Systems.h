@@ -1,4 +1,4 @@
-#import <XCore.h>
+#import <Foundation/Foundation.h>
 #import <xna/xna.h>
 #import "Components.h"
 #import "Factory.h"
@@ -6,10 +6,10 @@
 
 static const double FireRate = 0.1;
 
-@interface Systems : NSObject {
+@interface Systems : OFObject {
     Shmupwarz* mGame;
     Factory* mFactory;
-    double mTimeTNSire;
+    double mTimeToFire;
     double mEnemyT1;
     double mEnemyT2;
     double mEnemyT3;

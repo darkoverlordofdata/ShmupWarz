@@ -3,11 +3,11 @@
  
  ObjC: preferably, this would be ArtemisBag, and ArtemisBag would be ArtemisMutableBag - but nevermind
  */
-#import <XCore.h>
+#import <Foundation/Foundation.h>
 
-@protocol ArtemisImmutableBag <NSObject>
+@protocol ArtemisImmutableBag <OFObject>
 
--(NSObject*) get:(int) index;
+-(OFObject*) get:(int) index;
 
 -(int)size;
 
