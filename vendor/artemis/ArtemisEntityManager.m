@@ -94,7 +94,6 @@
 -(void)deleted:(ArtemisEntity *)entity
 {
 	[self.entities setItem:[OFNull null] atIndex:entity.Id];
-	// [self.entities setItem:nil atIndex:entity.Id];
 	
 	[self.disabled clear:(OFInteger)entity.Id];
 	
@@ -107,7 +106,6 @@
 -(bool) isActive:(EntityID) entityID
 {
 	return [self.entities get:entityID] != [OFNull null];
-	// return [self.entities get:entityID] != nil;
 }
 
 -(bool) isEnabled:(EntityID) entityID

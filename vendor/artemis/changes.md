@@ -6,14 +6,3 @@
 * change NSUUID to OFString
 * remove autoreleases
 * compile with ARC enabled
-* add 'missing' classes:
-
-        ArtemisGroupManager.h
-        ArtemisPlayerManager.h
-        ArtemisTagManager.h
-        ArtemisTeamManager.h
-        ArtemisDelayayedEntityProcessingSystem.h
-        ArtemisIntervalEntityProcessingSystem.h
-        ArtemisIntervalEntitySystem.h
-        ArtemisVoidEntitySystem.h
-

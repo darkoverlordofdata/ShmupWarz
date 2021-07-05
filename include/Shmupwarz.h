@@ -17,10 +17,23 @@
 {
     Entity* mPlayer;
     id mSystems;
+    SpriteRenderer* mRenderer;
+    OFList* mBullets;
+    OFList* mEnemies1;
+    OFList* mEnemies2;
+    OFList* mEnemies3;
+    OFList* mExplosions;
+    OFList* mBangs;
+    OFList* mParticles;
     ArtemisWorld* mWorld;
 }
-@property (nonatomic, readonly, retain) ArtemisWorld* World;
-@property (class, nonatomic, retain, readonly) Shmupwarz* Instance;
+@property (nonatomic, retain) OFList* Bullets;
+@property (nonatomic, retain) OFList* Enemies1;
+@property (nonatomic, retain) OFList* Enemies2;
+@property (nonatomic, retain) OFList* Enemies3;
+@property (nonatomic, retain) OFList* Explosions;
+@property (nonatomic, retain) OFList* Bangs;
+@property (nonatomic, retain) OFList* Particles;
 
 - (instancetype)initWithWidth:(int)width 
                        Height:(int)height;

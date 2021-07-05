@@ -5,10 +5,8 @@
 
 @implementation Sound 
 @synthesize Chunk = mChunk;
-@synthesize Path = mPath;
 - (instancetype)initWithPath:(const char*)path {
     if (self = [super init]) {
-        mPath = [[OFString alloc]initWithUTF8String:path];
         mChunk = Mix_LoadWAV(path);
     }
     return self;
@@ -39,22 +37,11 @@
 }
 @end
 
-@implementation Velocity 
-@end
-
 @implementation Timer 
 @synthesize Ms = mMs;
 - (instancetype)initWithMs:(double)ms {
     if (self = [super init]) {
         mMs = ms;
-        mDec = true;
-    }
-    return self;
-}
-- (instancetype)initWithMs:(double)ms Skip:(bool)skip {
-    if (self = [super init]) {
-        mMs = ms;
-        mDec = !skip;
     }
     return self;
 }
@@ -123,29 +110,19 @@
 @synthesize Bounds = mBounds;
 @synthesize Pos = mPos;
 @synthesize Scale = mScale;
-@synthesize Tint = mTint;
-@synthesize Center = mCenter;
 - (instancetype)initWithTexture:(Texture2D*)texture {
     return [self initWithTexture:texture Scale:1.0];
 }
 - (instancetype)initWithTexture:(Texture2D*)texture Scale:(double)scale {
-    return [self initWithTexture:texture Scale:scale Center:true];
-}
-
-- (instancetype)initWithTexture:(Texture2D*)texture Scale:(double)scale Center:(bool)center {
     if (self = [super init]) {
         mTexture = texture;
         mBounds = (SDL_Rect){ 0, 0, (int)texture.Width, (int)texture.Height};
         mPos = [[Vector2D alloc]initWithX:0 Y:0];
         mScale = [[Vector2D alloc]initWithX:scale Y:scale];
-        mTint = (Vec3){ 1, 1, 1};
-        mCenter = center;
-
     }
     return self;
 }
-
-// - (SDL_Rect*)RefBounds { return &mBounds; }
+- (SDL_Rect*)RefBounds { return &mBounds; }
 - (void)X:(int)x Y:(int)y W:(int)w H:(int)h {
     mBounds.x = x;
     mBounds.y = y;
@@ -173,7 +150,7 @@
 @synthesize Transform = mTransform;
 @synthesize Identity = mIdentity;
 @synthesize Sound = mSound;
-// @synthesize Tint = mTint;
+@synthesize Tint = mTint;
 @synthesize Expires = mExpires;
 @synthesize Health = mHealth;
 @synthesize Tween = mTween;
@@ -186,7 +163,7 @@
         mTransform = NULL;
         mIdentity = NULL;
         mSound = NULL;
-        // mTint = NULL;
+        mTint = NULL;
         mExpires = NULL;
         mHealth = NULL;
         mTween = NULL;

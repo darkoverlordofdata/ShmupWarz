@@ -30,7 +30,7 @@
 
 -(void)processEntities:(OFObject<ArtemisImmutableBag> *)entities
 {
-    // OFLog(@"CollisionSystem::processEntities");
+    // OFLog(@"CollisionSystem::processEntities %d", entities.size);
 	for (int i = 0, s = entities.size; s > i; i++) {
 		[self process:(ArtemisEntity*)[entities get:i]];
     }
@@ -38,7 +38,8 @@
 
 -(void) process:(ArtemisEntity*) entity
 {
-    // OFLog(@"CollisionSystem::process");
+    OFLog(@"CollisionSystem::process %@", entity);
+
     Health* health = (Health*) [self.healthMapper get:entity];
     Identity* identity = (Identity*) [self.identityMapper get:entity];
     Transform* transform = (Transform*) [self.transformMapper get:entity];

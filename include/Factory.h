@@ -4,28 +4,36 @@
 
 @interface Factory : OFObject  {}
 
+@property (class, nonatomic, readonly, retain) OFMutableArray* Entities;
+@property (class, nonatomic, readonly, retain) OFMutableArray* Active;
+@property (class, nonatomic, readonly, retain) OFMutableArray* Input;
+@property (class, nonatomic, readonly, retain) OFMutableArray* Sound;
+@property (class, nonatomic, readonly, retain) OFMutableArray* Velocity;
+@property (class, nonatomic, readonly, retain) OFMutableArray* Expire;
+@property (class, nonatomic, readonly, retain) OFMutableArray* Tween;
+@property (class, nonatomic, readonly, retain) OFMutableArray* Health;
 
 
 + (void) initialize;
-+ (void) CreateBackground:(ArtemisWorld*) world Width:(int) width Height:(int) height;
-+ (void) CreatePlayer:(ArtemisWorld*) world X:(int) x Y:(int) y;
-+ (void) CreateBullet:(ArtemisWorld*) world X:(int) x Y:(int) y;
-+ (void) CreateEnemy1:(ArtemisWorld*) world X:(int) x Y:(int) y;
-+ (void) CreateEnemy2:(ArtemisWorld*) world X:(int) x Y:(int) y;
-+ (void) CreateEnemy3:(ArtemisWorld*) world X:(int) x Y:(int) y;
-+ (void) CreateExplosion:(ArtemisWorld*) world X:(int) x Y:(int) y;
-+ (void) CreateBang:(ArtemisWorld*) world X:(int) x Y:(int) y;
-+ (void) CreateParticle:(ArtemisWorld*) world X:(int) x Y:(int) y;
++ (void) CreateBackground;
++ (Entity*) CreatePlayer;
++ (void) CreateBullet;
++ (void) CreateEnemy1;
++ (void) CreateEnemy2;
++ (void) CreateEnemy3;
++ (void) CreateExplosion;
++ (void) CreateBang;
++ (void) CreateParticle;
 
 
 
-// + (void) Bullet:(Entity*) entity X:(int) x Y:(int) y;
-// + (void) Enemy1:(Entity*) entity X:(int) x Y:(int) y;
-// + (void) Enemy2:(Entity*) entity X:(int) x Y:(int) y;
-// + (void) Enemy3:(Entity*) entity X:(int) x Y:(int) y;
-// + (void) Explosion:(Entity*) entity X:(int) x Y:(int) y;
-// + (void) Bang:(Entity*) entity X:(int) x Y:(int) y;
-// + (void) Particle:(Entity*) entity X:(int) x Y:(int) y;
++ (void) Bullet:(Entity*) entity X:(int) x Y:(int) y;
++ (void) Enemy1:(Entity*) entity X:(int) x Y:(int) y;
++ (void) Enemy2:(Entity*) entity X:(int) x Y:(int) y;
++ (void) Enemy3:(Entity*) entity X:(int) x Y:(int) y;
++ (void) Explosion:(Entity*) entity X:(int) x Y:(int) y;
++ (void) Bang:(Entity*) entity X:(int) x Y:(int) y;
++ (void) Particle:(Entity*) entity X:(int) x Y:(int) y;
 
 
 @end

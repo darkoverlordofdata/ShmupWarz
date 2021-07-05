@@ -1,7 +1,7 @@
 #import "ArtemisWorld.h"
 
-#import "../util/ArtemisBag.h"
-#import "../util/ArtemisImmutableBag.h"
+#import "ArtemisBag.h"
+#import "ArtemisImmutableBag.h"
 #import "ArtemisEntitySystem.h"
 #import "ArtemisEntityObserver.h"
 
@@ -133,8 +133,7 @@ typedef void (^Performer)(OFObject<ArtemisEntityObserver>* observer, ArtemisEnti
 
 -(ArtemisEntity*) createEntity
 {
-	let entity = [self.entityManager createEntityInstance];
-	return entity;
+	return [self.entityManager createEntityInstance];
 }
 
 -(ArtemisEntity*) getEntity:(EntityID) entityId

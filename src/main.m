@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "Shmupwarz.h"
+#import "Systems.h"
 #import "Components.h"
 
 // The Width of the screen
@@ -21,6 +22,7 @@ int main(int argc, char *argv[])
 #endif
 {
     let game = [[Shmupwarz alloc]initWithWidth:SCREEN_WIDTH Height:SCREEN_HEIGHT];
+    [game SetSystem:[[Systems alloc]initWithGame:game]];
     [game Run];
 
 #ifndef RELEASE
