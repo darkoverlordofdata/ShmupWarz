@@ -5,7 +5,7 @@
 @synthesize Id = mId;
 
 - (instancetype)init { return [super init]; }
-- (OFString*)description { return @"Shader"; }
+- (OFString*)ToString { return @"Shader"; }
 - (Shader*)Use { 
     GL.UseProgram(mId); 
     return self;

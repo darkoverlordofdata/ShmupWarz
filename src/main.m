@@ -27,8 +27,6 @@ int main(int argc, char *argv[])
     [bs Set:7 To:true];
     [bs Set:31 To:true];
     OFLog(@"Bits: %@", bs);
-    for (int i=0; i<32; i++)
-        OFLog(@"Next:%d :%d", i, [bs NextSetBit: i]);
 
     // let game = [[Shmupwarz alloc]initWithWidth:SCREEN_WIDTH Height:SCREEN_HEIGHT];
     // [game SetSystem:[[Systems alloc]initWithGame:game]];

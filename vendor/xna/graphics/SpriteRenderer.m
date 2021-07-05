@@ -16,7 +16,7 @@
     // [super dealloc];
 }
 
-- (OFString*)description { return @"Shader"; }
+- (OFString*)ToString { return @"Shader"; }
 
 - (void)
 DrawSprite:(Texture2D*)texture 

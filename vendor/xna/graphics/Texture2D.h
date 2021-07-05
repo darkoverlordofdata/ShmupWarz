@@ -29,7 +29,7 @@
 - (instancetype)initWithPath:(OFString*)path;
 - (instancetype)initWithPath:(OFString*)path 
 Alpha:(bool)alpha;
-- (OFString*)description;
+- (OFString*)ToString;
 - (void)Generate:(unsigned char*)pixels 
 Width:(GLuint)width 
 Height:(GLuint)height;

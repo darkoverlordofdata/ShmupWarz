@@ -12,7 +12,7 @@
 }
 
 - (instancetype)initWithShader:(Shader*)shader;
-- (OFString*)description;
+- (OFString*)ToString;
 
 
 
