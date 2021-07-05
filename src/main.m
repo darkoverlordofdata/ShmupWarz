@@ -39,6 +39,17 @@ int main(int argc, const char **argv, char** env)
 {
    @autoreleasepool 
    {
+        var b1 = [[ArtemisBag alloc]init];
+
+        var x1 = [[Point2D alloc]initWithX:1 Y:2];
+        [b1 add:x1];
+
+        NSLog(@"capacity of bag = %lu", b1.capacity);
+        NSLog(@"size of bag = %lu", b1.size);
+
+        Point2D* p = [b1 get:(NSUInteger)0];
+        NSLog(@"retrieved: [%f:%f]", p.X, p.Y);
+
         let game = [[Shmupwarz alloc]initWithWidth:SCREEN_WIDTH Height:SCREEN_HEIGHT];
         [game Run];
 

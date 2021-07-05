@@ -95,7 +95,7 @@ typedef struct OpenGL {
 
 static inline void SDL_GL_InitContext(SDL_Window *window)
 {
-    const OpenGL gl = (OpenGL) {
+    let gl = (OpenGL) {
         .context = SDL_GL_CreateContext(window),
         .DeleteProgram = SDL_GL_GetProcAddress("glDeleteProgram"),
         .DeleteProgram = SDL_GL_GetProcAddress("glDeleteProgram"),

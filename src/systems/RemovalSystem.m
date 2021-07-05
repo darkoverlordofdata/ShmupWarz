@@ -26,7 +26,7 @@
 
 -(void)process:(ArtemisEntity *)entity
 {
-    // NSLog(@"RemovalSystem->process");
+    // NSLog(@"RemovalSystem::process");
 	Transform* transform = (Transform*) [self.transformMapper get:entity];
 	Timer* expires = (Timer*) [self.timerMapper get:entity];
 
@@ -35,11 +35,7 @@
 	if (expires.Ms < 0) {
 		// [entity disable];
 		[entity deleteFromWorld];
-        NSLog(@"deleteFromWorld-expired %@ %d", entity, entity.isActive);
-	} else if (transform.Pos.X < 0 || transform.Pos.Y < 0) {
-		[entity deleteFromWorld];
-        NSLog(@"deleteFromWorld-bounds %@ %d", entity, entity.isActive);
-
+        NSLog(@"deleteFromWorld %@ %d", entity, entity.isActive);
 	}
 
 }

@@ -28,7 +28,6 @@ static const double FireRate = 0.1;
 
 -(void)process:(ArtemisEntity *)entity
 {
-    // NSLog(@"InputSystem->process");
 	Transform* transform = (Transform*) [self.transformMapper get:entity];
 	Player* player = (Player*) [self.playerMapper get:entity];
 
