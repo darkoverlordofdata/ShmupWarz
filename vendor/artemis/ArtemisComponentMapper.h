@@ -11,7 +11,7 @@
 
 -(OFObject*) get:(ArtemisEntity*) entity;
 -(OFObject*) getSafe:(ArtemisEntity*) entity;
--(bool) has:(ArtemisEntity*) entity;
+-(BOOL) has:(ArtemisEntity*) entity;
 
 #pragma mark - ObjectiveC syntactic sugar that's very powerful...
 

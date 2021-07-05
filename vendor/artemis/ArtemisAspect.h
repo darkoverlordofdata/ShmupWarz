@@ -9,20 +9,20 @@
 
 @interface ArtemisAspect : OFObject
 {
-    ArtemisBitSet* _allSet, * _exclusionSet, * _oneSet;
+    ArtemisBitSet* mAllSet, * mExclusionSet, * mOneSet;
 };
 
-@property(nonatomic,retain) ArtemisBitSet* allSet, * exclusionSet, * oneSet;
+@property(nonatomic,retain) ArtemisBitSet* AllSet, * ExclusionSet, * OneSet;
 
-+(ArtemisAspect*) aspectEmpty;
++(ArtemisAspect*) AspectEmpty;
 
--(ArtemisAspect*) all:(OFArray*) componentClasses;
--(ArtemisAspect*) exclude:(OFArray*) componentClasses;
--(ArtemisAspect*) one:(OFArray*) componentClasses;
+-(ArtemisAspect*) All:(OFArray*) componentClasses;
+-(ArtemisAspect*) Exclude:(OFArray*) componentClasses;
+-(ArtemisAspect*) One:(OFArray*) componentClasses;
 
-+(ArtemisAspect*) aspectFor:(OFArray*) componentClasses;
-+(ArtemisAspect*) aspectForAll:(OFArray*) componentClasses;
++(ArtemisAspect*) AspectFor:(OFArray*) componentClasses;
++(ArtemisAspect*) AspectForAll:(OFArray*) componentClasses;
 
-+(ArtemisAspect*) aspectForOne:(OFArray*) componentClasses;
++(ArtemisAspect*) AspectForOne:(OFArray*) componentClasses;
 
 @end

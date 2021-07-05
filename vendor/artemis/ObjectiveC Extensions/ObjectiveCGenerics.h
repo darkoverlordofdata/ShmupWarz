@@ -36,13 +36,13 @@ typedef OFComparisonResult (^__className##Comparator)(__className* obj1, __class
 - (__className*)objectAtIndex:(OFUInteger)index; \
 - (OFArray<__className>*)arrayByAddingObject:(__className*)anObject; \
 - (OFArray*)arrayByAddingObjectsFromArray:(OFArray<__className>*)otherArray; \
-- (bool)containsObject:(__className*)anObject; \
+- (BOOL)containsObject:(__className*)anObject; \
 - (__className*)firstObjectCommonWithArray:(OFArray<__className>*)otherArray; \
 - (OFUInteger)indexOfObject:(__className*)anObject; \
 - (OFUInteger)indexOfObject:(__className*)anObject inRange:(OFRange)range; \
 - (OFUInteger)indexOfObjectIdenticalTo:(__className*)anObject; \
 - (OFUInteger)indexOfObjectIdenticalTo:(__className*)anObject inRange:(OFRange)range; \
-- (bool)isEqualToArray:(OFArray<__className>*)otherArray; \
+- (BOOL)isEqualToArray:(OFArray<__className>*)otherArray; \
 - (__className*)lastObject; \
 - (OFEnumerator<__className>*)objectEnumerator; \
 - (OFEnumerator<__className>*)reverseObjectEnumerator; \
@@ -62,7 +62,7 @@ typedef OFComparisonResult (^__className##Comparator)(__className* obj1, __class
 - (OFArray<__className>*)initWithObjects:(const id [])objects count:(OFUInteger)cnt; \
 - (OFArray<__className>*)initWithObjects:(id)firstObj, ... OF_REQUIRES_NIL_TERMINATION; \
 - (OFArray<__className>*)initWithArray:(OFArray *)array; \
-- (OFArray<__className>*)initWithArray:(OFArray *)array copyItems:(bool)flag; \
+- (OFArray<__className>*)initWithArray:(OFArray *)array copyItems:(BOOL)flag; \
 \
 + (OFArray<__className>*)arrayWithContentsOfFile:(OFString *)path; \
 + (OFArray<__className>*)arrayWithContentsOfURL:(OFURL *)url; \
@@ -100,7 +100,7 @@ typedef OFComparisonResult (^__className##Comparator)(__className* obj1, __class
 - (OFMutableArray<__className>*)initWithObjects:(const id [])objects count:(OFUInteger)cnt; \
 - (OFMutableArray<__className>*)initWithObjects:(id)firstObj, ... OF_REQUIRES_NIL_TERMINATION; \
 - (OFMutableArray<__className>*)initWithArray:(OFArray *)array; \
-- (OFMutableArray<__className>*)initWithArray:(OFArray *)array copyItems:(bool)flag; \
+- (OFMutableArray<__className>*)initWithArray:(OFArray *)array copyItems:(BOOL)flag; \
 \
 + (OFMutableArray<__className>*)arrayWithContentsOfFile:(OFString *)path; \
 + (OFMutableArray<__className>*)arrayWithContentsOfURL:(OFURL *)url; \
@@ -116,10 +116,10 @@ typedef OFComparisonResult (^__className##Comparator)(__className* obj1, __class
 \
 - (OFArray<__className>*)allObjects; \
 - (__className*)anyObject; \
-- (bool)containsObject:(__className*)anObject; \
-- (bool)intersectsSet:(OFSet<__className>*)otherSet; \
-- (bool)isEqualToSet:(OFSet<__className>*)otherSet; \
-- (bool)isSubsetOfSet:(OFSet<__className>*)otherSet; \
+- (BOOL)containsObject:(__className*)anObject; \
+- (BOOL)intersectsSet:(OFSet<__className>*)otherSet; \
+- (BOOL)isEqualToSet:(OFSet<__className>*)otherSet; \
+- (BOOL)isSubsetOfSet:(OFSet<__className>*)otherSet; \
 \
 - (OFSet<__className>*)setByAddingObject:(__className*)anObject OF_AVAILABLE(10_5, 2_0); \
 - (OFSet<__className>*)setByAddingObjectsFromSet:(OFSet<__className>*)other OF_AVAILABLE(10_5, 2_0); \
@@ -135,7 +135,7 @@ typedef OFComparisonResult (^__className##Comparator)(__className* obj1, __class
 - (OFSet<__className>*)initWithObjects:(const id [])objects count:(OFUInteger)cnt; \
 - (OFSet<__className>*)initWithObjects:(__className*)firstObj, ... OF_REQUIRES_NIL_TERMINATION; \
 - (OFSet<__className>*)initWithSet:(OFSet<__className>*)set; \
-- (OFSet<__className>*)initWithSet:(OFSet<__className>*)set copyItems:(bool)flag; \
+- (OFSet<__className>*)initWithSet:(OFSet<__className>*)set copyItems:(BOOL)flag; \
 - (OFSet<__className>*)initWithArray:(OFArray<__className>*)array; \
 \
 @end \
@@ -176,10 +176,10 @@ typedef OFComparisonResult (^__className##Comparator)(__className* obj1, __class
 - (void)sortWithOptions:(OFSortOptions)opts usingComparator:(__className##Comparator)cmptr OF_AVAILABLE(10_6, 4_0); \
 @end \
 @interface OFSet (__className##_OFSet_BLOCKS_Generics) <__className> \
-- (void)enumerateObjectsUsingBlock:(void (^)(__className* obj, bool *stop))block OF_AVAILABLE(10_6, 4_0); \
-- (void)enumerateObjectsWithOptions:(OFEnumerationOptions)opts usingBlock:(void (^)(__className* obj, bool *stop))block OF_AVAILABLE(10_6, 4_0); \
-- (OFSet<__className>*)objectsPassingTest:(bool (^)(__className* obj, bool *stop))predicate OF_AVAILABLE(10_6, 4_0); \
-- (OFSet<__className>*)objectsWithOptions:(OFEnumerationOptions)opts passingTest:(bool (^)(__className* obj, bool *stop))predicate OF_AVAILABLE(10_6, 4_0); \
+- (void)enumerateObjectsUsingBlock:(void (^)(__className* obj, BOOL *stop))block OF_AVAILABLE(10_6, 4_0); \
+- (void)enumerateObjectsWithOptions:(OFEnumerationOptions)opts usingBlock:(void (^)(__className* obj, BOOL *stop))block OF_AVAILABLE(10_6, 4_0); \
+- (OFSet<__className>*)objectsPassingTest:(BOOL (^)(__className* obj, BOOL *stop))predicate OF_AVAILABLE(10_6, 4_0); \
+- (OFSet<__className>*)objectsWithOptions:(OFEnumerationOptions)opts passingTest:(BOOL (^)(__className* obj, BOOL *stop))predicate OF_AVAILABLE(10_6, 4_0); \
 @end \
 
 #endif

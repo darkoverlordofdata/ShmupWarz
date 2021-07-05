@@ -21,7 +21,7 @@
 {
 	if( self.ids.size > 0 )
 	{
-		return [(OFNumber*)[self.ids removeLast] unsignedIntValue];
+		return [(OFNumber*)[self.ids removeLast] unsignedIntegerValue];
 	}
 	else
 	{
@@ -51,7 +51,7 @@
 
 +(ArtemisEntityManager *)entityManager
 {
-	ArtemisEntityManager* newValue = [ArtemisEntityManager new];
+	ArtemisEntityManager* newValue = [[ArtemisEntityManager new] autorelease];
 	
 	return newValue;
 }
@@ -61,8 +61,8 @@
     self = [super init];
     if (self) {
         self.entities = [ArtemisBag bag];
-		self.disabled = [ArtemisBitSet new];
-		self.identifierPool = [ArtemisIdentifierPool new];
+		self.disabled = [[ArtemisBitSet new] autorelease];
+		self.identifierPool = [[ArtemisIdentifierPool new] autorelease];
     }
     return self;
 }
@@ -103,12 +103,12 @@
 	self.totalDeleted++;
 }
 
--(bool) isActive:(EntityID) entityID
+-(BOOL) isActive:(EntityID) entityID
 {
 	return [self.entities get:entityID] != [OFNull null];
 }
 
--(bool) isEnabled:(EntityID) entityID
+-(BOOL) isEnabled:(EntityID) entityID
 {
 	return ! [self.disabled get:(OFInteger)entityID];
 }

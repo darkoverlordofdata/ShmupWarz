@@ -10,7 +10,7 @@
 
 @interface ArtemisWorld ()
 
-@property(nonatomic) bool objcDebugEachTick;
+@property(nonatomic) BOOL objcDebugEachTick;
 @property(nonatomic) uint64_t objDebugNumTicksSinceStarted;
 
 @end

@@ -16,14 +16,14 @@
 
 +(ArtemisEntity *)entityInWorld:(ArtemisWorld *)world withId:(EntityID)newID
 {
-	ArtemisEntity* newValue = [ArtemisEntity new];
+	ArtemisEntity* newValue = [[ArtemisEntity new] autorelease];
 	
     newValue.Id = newID;
 	newValue.world = world;
 	newValue.entityManager = world.entityManager;
 	newValue.componentManager = world.componentManager;
-	newValue.systemBits = [ArtemisBitSet new];
-	newValue.componentBits = [ArtemisBitSet new];
+	newValue.systemBits = [[ArtemisBitSet new] autorelease];
+	newValue.componentBits = [[ArtemisBitSet new] autorelease];
 	
 	[newValue reset];
 	
@@ -34,7 +34,7 @@
 {
 	[self.systemBits clear];
 	[self.componentBits clear];
-	self.uuid = [OFString new]; //UUID];
+	self.uuid = [OFUUID UUID];
 }
 
 -(OFString *)description
@@ -80,12 +80,12 @@
 }
 
 
--(bool)isActive
+-(BOOL)isActive
 {
 	return [self.entityManager isActive:self.Id];
 }
 
--(bool)isEnabled
+-(BOOL)isEnabled
 {
 	return [self.entityManager isEnabled:self.Id];
 }

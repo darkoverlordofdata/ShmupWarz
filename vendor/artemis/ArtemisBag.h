@@ -17,19 +17,19 @@
 -(OFObject*) remove:(OFUInteger) index;
 -(OFObject*) removeLast;
 /** Have to rename method, Objc doesn't support overloading, it's too basic/weak a language */
--(bool) removeFirst:(id) item;
+-(BOOL) removeFirst:(id) item;
 
--(bool) contains:(id) item;
+-(BOOL) contains:(id) item;
 
--(bool) removeAll:(ArtemisBag*) otherBag;
+-(BOOL) removeAll:(ArtemisBag*) otherBag;
 
 -(OFObject*) get:(OFUInteger) index;
 
 @property(nonatomic,readonly) OFUInteger size, capacity;
 
--(bool) isIndexWithinBounds:(OFUInteger) bounds;
+-(BOOL) isIndexWithinBounds:(OFUInteger) bounds;
 
-@property(nonatomic,readonly) bool isEmpty;
+@property(nonatomic,readonly) BOOL isEmpty;
 
 -(void) add:(OFObject*) item;
 

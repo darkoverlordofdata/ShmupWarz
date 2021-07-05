@@ -2,7 +2,7 @@
 
 @interface ArtemisComponentType()
 @property(nonatomic) Class Type;
-@property(nonatomic,readwrite) OFUInteger index;
+@property(nonatomic,readwrite) OFUInteger Index;
 @end
 
 @implementation ArtemisComponentType
@@ -28,10 +28,10 @@ static OFMutableDictionary* componentTypes;
 
 - (OFString *)description
 {
-	return [OFString stringWithFormat:@"ComponentType[%@] (%lu)", self.Type, (unsigned long)self.index];
+	return [OFString stringWithFormat:@"ComponentType[%@] (%lu)", self.Type, (unsigned long)self.Index];
 }
 
-+ (ArtemisComponentType*) getTypeFor:(Class) c
++ (ArtemisComponentType*) GetTypeFor:(Class) c
 {
 	ArtemisComponentType* type = [componentTypes objectForKey:c];
 	
@@ -44,9 +44,9 @@ static OFMutableDictionary* componentTypes;
 	return type;
 }
 
-+ (OFUInteger) getIndexFor:(Class) c
++ (OFUInteger) GetIndexFor:(Class) c
 {
-	return ((ArtemisComponentType*)[self getTypeFor:c]).index;
+	return ((ArtemisComponentType*)[self GetTypeFor:c]).Index;
 }
 
 @end

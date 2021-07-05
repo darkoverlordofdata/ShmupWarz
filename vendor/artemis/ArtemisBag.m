@@ -59,7 +59,7 @@
 }
 
 /** Have to rename method, Objc doesn't support overloading, it's too basic/weak a language */
--(bool) removeFirst:(id) item
+-(BOOL) removeFirst:(id) item
 {
 	
 	/** FIXME: not implemented as high performance yet */
@@ -82,7 +82,7 @@
 }
 
 
--(bool) contains:(id) item
+-(BOOL) contains:(id) item
 {
 	
 	/** FIXME: not implemented as high performance yet */
@@ -90,9 +90,9 @@
 	return [self.data containsObject:item];
 }
 
--(bool) removeAll:(ArtemisBag*) otherBag
+-(BOOL) removeAll:(ArtemisBag*) otherBag
 {
-	bool modified = false;
+	BOOL modified = false;
 	
 	
 	/** FIXME: not implemented as high performance yet */
@@ -122,12 +122,12 @@
 	return self.data.count;
 }
 
--(bool) isIndexWithinBounds:(OFUInteger) bounds
+-(BOOL) isIndexWithinBounds:(OFUInteger) bounds
 {
 	return bounds < self.capacity;
 }
 
--(bool)isEmpty
+-(BOOL)isEmpty
 {
 	return self.size == 0;
 }

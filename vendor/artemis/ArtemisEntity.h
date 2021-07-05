@@ -36,7 +36,7 @@ typedef OFUInteger EntityID; // ObjC to be clear - to support 64bit we need to m
 
 /** FIXME: missing: the templated version of removeComponentOfType */
 
-@property(nonatomic) bool isActive, isEnabled;
+@property(nonatomic) BOOL isActive, isEnabled;
 
 /** ObjC: slight rename */
 -(ArtemisComponent*) componentOfType:(ArtemisComponentType*) componentType;
@@ -57,7 +57,7 @@ typedef OFUInteger EntityID; // ObjC to be clear - to support 64bit we need to m
  * This UUID is unique per entity (re-used entities get a new UUID).
  * @return uuid instance for this entity.
  */
-@property(nonatomic,retain) OFString* uuid;
+@property(nonatomic,retain) OFUUID* uuid;
 
 @property(nonatomic,readonly, assign /** NB: weak ref */) ArtemisWorld* world;
 

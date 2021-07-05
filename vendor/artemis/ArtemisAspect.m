@@ -2,86 +2,86 @@
 #import "ArtemisComponentType.h"
 
 @implementation ArtemisAspect
-@synthesize allSet = _allSet;
-@synthesize exclusionSet = _exclusionSet;
-@synthesize oneSet = _oneSet;
+@synthesize AllSet = mAllSet;
+@synthesize ExclusionSet = mExclusionSet;
+@synthesize OneSet = mOneSet;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        self.allSet = [ArtemisBitSet new];
-		self.exclusionSet = [ArtemisBitSet new];
-		self.oneSet = [ArtemisBitSet new];
+        self.AllSet = [ArtemisBitSet new];
+		self.ExclusionSet = [ArtemisBitSet new];
+		self.OneSet = [ArtemisBitSet new];
     }
     return self;
 }
 
-+(ArtemisAspect*) aspectEmpty
++(ArtemisAspect*) AspectEmpty
 {
 	ArtemisAspect* newValue = [ArtemisAspect new];
 	
 	return newValue;
 }
 
--(ArtemisAspect*) all:(OFArray*) componentClasses
+-(ArtemisAspect*) All:(OFArray*) componentClasses
 {
 	if( componentClasses.count < 1 )
 		OFLog(@"WARNING: you created an Aspect of type ALL with zero elements");
 	
 	for( Class cClass in componentClasses )
 	{
-		[self.allSet set:(OFInteger)[ArtemisComponentType getIndexFor:cClass] to:true];
+		[self.AllSet Set: (OFInteger)[ArtemisComponentType GetIndexFor:cClass] To:true];
 	}
 	
 	return self;
 }
 
--(ArtemisAspect*) exclude:(OFArray*) componentClasses
+-(ArtemisAspect*) Exclude:(OFArray*) componentClasses
 {
 	if( componentClasses.count < 1 )
 		OFLog(@"WARNING: you created an Aspect of type EXCLUDE with zero elements");
 	
 	for( Class cClass in componentClasses )
 	{
-		[self.exclusionSet set:(OFInteger)[ArtemisComponentType getIndexFor:cClass] to:true];
+		[self.ExclusionSet Set: (OFInteger)[ArtemisComponentType GetIndexFor:cClass] To:true];
 	}
 	
 	return self;
 }
 
--(ArtemisAspect*) one:(OFArray*) componentClasses
+-(ArtemisAspect*) One:(OFArray*) componentClasses
 {
 	if( componentClasses.count < 1 )
 		OFLog(@"WARNING: you created an Aspect of type ONE with zero elements");
 	
 	for( Class cClass in componentClasses )
 	{
-		[self.oneSet set:(OFInteger)[ArtemisComponentType getIndexFor:cClass] to:true];
+		[self.OneSet Set: (OFInteger)[ArtemisComponentType GetIndexFor:cClass] To:true];
 	}
 	
 	return self;
 }
 
-+(ArtemisAspect*) aspectFor:(OFArray*) componentClasses
++(ArtemisAspect*) AspectFor:(OFArray*) componentClasses
 {
-	return [self aspectForAll:componentClasses];
+	return [self AspectForAll:componentClasses];
 }
 
-+(ArtemisAspect*) aspectForAll:(OFArray*) componentClasses
++(ArtemisAspect*) AspectForAll:(OFArray*) componentClasses
 {
-	ArtemisAspect* aspect = [ArtemisAspect aspectEmpty];
+	ArtemisAspect* aspect = [ArtemisAspect AspectEmpty];
 	
-	[aspect all:componentClasses];
+	[aspect All:componentClasses];
 	
 	return aspect;
 }
 
-+(ArtemisAspect*) aspectForOne:(OFArray*) componentClasses
++(ArtemisAspect*) AspectForOne:(OFArray*) componentClasses
 {
-	ArtemisAspect* aspect = [ArtemisAspect aspectEmpty];
+	ArtemisAspect* aspect = [ArtemisAspect AspectEmpty];
 	
-	[aspect one:componentClasses];
+	[aspect One:componentClasses];
 	
 	return aspect;
 }
@@ -92,9 +92,9 @@
 	
 	[s appendString:@"[Aspect:"];
 
-	[s appendFormat:@" ALL: %@", self.allSet];
-	[s appendFormat:@" EXCLUDE: %@", self.exclusionSet];
-	[s appendFormat:@" ONE: %@", self.oneSet];
+	[s appendFormat:@" ALL: %@", self.AllSet];
+	[s appendFormat:@" EXCLUDE: %@", self.ExclusionSet];
+	[s appendFormat:@" ONE: %@", self.OneSet];
 	
 	[s appendString:@"]"];
 	return s;

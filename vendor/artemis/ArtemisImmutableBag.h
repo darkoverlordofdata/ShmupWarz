@@ -11,8 +11,8 @@
 
 -(int)size;
 
--(bool) isEmpty;
+-(BOOL) isEmpty;
 
--(bool) contains:(id) item;
+-(BOOL) contains:(id) item;
 
 @end

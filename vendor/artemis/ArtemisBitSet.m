@@ -31,12 +31,12 @@ const int64_t WORD_MASK = 0xffffffff;
     free(mWords);
 }
 
-- (bool) isEmpty { return mLength == 0; }
-- (uint) word:(int) index { return mWords[index]; }
-- (int) length { return mLength; }
-- (void) clear { [self clear:-1]; }
+- (bool) IsEmpty { return mLength == 0; }
+- (uint) Word:(int) index { return mWords[index]; }
+- (int) Length { return mLength; }
+- (void) Clear { [self Clear:-1]; }
 
-- (void) clear:(int) bitIndex {
+- (void) Clear:(int) bitIndex {
     if (bitIndex == -1)  {
         var wordsInUse = mLength;
         while (wordsInUse>0) 
@@ -52,11 +52,7 @@ const int64_t WORD_MASK = 0xffffffff;
     mWords[wordIndex] &= ~(1 << bitIndex);
 }
 
-- (void) set:(int) bitIndex{
-    [self set:bitIndex to:true];
-}
-
-- (void) set:(int) bitIndex to:(bool)value {
+- (void) Set:(int) bitIndex To:(bool)value {
     let wordIndex = bitIndex >> ADDRESS_BITS_PER_WORD;
     let wordsInUse = mLength;
     var wordsRequired = wordIndex+1;
@@ -84,7 +80,7 @@ const int64_t WORD_MASK = 0xffffffff;
     }
 }
 
-- (bool) get:(int) bitIndex {
+- (bool) Get:(int) bitIndex {
     let wordIndex = bitIndex >> ADDRESS_BITS_PER_WORD;
     let wordsInUse = mLength;
 
@@ -95,11 +91,11 @@ const int64_t WORD_MASK = 0xffffffff;
 /**
  * Returns true if the specified BitSet has any bits set to true that are also set to true in this BitSet.
  */
-- (bool) intersects:(ArtemisBitSet*) set {
+- (bool) Intersects:(ArtemisBitSet*) set {
     let wordsInUse = mLength;
 
-    for (int i = Min(wordsInUse, set.length) - 1; i >= 0; i--)
-        if ((mWords[i] & [set word:i]) != 0)
+    for (int i = Min(wordsInUse, set.Length) - 1; i >= 0; i--)
+        if ((mWords[i] & [set Word:i]) != 0)
             return true;
     return false;
 }
@@ -107,7 +103,7 @@ const int64_t WORD_MASK = 0xffffffff;
 /** 
  * Returns the index of the first bit that is set to true that occurs on or after the specified starting index.
  */
-- (int) nextSetBit:(int) fromIndex {
+- (int) NextSetBit:(int) fromIndex {
     var u = fromIndex >> ADDRESS_BITS_PER_WORD;
     let wordsInUse = mLength;
 
@@ -142,7 +138,7 @@ const int64_t WORD_MASK = 0xffffffff;
 	
 	[s appendFormat:@"[BitSet(%li):", size];
 	for( int i=0; i<size; i++ ) {
-		[s appendString: [self get:i] ? @"1" : @"0" ];
+		[s appendString: [self Get:i] ? @"1" : @"0" ];
 	}
 	[s appendString:@"]"];
 	return s;

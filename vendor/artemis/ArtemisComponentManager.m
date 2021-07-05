@@ -9,7 +9,7 @@
 
 +(ArtemisComponentManager *)componentManager
 {
-	ArtemisComponentManager* newValue = [ArtemisComponentManager new];
+	ArtemisComponentManager* newValue = [[ArtemisComponentManager new] autorelease];
 	
 	return newValue;
 }

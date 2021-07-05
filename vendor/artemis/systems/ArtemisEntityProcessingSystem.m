@@ -4,7 +4,7 @@
 
 +(ArtemisEntityProcessingSystem *)entityProcessingSystemWithAspect:(ArtemisAspect *)aspect
 {
-	ArtemisEntityProcessingSystem* newValue = [[ArtemisEntityProcessingSystem alloc] initWithAspect:aspect];
+	ArtemisEntityProcessingSystem* newValue = [[[ArtemisEntityProcessingSystem alloc] initWithAspect:aspect] autorelease];
 	
 	return newValue;
 }
@@ -31,7 +31,7 @@
 }
 
 
--(bool)checkProcessing
+-(BOOL)checkProcessing
 {
 	return true;
 }
