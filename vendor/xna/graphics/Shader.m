@@ -6,51 +6,13 @@
 
 - (instancetype)init { return [super init]; }
 - (OFString*)description { return @"Shader"; }
-
-/*
- * Use fluent interface for setters
- */
-- (Shader*(^)(void))Use { 
-    return ^Shader* (void) {
-        GL.UseProgram(mId); 
-        return self;
-    };
-
-}
-
-- (Shader*(^)(const char* name, GLint value))SetInteger {
-    return ^Shader* (const char* name, GLint value) {
-        return [self setInteger:name Value:value UseShader:true];
-    };
-}
-
-- (Shader*(^)(const char* name, GLfloat value))SetFloat {
-    return ^Shader* (const char* name, GLfloat value) {
-        return [self setFloat:name Value:value UseShader:true];
-    };
-}
-
-
-- (Shader*(^)(const char* name, Vec2 value))SetVector2 {
-    return ^Shader* (const char* name, Vec2 value) {
-        return [self setVector2:name Value:value UseShader:true];
-    };
-}
-
-- (Shader*(^)(const char* name, Vec3 value))SetVector3 {
-    return ^Shader* (const char* name, Vec3 value) {
-        return [self setVector3:name Value:value UseShader:true];
-    };
-}
-
-- (Shader*(^)(const char* name, Mat value))SetMatrix4 {
-    return ^Shader* (const char* name, Mat value) {
-        return [self setMatrix4:name Value:value UseShader:true];
-    };
+- (Shader*)Use { 
+    GL.UseProgram(mId); 
+    return self;
 }
 
 - (void)
-checkCompileErrors:(GLuint)object 
+CheckCompileErrors:(GLuint)object 
               Type:(OFString*)type 
 {
     GLint success;
@@ -86,117 +48,111 @@ Fragment:(const char*) fragmentSource
     sVertex = GL.CreateShader(GL_VERTEX_SHADER);
     GL.ShaderSource(sVertex, 1, &vertexSource, NULL);
     GL.CompileShader(sVertex);
-    [self checkCompileErrors:sVertex Type:@"VERTEX"];
+    [self CheckCompileErrors:sVertex Type:@"VERTEX"];
     // Fragment Shader
     sFragment = GL.CreateShader(GL_FRAGMENT_SHADER);
     GL.ShaderSource(sFragment, 1, &fragmentSource, NULL);
     GL.CompileShader(sFragment);
-    [self checkCompileErrors:sFragment Type:@"FRAGMENT"];
+    [self CheckCompileErrors:sFragment Type:@"FRAGMENT"];
 
     // Shader Program
     mId = GL.CreateProgram();
     GL.AttachShader(mId, sVertex);
     GL.AttachShader(mId, sFragment);
     GL.LinkProgram(mId);
-    [self checkCompileErrors:mId Type:@"PROGRAM"];
+    [self CheckCompileErrors:mId Type:@"PROGRAM"];
     // Delete the shaders as they're linked into our program now and no longer necessery
     GL.DeleteShader(sVertex);
     GL.DeleteShader(sFragment);
 
 }
 
-- (Shader*)use { 
-    GL.UseProgram(mId); 
-    return self;
-}
-
-
 - (Shader*)
-setFloat:(const char*)name  
+SetFloat:(const char*)name  
 Value:(GLfloat)value 
 {
-    return [self setFloat:name Value:value UseShader:true];
+    return [self SetFloat:name Value:value UseShader:true];
 }
 
 - (Shader*)
-setFloat:(const char*)name  
+SetFloat:(const char*)name  
 Value:(GLfloat)value  
 UseShader:(GLboolean) useShader 
 {
     if (useShader)
-        [self use];
+        [self Use];
     GL.Uniform1f(GL.GetUniformLocation(mId, name), value);
     return self;
 }
 
 - (Shader*)
-setInteger:(const char*)name  
+SetInteger:(const char*)name  
 Value:(GLint)value 
 {
-    return [self setInteger:name Value:value UseShader:true];
+    return [self SetInteger:name Value:value UseShader:true];
 }
 
 - (Shader*)
-setInteger:(const char*)name  
+SetInteger:(const char*)name  
 Value:(GLint)value  
 UseShader:(GLboolean) useShader 
 {
     if (useShader)
-        [self use];
+        [self Use];
     GL.Uniform1i(GL.GetUniformLocation(mId, name), value);
     return self;
 }
 
 - (Shader*)
-setVector2:(const char*)name  
+SetVector2:(const char*)name  
 Value:(Vec2)value 
 {
-    return [self setVector2:name Value:value UseShader:true];
+    return [self SetVector2:name Value:value UseShader:true];
 }
 
 - (Shader*)
-setVector2:(const char*)name  
+SetVector2:(const char*)name  
 Value:(Vec2)value  
 UseShader:(GLboolean) useShader 
 {
     if (useShader)
-        [self use];
+        [self Use];
     GL.Uniform2f(GL.GetUniformLocation(mId, name), value.x, value.y);
     return self;
 }
 
 - (Shader*)
-setVector3:(const char*)name  
+SetVector3:(const char*)name  
 Value:(Vec3)value 
 {
-    return [self setVector3:name Value:value UseShader:true];
+    return [self SetVector3:name Value:value UseShader:true];
 }
 
 - (Shader*)
-setVector3:(const char*)name  
+SetVector3:(const char*)name  
 Value:(Vec3)value  
 UseShader:(GLboolean) useShader 
 {
     if (useShader)
-        [self use];
+        [self Use];
     GL.Uniform3f(GL.GetUniformLocation(mId, name), value.x, value.y, value.z);
     return self;
 }
 
 - (Shader*)
-setMatrix4:(const char*)name  
+SetMatrix4:(const char*)name  
 Value:(Mat)value 
 {
-    return [self setMatrix4:name Value:value UseShader:true];
+    return [self SetMatrix4:name Value:value UseShader:true];
 }
 
 - (Shader*)
-setMatrix4:(const char*)name  
+SetMatrix4:(const char*)name  
 Value:(Mat)value  
 UseShader:(GLboolean) useShader 
 {
     if (useShader)
-        [self use];
+        [self Use];
     GL.UniformMatrix4fv(glGetUniformLocation(mId, name), 1, GL_FALSE, (GLfloat*)&value);
     return self;
 }
