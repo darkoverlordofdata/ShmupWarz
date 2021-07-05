@@ -131,8 +131,3 @@ typedef int64_t Int64;
 typedef uint64_t UInt64;
 typedef unsigned int uint;
 typedef unsigned char uchar;
-
-typedef int OFInteger;
-typedef uint OFUInteger;
-
-// #include "OFUUID.h"
