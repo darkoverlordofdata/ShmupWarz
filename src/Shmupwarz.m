@@ -35,14 +35,27 @@
 - (void)Initialize {
     mWorld = [ArtemisWorld new];
 
-	[mWorld setSystem:[RenderSystem renderSystem] passive:true];
-	// [mWorld setSystem:[SpawnSystem spawnSystem]];
-	// [mWorld setSystem:[InputSystem inputSystem]];
-	// [mWorld setSystem:[CollisionSystem collisionSystem]];
-	// [mWorld setSystem:[PhysicsSystem physicsSystem]];
-	// [mWorld setSystem:[AnimationSystem animationSystem]];
-	// [mWorld setSystem:[RemovalSystem removalSystem]];
+
+	[mWorld setSystem:[SpawnSystem spawnSystem]];
+	[mWorld setSystem:[InputSystem inputSystem]];
+	[mWorld setSystem:[CollisionSystem collisionSystem]];
+	[mWorld setSystem:[PhysicsSystem physicsSystem]];
+	[mWorld setSystem:[AnimationSystem animationSystem]];
+	[mWorld setSystem:[RemovalSystem removalSystem]];
     [mWorld initialize];
+
+    // var e1 = [mWorld createEntity];
+    // [e1 addComponent:[Player new]];
+    // [e1 addComponent:[[Transform alloc]initWithTexture:NULL]];
+    // [mWorld addEntity:e1];
+
+    // var e2 = [mWorld createEntity];
+    // [e2 addComponent:[[Health alloc]initWithCurrent:40 Maximum:40]];
+    // [e2 addComponent:[[Identity alloc]initWithType:TYPE_ENEMY1 Category: CATEGORY_ENEMY]];
+    // [e2 addComponent:[[Transform alloc]initWithTexture:NULL Scale:2.0]];
+    
+    // [mWorld addEntity:e2];
+
 
 }
 
@@ -50,7 +63,6 @@
     GL.ClearColor(1.0f, 0.0f, 0.0f, 1.0f);
     GL.Clear(GL_COLOR_BUFFER_BIT);
     for (Entity* e in Factory.Active) [mSystems Draw:mRenderer Entity:e];
-    [mWorld draw];
     SDL_GL_SwapWindow(mWindow);
 }
 
@@ -107,8 +119,8 @@
 
 
     var bg = [mWorld createEntity];
-    [bg addComponent:[[Identity alloc]initWithType:TYPE_BACKGROUND Category:CATEGORY_BACKGROUND]];
-    [bg addComponent:[[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"background"] Scale:2.0]];
+    [bg addComponent:[[Identity alloc]initWithType:TYPE_BACKGROUND Category:CATEGORY_BACKGROUND];
+    [bg addComponent:[[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"background"] Scale:2.0];
     [mWorld addEntity:bg];
 
     // var e1 = [mWorld createEntity];
