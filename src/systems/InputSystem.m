@@ -19,7 +19,6 @@
 
 -(void)initialize
 {
-    OFLog(@"InputSystem::initialize");
 	self.playerMapper = [ArtemisComponentMapper componentMapperForType:[Player class] inWorld:self.world];
 	self.transformMapper = [ArtemisComponentMapper componentMapperForType:[Transform class] inWorld:self.world];
 }
@@ -28,8 +27,6 @@
 {
 	Transform* transform = (Transform*) [self.transformMapper get:entity];
 	Player* player = (Player*) [self.playerMapper get:entity];
-
-    OFLog(@"InputSystem::process %s", entity.Id);
 
     // transform.Pos.X = mGame.MouseX;
     // transform.Pos.Y = mGame.MouseY;

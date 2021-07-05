@@ -11,7 +11,7 @@ const int64_t WORD_MASK = 0xffffffff;
 @implementation ArtemisBitSet
 
 - (instancetype)init {
-    return [self initWithCapacity:0];
+    return [self initWithCapacity:32];
 }
 
 - (instancetype)initWithCapacity:(int) nbits {
@@ -22,8 +22,6 @@ const int64_t WORD_MASK = 0xffffffff;
             mWords = malloc(sizeof(uint)*size);
             for (int i=0; i<size; i++) mWords[i] = 0;
             mLength = size;
-        } else {
-            mLength = 0;
         }
     }
     return self;
@@ -70,7 +68,6 @@ const int64_t WORD_MASK = 0xffffffff;
     if (wordsInUse < wordsRequired) 
     {
         mWords = realloc(mWords, sizeof(uint)*Max(2 * wordsInUse, wordsRequired));
-        mLength = wordsRequired;
         for (int i=wordsInUse, l=mLength; i<l; i++) 
         {
             mWords[i] = 0;
@@ -102,7 +99,7 @@ const int64_t WORD_MASK = 0xffffffff;
     let wordsInUse = mLength;
 
     for (int i = Min(wordsInUse, set.length) - 1; i >= 0; i--)
-        if ((mWords[i] & [set word:i]) != 0) 
+        if ((mWords[i] & [set word:i]) != 0)
             return true;
     return false;
 }

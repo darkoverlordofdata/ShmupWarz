@@ -1,5 +1,4 @@
 #import "Shmupwarz.h"
-#import "Components.h"
 #import "Systems.h"
 #import "tglm/tglm.h"
 
@@ -35,7 +34,6 @@
 - (void)Initialize {
     mWorld = [ArtemisWorld new];
 
-
 	[mWorld setSystem:[SpawnSystem spawnSystem]];
 	[mWorld setSystem:[InputSystem inputSystem]];
 	[mWorld setSystem:[CollisionSystem collisionSystem]];
@@ -43,19 +41,6 @@
 	[mWorld setSystem:[AnimationSystem animationSystem]];
 	[mWorld setSystem:[RemovalSystem removalSystem]];
     [mWorld initialize];
-
-    // var e1 = [mWorld createEntity];
-    // [e1 addComponent:[Player new]];
-    // [e1 addComponent:[[Transform alloc]initWithTexture:NULL]];
-    // [mWorld addEntity:e1];
-
-    // var e2 = [mWorld createEntity];
-    // [e2 addComponent:[[Health alloc]initWithCurrent:40 Maximum:40]];
-    // [e2 addComponent:[[Identity alloc]initWithType:TYPE_ENEMY1 Category: CATEGORY_ENEMY]];
-    // [e2 addComponent:[[Transform alloc]initWithTexture:NULL Scale:2.0]];
-    
-    // [mWorld addEntity:e2];
-
 
 }
 
@@ -116,17 +101,6 @@
     for (int i=0; i<12; i++)    [Factory CreateBang];
     for (int i=0; i<100; i++)   [Factory CreateParticle];
     mPlayer = [Factory CreatePlayer];
-
-
-    var bg = [mWorld createEntity];
-    [bg addComponent:[[Identity alloc]initWithType:TYPE_BACKGROUND Category:CATEGORY_BACKGROUND];
-    [bg addComponent:[[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"background"] Scale:2.0];
-    [mWorld addEntity:bg];
-
-    // var e1 = [mWorld createEntity];
-    // [e1 addComponent:[Player new]];
-    // [e1 addComponent:[[Transform alloc]initWithTexture:NULL]];
-    // [mWorld addEntity:e1];
 
     mRenderer = [[SpriteRenderer alloc]initWithShader:[ResourceManager GetShader:@"sprite"]];
 }

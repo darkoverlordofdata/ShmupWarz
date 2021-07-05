@@ -91,7 +91,7 @@ static OFMutableDictionary* indices;
 	
 	bool contains = [entity.systemBits get:self.systemIndex];
 	bool interested = true;
-
+	
 	ArtemisBitSet* componentBits = entity.componentBits;
 	
 	if( /** ObjC: nil will break Artemis main here */ self.allSet != nil && ! self.allSet.isEmpty )
@@ -108,7 +108,7 @@ static OFMutableDictionary* indices;
 	
 	if( /** ObjC: nil will break Artemis main here */ self.exclusionSet != nil && ! self.exclusionSet.isEmpty )
 	{
-		interested = ! [self.exclusionSet intersects: componentBits] && interested;
+		interested = ! [self.exclusionSet intersects: componentBits];
 	}
 	
 	if( /** ObjC: nil will break Artemis main here */ self.oneSet != nil && ! self.oneSet.isEmpty )
