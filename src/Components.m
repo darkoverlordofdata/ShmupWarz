@@ -1,4 +1,9 @@
 #import "Components.h"
+#define var __auto_type
+#define let const var
+
+@implementation Component{}
+@end 
 
 @implementation Sound 
 @synthesize Chunk = mChunk;
@@ -152,7 +157,7 @@
 @synthesize Health = mHealth;
 @synthesize Tween = mTween;
 @synthesize Velocity = mVelocity;
-- (instancetype)initWithId:(int)id Name:(OFString*)name Active:(bool)active {
+- (instancetype)initWithId:(int)id Name:(NSString*)name Active:(bool)active {
     if (self = [super init]) {
         mId = id;
         mName = name;

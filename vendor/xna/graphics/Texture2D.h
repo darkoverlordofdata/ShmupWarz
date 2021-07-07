@@ -2,7 +2,7 @@
 #import <SDL2/SDL.h>
 #import "../OpenGL.h"
 
-@interface Texture2D : OFObject  
+@interface Texture2D : NSObject  
 {
     // Holds the ID of the texture object, used for all texture operations to reference to this particlar texture
     GLuint mId;
@@ -17,7 +17,7 @@
     GLuint mWrapT; // Wrapping mode on T axis
     GLuint mFilterMin; // Filtering mode if texture pixels < screen pixels
     GLuint mFilterMag; // Filtering mode if texture pixels > screen pixels
-    OFString* mPath;
+    NSString* mPath;
 
 }
 @property (nonatomic, assign) GLuint Id;
@@ -26,10 +26,10 @@
 @property (nonatomic, assign) GLuint InternalFormat;
 @property (nonatomic, assign) GLuint ImageFormat;
 
-- (instancetype)initWithPath:(OFString*)path;
-- (instancetype)initWithPath:(OFString*)path 
+- (instancetype)initWithPath:(NSString*)path;
+- (instancetype)initWithPath:(NSString*)path 
 Alpha:(bool)alpha;
-- (OFString*)ToString;
+- (NSString*)ToString;
 - (void)Generate:(unsigned char*)pixels 
 Width:(GLuint)width 
 Height:(GLuint)height;

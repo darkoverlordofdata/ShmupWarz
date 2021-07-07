@@ -5,7 +5,7 @@
 @synthesize Id = mId;
 
 - (instancetype)init { return [super init]; }
-- (OFString*)ToString { return @"Shader"; }
+- (NSString*)ToString { return @"Shader"; }
 - (Shader*)Use { 
     GL.UseProgram(mId); 
     return self;
@@ -13,17 +13,17 @@
 
 - (void)
 CheckCompileErrors:(GLuint)object 
-              Type:(OFString*)type 
+              Type:(NSString*)type 
 {
     GLint success;
     GLchar infoLog[1024];
-    if (type != @"PROGRAM")
+    if (![type isEqual:@"PROGRAM"])
     {
         GL.GetShaderiv(object, GL_COMPILE_STATUS, &success);
         if (!success)
         {
             GL.GetShaderInfoLog(object, 1024, NULL, infoLog);
-            OFLog("| ERROR::Shader: Compile-time error: Type: %s\n%s\n -- --------------------------------------------------- -- ",
+            NSLog(@"| ERROR::Shader: Compile-time error: Type: %s\n%s\n -- --------------------------------------------------- -- ",
                 [type UTF8String], infoLog);
         }
     }
@@ -33,7 +33,7 @@ CheckCompileErrors:(GLuint)object
         if (!success)
         {
             GL.GetProgramInfoLog(object, 1024, NULL, infoLog);
-            OFLog("| ERROR::Shader: Link-time error: Type: %s\n%s\n -- --------------------------------------------------- -- ",
+            NSLog(@"| ERROR::Shader: Link-time error: Type: %s\n%s\n -- --------------------------------------------------- -- ",
             [type UTF8String], infoLog);
         }
     }
@@ -153,7 +153,7 @@ UseShader:(GLboolean) useShader
 {
     if (useShader)
         [self Use];
-    GL.UniformMatrix4fv(glGetUniformLocation(mId, name), 1, GL_FALSE, (GLfloat*)&value);
+    GL.UniformMatrix4fv(GL.GetUniformLocation(mId, name), 1, GL_FALSE, (GLfloat*)&value);
     return self;
 }
 

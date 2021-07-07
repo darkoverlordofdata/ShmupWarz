@@ -2,11 +2,12 @@
 #import <xna/xna.h>
 #import "Components.h"
 #import "Factory.h"
+
 @class Shmupwarz;
 
 static const double FireRate = 0.1;
 
-@interface Systems : OFObject {
+@interface Systems : NSObject {
     Shmupwarz* mGame;
     Factory* mFactory;
     double mTimeToFire;

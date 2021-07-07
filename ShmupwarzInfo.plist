@@ -1,0 +1,11 @@
+{
+   ApplicationDescription = "Give Me Those Shmupwarz";
+   ApplicationIcon = "Shmupwarz.png";
+   ApplicationName = Shmupwarz;
+   ApplicationRelease = 0.1;
+   Authors = "";
+   Copyright = "Copyright (C) 2019 by darkoverlordofdata";
+   CopyrightDescription = "BSD 2 clause";
+   FullVersionID = 0.1;
+   URL = "https://github.com/darkoverlordofdata/shmupwarz-objc.git";
+}

@@ -16,7 +16,7 @@
     // [super dealloc];
 }
 
-- (OFString*)ToString { return @"Shader"; }
+- (NSString*)ToString { return @"Shader"; }
 
 - (void)
 DrawSprite:(Texture2D*)texture 
@@ -52,11 +52,11 @@ DrawSprite:(Texture2D*)texture
     model = glm_scale(model, sc); // Last scale
 
 
-    // OFLog("model");
-    // OFLog("%f %f %f %f", model[0], model[1], model[2], model[3]);
-    // OFLog("%f %f %f %f", model[4], model[5], model[6], model[7]);
-    // OFLog("%f %f %f %f", model[8], model[9], model[10], model[11]);
-    // OFLog("%f %f %f %f", model[12], model[13], model[14], model[15]);
+    // NSLog("model");
+    // NSLog("%f %f %f %f", model[0], model[1], model[2], model[3]);
+    // NSLog("%f %f %f %f", model[4], model[5], model[6], model[7]);
+    // NSLog("%f %f %f %f", model[8], model[9], model[10], model[11]);
+    // NSLog("%f %f %f %f", model[12], model[13], model[14], model[15]);
 
     [mShader SetMatrix4:"model" Value:model];
     [mShader SetVector3:"spriteColor" Value:color];

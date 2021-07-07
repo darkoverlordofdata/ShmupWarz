@@ -1,6 +1,8 @@
 #import "Shmupwarz.h"
 #import "Systems.h"
-#import "tglm/tglm.h"
+#import <stdio.h>
+#define var __auto_type
+#define let const var
 
 @implementation Shmupwarz
 
@@ -12,22 +14,23 @@
 @synthesize Bangs = mBangs;
 @synthesize Particles = mParticles;
 
-- (instancetype)initWithWidth:(int)width 
-                       Height:(int)height 
+- (instancetype)initWithTitle:(NSString*)title
+                        Width:(int)width 
+                       Height:(int)height
 {
-    if ((self = [super initWithWidth:width Height:height])) {
-        mBullets = [OFList new];
-        mEnemies1 = [OFList new];
-        mEnemies2 = [OFList new];
-        mEnemies3 = [OFList new];
-        mExplosions = [OFList new];
-        mBangs = [OFList new];
-        mParticles = [OFList new];
+    if ((self = [super initWithTitle:title Width:width Height:height])) {
+        mBullets = [NSMutableArray new];
+        mEnemies1 = [NSMutableArray new];
+        mEnemies2 = [NSMutableArray new];
+        mEnemies3 = [NSMutableArray new];
+        mExplosions = [NSMutableArray new];
+        mBangs = [NSMutableArray new];
+        mParticles = [NSMutableArray new];
     }
     return self;
 }
 
-- (OFString*)ToString { return @"Shmupwarz"; }
+- (NSString*)ToString { return @"Shmupwarz"; }
 - (void)SetSystem:(Systems*)systems { mSystems = systems; }
 - (Entity*)GetEntity:(int)index { return Factory.Entities[index]; }
 
@@ -51,9 +54,15 @@
 }
 
 - (void)LoadContent {
+
+
+    NSString* bundlePath = [[NSBundle mainBundle]bundlePath];
+    NSLog(@"bundlePath =  %@\n", bundlePath);
+
     // Load shaders
-    [ResourceManager LoadShader:@"sprite"   Vertex:@"assets/shaders/sprite.vs"   Fragment:@"assets/shaders/sprite.frag"];
-    [ResourceManager LoadShader:@"particle" Vertex:@"assets/shaders/particle.vs" Fragment:@"assets/shaders/particle.frag"];
+    [ResourceManager LoadShader:@"sprite"   Vertex:@"Resources/sprite.vs"   Fragment:@"Resources/sprite.frag"];
+    [ResourceManager LoadShader:@"particle" Vertex:@"Resources/particle.vs" Fragment:@"Resources/particle.frag"];
+
 
     // Configure shaders
     Mat projection = glm_ortho(0.0f, mWidth, mHeight, 0.0f, -1.0f, 1.0f);
@@ -68,17 +77,18 @@
     [particle SetInteger:"particle" Value:0];
     [particle SetMatrix4:"projection" Value:projection];
 
+
     // Load textures
-    [ResourceManager LoadTexture:@"background"  Path:@"assets/images/background.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"bang"        Path:@"assets/images/bang.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"bullet"      Path:@"assets/images/bullet.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"enemy1"      Path:@"assets/images/enemy1.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"enemy2"      Path:@"assets/images/enemy2.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"enemy3"      Path:@"assets/images/enemy3.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"explosion"   Path:@"assets/images/explosion.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"particle"    Path:@"assets/images/particle.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"spaceshipspr" Path:@"assets/images/spaceshipspr.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"star"        Path:@"assets/images/star.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"background"  Path:@"Resources/background.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"bang"        Path:@"Resources/bang.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"bullet"      Path:@"Resources/bullet.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"enemy1"      Path:@"Resources/enemy1.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"enemy2"      Path:@"Resources/enemy2.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"enemy3"      Path:@"Resources/enemy3.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"explosion"   Path:@"Resources/explosion.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"particle"    Path:@"Resources/particle.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"spaceshipspr" Path:@"Resources/spaceshipspr.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"star"        Path:@"Resources/star.png" Alpha:GL_TRUE];
 
     // Create the entity pool
     [Factory CreateBackground];

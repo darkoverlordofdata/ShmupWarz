@@ -1,5 +1,36 @@
 #import "Game.h"
 
+/**
+ *  MACRO Min
+ *      cache results of calculation in pocket scope 
+ */
+#define Min(a, b)                                                       \
+({                                                                      \
+    const __auto_type _a = a;                                                         \
+    const __auto_type _b = b;                                                         \
+    (_a < _b) ? _a : _b;                                                \
+})
+
+/**
+ *  MACRO Max
+ *      cache results of calculation in pocket scope 
+ */
+#define Max(a, b)                                                       \
+({                                                                      \
+    const __auto_type _a = a;                                                         \
+    const __auto_type _b = b;                                                         \
+    (_a > _b) ? _a : _b;                                                \
+})
+
+static inline uint64_t GetTicks() { 
+    static struct timeval t = { .tv_sec = 0, .tv_usec = 0 };
+    
+    gettimeofday(&t, NULL);
+    uint64_t ts = t.tv_sec;
+    uint64_t us = t.tv_usec;
+    return ((ts * 1000000L) + us) * 10;
+}
+
 @implementation Game
 
 // @synthesize Keys = mKeys;
@@ -21,12 +52,14 @@
  * @param Height of screen
  * 
  */
-- (instancetype)initWithWidth:(int)width 
-                       Height:(int)height 
+- (instancetype)initWithTitle:(NSString*)title
+                        Width:(int)width 
+                        Height:(int)height 
 {
     if ((self = [super init])) {
         mWidth = width;
         mHeight = height;
+        mTitle = title;
         mIsRunning = false;
         mPreviousTicks = 0;
         mIsFixedTimeStep = true;
@@ -43,7 +76,7 @@
 - (void)CreatePlatform {
     SDL_Init(SDL_INIT_VIDEO);
 
-    mWindow = SDL_CreateWindow("ObjFW SDL2",
+    mWindow = SDL_CreateWindow([mTitle UTF8String],
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
         mWidth,
@@ -55,6 +88,14 @@
 
 
     SDL_GL_InitContext(mWindow);
+
+    int imgFlags = IMG_INIT_PNG;
+    if( !( IMG_Init( imgFlags ) & imgFlags ) )
+    {
+        printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
+        // success = false;
+    }
+
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
@@ -69,7 +110,7 @@
 
 }
 
-- (OFString*)ToString { return @"Game"; }
+- (NSString*)ToString { return @"Game"; }
 
 /**
  * Start
@@ -260,10 +301,6 @@
 }
 
 
-- (void) dealloc {
-    OFLog("Bye");
-    [self Dispose];
-}
 /**
  * Release game resources
  */

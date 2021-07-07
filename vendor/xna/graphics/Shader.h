@@ -1,18 +1,18 @@
 #import <Foundation/Foundation.h>
 #import <SDL2/SDL.h>
-#import <tglm/tglm.h>
+#import "../tglm.h"
 #import "../OpenGL.h"
 
-@interface Shader : OFObject  
+@interface Shader : NSObject  
 {
     GLuint mId; 
 }
 @property (nonatomic, assign) GLuint Id;
 
 - (instancetype)init;
-- (OFString*)ToString;
+- (NSString*)ToString;
 - (Shader*)Use;
-- (void)CheckCompileErrors:(GLuint)object Type:(OFString*)type;
+- (void)CheckCompileErrors:(GLuint)object Type:(NSString*)type;
 - (void)Compile:(const char*) vertexSource Fragment:(const char*) fragmentSource;
 - (Shader*)SetInteger:(const char*)name  Value:(GLint)value;
 - (Shader*)SetInteger:(const char*)name  Value:(GLint)value  UseShader:(GLboolean) useShader;

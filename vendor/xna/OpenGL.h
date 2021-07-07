@@ -25,7 +25,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************************************************************/
-#import <Foundation/Foundation.h>
 #import <GL/gl.h>
 #import <SDL2/SDL.h>
 /*
@@ -94,9 +93,8 @@ typedef struct OpenGL {
 
 static inline void SDL_GL_InitContext(SDL_Window *window)
 {
-    let gl = (OpenGL) {
+    const OpenGL gl = (OpenGL) {
         .context = SDL_GL_CreateContext(window),
-        .DeleteProgram = SDL_GL_GetProcAddress("glDeleteProgram"),
         .DeleteProgram = SDL_GL_GetProcAddress("glDeleteProgram"),
         .DeleteTextures = SDL_GL_GetProcAddress("glDeleteTextures"),
         .GenVertexArrays = SDL_GL_GetProcAddress("glGenVertexArrays"),

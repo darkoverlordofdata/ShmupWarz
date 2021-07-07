@@ -1,8 +1,9 @@
 #import <Foundation/Foundation.h>
 #import <SDL2/SDL.h>
+#import <SDL2/SDL_image.h>
 #import <time.h>
+#import <sys/time.h>
 #import "OpenGL.h"
-
 
 #define TicksPerMillisecond  10000.0
 #define MillisecondsPerTick 1.0 / (TicksPerMillisecond)
@@ -12,16 +13,7 @@
 
 #define SCAN_MASK 0x1ff
 
-static inline uint64_t GetTicks() { 
-    static struct timeval t = { .tv_sec = 0, .tv_usec = 0 };
-    
-    gettimeofday(&t, nullptr);
-    uint64_t ts = t.tv_sec;
-    uint64_t us = t.tv_usec;
-    return ((ts * 1000000L) + us) * 10;
-}
-
-@interface Game : OFObject  
+@interface Game : NSObject  
 {
     bool mKeys[SCAN_MASK]; // flag per scan code
     bool mIsRunning;
@@ -29,7 +21,7 @@ static inline uint64_t GetTicks() {
     float mMouseX;
     float mMouseY;
     SDL_Window* mWindow;
-    OFString* mTitle;
+    NSString* mTitle;
     GLuint mWidth;
     GLuint mHeight;
     double mDelta;
@@ -58,11 +50,12 @@ static inline uint64_t GetTicks() {
 @property (nonatomic, assign) GLuint Width;
 @property (nonatomic, assign) GLuint Height;
 @property (nonatomic, assign) SDL_Window* Window;
-@property (nonatomic, retain) OFString* Title;
+@property (nonatomic, retain) NSString* Title;
 
-- (instancetype)initWithWidth:(int)width 
-                       Height:(int)height;
-- (OFString*)ToString;
+- (instancetype)initWithTitle:(NSString*)title
+                        Width:(int)width 
+                        Height:(int)height;
+- (NSString*)ToString;
 - (void)Start;
 - (void)Stop;
 - (void)Quit;
@@ -75,7 +68,6 @@ static inline uint64_t GetTicks() {
 - (void)HandleEvents;
 - (void)Tick;
 - (void)Dispose;
-
 - (void)CreatePlatform;
 - (bool)GetKey:(int) Key;
 

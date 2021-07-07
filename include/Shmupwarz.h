@@ -10,25 +10,26 @@
     Entity* mPlayer;
     id mSystems;
     SpriteRenderer* mRenderer;
-    OFList* mBullets;
-    OFList* mEnemies1;
-    OFList* mEnemies2;
-    OFList* mEnemies3;
-    OFList* mExplosions;
-    OFList* mBangs;
-    OFList* mParticles;
+    NSMutableArray* mBullets;
+    NSMutableArray* mEnemies1;
+    NSMutableArray* mEnemies2;
+    NSMutableArray* mEnemies3;
+    NSMutableArray* mExplosions;
+    NSMutableArray* mBangs;
+    NSMutableArray* mParticles;
 }
-@property (nonatomic, retain) OFList* Bullets;
-@property (nonatomic, retain) OFList* Enemies1;
-@property (nonatomic, retain) OFList* Enemies2;
-@property (nonatomic, retain) OFList* Enemies3;
-@property (nonatomic, retain) OFList* Explosions;
-@property (nonatomic, retain) OFList* Bangs;
-@property (nonatomic, retain) OFList* Particles;
+@property (nonatomic, retain) NSMutableArray* Bullets;
+@property (nonatomic, retain) NSMutableArray* Enemies1;
+@property (nonatomic, retain) NSMutableArray* Enemies2;
+@property (nonatomic, retain) NSMutableArray* Enemies3;
+@property (nonatomic, retain) NSMutableArray* Explosions;
+@property (nonatomic, retain) NSMutableArray* Bangs;
+@property (nonatomic, retain) NSMutableArray* Particles;
 
-- (instancetype)initWithWidth:(int)width 
+- (instancetype)initWithTitle:(NSString*)title
+                        Width:(int)width 
                        Height:(int)height;
-- (OFString*)ToString;
+- (NSString*)ToString;
 - (void)SetSystem:(Systems*)systems;
 - (void)Initialize;
 - (void)LoadContent;

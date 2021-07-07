@@ -2,16 +2,16 @@
 #import <xna/xna.h>
 #import <Components.h>
 
-@interface Factory : OFObject  {}
+@interface Factory : NSObject  {}
 
-@property (class, nonatomic, readonly, retain) OFMutableArray* Entities;
-@property (class, nonatomic, readonly, retain) OFMutableArray* Active;
-@property (class, nonatomic, readonly, retain) OFMutableArray* Input;
-@property (class, nonatomic, readonly, retain) OFMutableArray* Sound;
-@property (class, nonatomic, readonly, retain) OFMutableArray* Velocity;
-@property (class, nonatomic, readonly, retain) OFMutableArray* Expire;
-@property (class, nonatomic, readonly, retain) OFMutableArray* Tween;
-@property (class, nonatomic, readonly, retain) OFMutableArray* Health;
+@property (class, nonatomic, readonly, retain) NSMutableArray* Entities;
+@property (class, nonatomic, readonly, retain) NSMutableArray* Active;
+@property (class, nonatomic, readonly, retain) NSMutableArray* Input;
+@property (class, nonatomic, readonly, retain) NSMutableArray* Sound;
+@property (class, nonatomic, readonly, retain) NSMutableArray* Velocity;
+@property (class, nonatomic, readonly, retain) NSMutableArray* Expire;
+@property (class, nonatomic, readonly, retain) NSMutableArray* Tween;
+@property (class, nonatomic, readonly, retain) NSMutableArray* Health;
 
 
 + (void) initialize;

@@ -1,7 +1,5 @@
 #import <Foundation/Foundation.h>
 #import <xna/xna.h>
-#import <artemis/artemis.h>
-
 
 typedef enum TypeOf {
     TYPE_NONE,
@@ -29,15 +27,18 @@ typedef enum CategoryOf {
     CATEGORY_PLAYER
 } CategoryOf;
 
-@interface Sound : ArtemisComponent 
+@interface Component : NSObject {}
+@end
+
+@interface Sound : Component 
 {
-    Mix_Chunk* mChunk;
+     Mix_Chunk* mChunk;
 }
-@property (nonatomic, assign) Mix_Chunk* Chunk;
+@property (nonatomic, assign, nullable) Mix_Chunk* Chunk;
 - (instancetype)initWithPath:(const char*)path;
 @end
 
-@interface Point2D : ArtemisComponent 
+@interface Point2D : Component 
 {
     double mX;
     double mY;
@@ -47,7 +48,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithX:(double)x Y:(double)y;
 @end
 
-@interface Vector2D : ArtemisComponent 
+@interface Vector2D : Component 
 {
     double mX;
     double mY;
@@ -57,7 +58,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithX:(double)x Y:(double)y;
 @end
 
-@interface Timer : ArtemisComponent 
+@interface Timer : Component 
 {
     double mMs;
 }
@@ -65,7 +66,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithMs:(double)ms;
 @end
 
-@interface Scale : ArtemisComponent 
+@interface Scale : Component 
 {
     double mX;
     double mY;
@@ -75,7 +76,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithX:(double)x Y:(double)y;
 @end
 
-@interface Color : ArtemisComponent 
+@interface Color : Component 
 {
     int mR;
     int mG;
@@ -89,7 +90,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithR:(int)r G:(int)g B:(int)b A:(int)a;
 @end
 
-@interface Health : ArtemisComponent 
+@interface Health : Component 
 {
     double mCurrent;
     double mMaximum;
@@ -99,7 +100,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithCurrent:(double)current Maximum:(double)maximum;
 @end
 
-@interface Tween : ArtemisComponent 
+@interface Tween : Component 
 {
     double mMin;
     double mMax;
@@ -115,7 +116,7 @@ typedef enum CategoryOf {
 - (instancetype)initWithMin:(double)r Max:(double)g Speed:(double)b Repeat:(bool)repeat Active:(bool)active;
 @end
 
-@interface Transform : ArtemisComponent 
+@interface Transform : Component 
 {
     Texture2D* mTexture;
     SDL_Rect mBounds;
@@ -132,7 +133,7 @@ typedef enum CategoryOf {
 - (void)X:(int)x Y:(int)y W:(int)w H:(int)h;
 @end
 
-@interface Identity : ArtemisComponent 
+@interface Identity : Component 
 {
     TypeOf mType;
     CategoryOf mCategory;
@@ -142,10 +143,10 @@ typedef enum CategoryOf {
 - (instancetype)initWithType:(TypeOf)type Category:(CategoryOf)category;
 @end
 
-@interface Entity : OFObject 
+@interface Entity : NSObject 
 {
     int mId;
-    OFString* mName;
+    NSString* mName;
     bool mActive;
 
     Transform* mTransform;
@@ -160,7 +161,7 @@ typedef enum CategoryOf {
     
 }
 @property (nonatomic, assign) int Id;
-@property (nonatomic, retain) OFString* Name;
+@property (nonatomic, retain) NSString* Name;
 @property (nonatomic, assign) bool Active;
 @property (nonatomic, retain, nullable) Transform* Transform;
 @property (nonatomic, retain, nullable) Identity* Identity;
@@ -170,5 +171,5 @@ typedef enum CategoryOf {
 @property (nonatomic, retain, nullable) Health* Health;
 @property (nonatomic, retain, nullable) Tween* Tween;
 @property (nonatomic, retain, nullable) Vector2D* Velocity;
-- (instancetype)initWithId:(int)id Name:(OFString*)name Active:(bool)active;
+- (instancetype)initWithId:(int)id Name:(NSString*)name Active:(bool)active;
 @end

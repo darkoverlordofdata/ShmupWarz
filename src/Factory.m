@@ -1,35 +1,38 @@
 #import "Factory.h"
+#define var __auto_type
+#define let const var
+
 @implementation Factory
 
 // entity cache:
-static OFMutableArray* mEntities = nil;
-static OFMutableArray* mActive = nil;
-static OFMutableArray* mInput = nil;
-static OFMutableArray* mSound = nil;
-static OFMutableArray* mVelocity = nil;
-static OFMutableArray* mExpire = nil;
-static OFMutableArray* mTween = nil;
-static OFMutableArray* mHealth = nil;
+static NSMutableArray* mEntities = nil;
+static NSMutableArray* mActive = nil;
+static NSMutableArray* mInput = nil;
+static NSMutableArray* mSound = nil;
+static NSMutableArray* mVelocity = nil;
+static NSMutableArray* mExpire = nil;
+static NSMutableArray* mTween = nil;
+static NSMutableArray* mHealth = nil;
 
 + (void) initialize {
-    mEntities   = [OFMutableArray new];
-    mActive     = [OFMutableArray new];
-    mInput      = [OFMutableArray new];
-    mSound      = [OFMutableArray new];
-    mVelocity   = [OFMutableArray new];
-    mExpire     = [OFMutableArray new];
-    mTween      = [OFMutableArray new];
-    mHealth     = [OFMutableArray new];
+    mEntities   = [NSMutableArray new];
+    mActive     = [NSMutableArray new];
+    mInput      = [NSMutableArray new];
+    mSound      = [NSMutableArray new];
+    mVelocity   = [NSMutableArray new];
+    mExpire     = [NSMutableArray new];
+    mTween      = [NSMutableArray new];
+    mHealth     = [NSMutableArray new];
 }
 
-+ (OFMutableArray*) Entities { return mEntities; }
-+ (OFMutableArray*) Active { return mActive; }
-+ (OFMutableArray*) Input { return mInput; }
-+ (OFMutableArray*) Sound { return mSound; }
-+ (OFMutableArray*) Velocity { return mVelocity; }
-+ (OFMutableArray*) Expire { return mExpire; }
-+ (OFMutableArray*) Tween { return mTween; }
-+ (OFMutableArray*) Health { return mHealth; }
++ (NSMutableArray*) Entities { return mEntities; }
++ (NSMutableArray*) Active { return mActive; }
++ (NSMutableArray*) Input { return mInput; }
++ (NSMutableArray*) Sound { return mSound; }
++ (NSMutableArray*) Velocity { return mVelocity; }
++ (NSMutableArray*) Expire { return mExpire; }
++ (NSMutableArray*) Tween { return mTween; }
++ (NSMutableArray*) Health { return mHealth; }
 
 
 + (void) CreateBackground { 

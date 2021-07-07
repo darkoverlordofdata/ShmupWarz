@@ -30,6 +30,7 @@
 #import <SDL2/SDL_image.h>
 #import <SDL2/SDL_mixer.h>
 #import <SDL2/SDL_ttf.h>
+#import "tglm.h"
 #import "OpenGL.h"
 #import "Game.h"
 #import "content/ResourceManager.h"

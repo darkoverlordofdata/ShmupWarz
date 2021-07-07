@@ -1,5 +1,7 @@
 #import "Systems.h"
 #import "Shmupwarz.h"
+#define var __auto_type
+#define let const var
 
 @implementation Systems;
 - (instancetype)initWithGame:(Shmupwarz*)game;
@@ -43,10 +45,10 @@
     if ([mGame GetKey:SDL_SCANCODE_Z] || mGame.MouseDown) {
         mTimeToFire -= mGame.Delta;
         if (mTimeToFire < 0.0) {
-            [mGame.Bullets appendObject: [[Vector2D alloc]
+            [mGame.Bullets addObject: [[Vector2D alloc]
                 initWithX:entity.Transform.Pos.X-27
                         Y:entity.Transform.Pos.Y+2 ]];
-            [mGame.Bullets appendObject: [[Vector2D alloc]
+            [mGame.Bullets addObject: [[Vector2D alloc]
                 initWithX:entity.Transform.Pos.X+27
                         Y:entity.Transform.Pos.Y+2 ]];
             mTimeToFire = FireRate;
@@ -196,64 +198,64 @@
 
             case TYPE_BULLET: 
                 if ([mGame.Bullets count] > 0) { 
-                    let node = mGame.Bullets.firstListObject;
-                    Vector2D* bullet = node->object;
+                    let node = mGame.Bullets[0];
+                    Vector2D* bullet = node;
                     [Factory Bullet:entity X:bullet.X Y:bullet.Y];
-                    [mGame.Bullets removeListObject:node];
+                    [mGame.Bullets removeObject:node];
                 }
                 break;
 
             case TYPE_ENEMY1: 
                 if ([mGame.Enemies1 count] > 0) { 
-                    let node = mGame.Enemies1.firstListObject;
-                    Vector2D* enemy = node->object;
+                    let node = mGame.Enemies1[0];
+                    Vector2D* enemy = node;
                     [Factory Enemy1:entity X:enemy.X Y:enemy.Y];
-                    [mGame.Enemies1 removeListObject:node];
+                    [mGame.Enemies1 removeObject:node];
                 }
                 break;
 
             case TYPE_ENEMY2: 
                 if ([mGame.Enemies2 count] > 0) { 
-                    let node = mGame.Enemies2.firstListObject;
-                    Vector2D* enemy = node->object;
+                    let node = mGame.Enemies2[0];
+                    Vector2D* enemy = node;
                     [Factory Enemy2:entity X:enemy.X Y:enemy.Y];
-                    [mGame.Enemies2 removeListObject:node];
+                    [mGame.Enemies2 removeObject:node];
                 }
                 break;
 
             case TYPE_ENEMY3: 
                 if ([mGame.Enemies3 count] > 0) { 
-                    let node = mGame.Enemies3.firstListObject;
-                    Vector2D* enemy = node->object;
+                    let node = mGame.Enemies3[0];
+                    Vector2D* enemy = node;
                     [Factory Enemy3:entity X:enemy.X Y:enemy.Y];
-                    [mGame.Enemies3 removeListObject:node];
+                    [mGame.Enemies3 removeObject:node];
                 }
                 break;
 
             case TYPE_EXPLOSION: 
                 if ([mGame.Explosions count] > 0) {
-                    let node = mGame.Explosions.firstListObject;
-                    Vector2D* exp = node->object;
+                    let node = mGame.Explosions[0];
+                    Vector2D* exp = node;
                     [Factory Explosion:entity X:exp.X Y:exp.Y];
-                    [mGame.Explosions removeListObject:node];
+                    [mGame.Explosions removeObject:node];
                 }
                 break;
 
             case TYPE_BANG: 
                 if ([mGame.Bangs count] > 0) {
-                    let node = mGame.Bangs.firstListObject;
-                    Vector2D* exp = node->object;
+                    let node = mGame.Bangs[0];
+                    Vector2D* exp = node;
                     [Factory Bang:entity X:exp.X Y:exp.Y];
-                    [mGame.Bangs removeListObject:node];
+                    [mGame.Bangs removeObject:node];
                 }
                 break;
 
             case TYPE_PARTICLE: 
                 if ([mGame.Particles count] > 0) {
-                    let node = mGame.Particles.firstListObject;
-                    Vector2D* exp = node->object;
+                    let node = mGame.Particles[0];
+                    Vector2D* exp = node;
                     [Factory Particle:entity X:exp.X Y:exp.Y];
-                    [mGame.Particles removeListObject:node];
+                    [mGame.Particles removeObject:node];
                 }
                 break;
 
@@ -271,15 +273,15 @@
     if (d1 < 0.0) {
         switch(enemy) {
             case 1:
-                [mGame.Enemies1 appendObject: [[Vector2D alloc]
+                [mGame.Enemies1 addObject: [[Vector2D alloc]
                     initWithX:(rand() % (mGame.Width-70))+35 Y:35]];
                 return 1.0;
             case 2:
-                [mGame.Enemies2 appendObject: [[Vector2D alloc]
+                [mGame.Enemies2 addObject: [[Vector2D alloc]
                     initWithX:(rand() % (mGame.Width-170))+85 Y:85]];
                 return 4.0;
             case 3:
-                [mGame.Enemies3 appendObject: [[Vector2D alloc]
+                [mGame.Enemies3 addObject: [[Vector2D alloc]
                     initWithX:(rand() % (mGame.Width-320))+160 Y:160]];
                 return 6.0;
             default:
@@ -292,14 +294,14 @@
  *  Process collisions
  */
 - (void) HandleCollision:(Entity*) a Other:(Entity*) b {
-    [mGame.Bangs appendObject: [[Vector2D alloc]
+    [mGame.Bangs addObject: [[Vector2D alloc]
         initWithX:b.Transform.Pos.X
                 Y:b.Transform.Pos.Y ]];
 
     b.Active = false;
     [Factory.Active removeObject:b];
     for (int i=0; i<3; i++) {
-        [mGame.Particles appendObject: [[Vector2D alloc]
+        [mGame.Particles addObject: [[Vector2D alloc]
             initWithX:b.Transform.Pos.X
                     Y:b.Transform.Pos.Y ]];
     }
@@ -307,7 +309,7 @@
     if (a.Health) {
         let h = a.Health.Current - 2;
         if (h < 0) {
-            [mGame.Explosions appendObject: [[Vector2D alloc]
+            [mGame.Explosions addObject: [[Vector2D alloc]
                 initWithX:a.Transform.Pos.X
                         Y:a.Transform.Pos.Y ]];
             a.Active = false;
