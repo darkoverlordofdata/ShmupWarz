@@ -7,7 +7,7 @@
 int main(int argc, char *argv[]) 
 {
 
-    let game = [[Shmupwarz alloc]initWithTitle:@"Shmupwarz" Width:720 Height:480];
+    let game = [[Shmupwarz alloc]initWithTitle:@"Shmupwarz" Width:1080 Height:640];
     [game SetSystem:[[Systems alloc]initWithGame:game]];
     [game Run];
 

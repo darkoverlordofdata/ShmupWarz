@@ -1,4 +1,5 @@
 #import "Shader.h"
+extern OpenGL GL;
 
 @implementation Shader
 

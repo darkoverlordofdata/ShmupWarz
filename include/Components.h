@@ -125,7 +125,7 @@ typedef enum CategoryOf {
 }
 @property (nonatomic, retain) Texture2D* Texture;
 @property (nonatomic, assign) SDL_Rect Bounds;
-@property (nonatomic, assign, readonly) SDL_Rect* RefBounds;
+@property (nonatomic, assign, readonly) SDL_Rect* _Nullable RefBounds;
 @property (nonatomic, retain) Vector2D* Pos;
 @property (nonatomic, retain) Vector2D* Scale;
 - (instancetype)initWithTexture:(Texture2D*)texture;

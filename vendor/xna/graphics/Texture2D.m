@@ -1,4 +1,5 @@
 #import "Texture2D.h"
+extern OpenGL GL;
 
 @implementation Texture2D
 

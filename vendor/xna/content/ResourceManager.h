@@ -5,6 +5,7 @@
 #import "../graphics/Texture2D.h"
 #import "../graphics/Shader.h"
 
+
 @interface ResourceManager : NSObject
 @property (nonatomic, retain) NSMutableDictionary* Shaders;
 @property (nonatomic, retain) NSMutableDictionary* Textures;

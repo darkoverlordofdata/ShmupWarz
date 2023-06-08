@@ -97,8 +97,8 @@
         else 
         {
             [entity.Transform 
-                X:entity.Transform.Pos.X - entity.Transform.Bounds.w / 2
-                Y:entity.Transform.Pos.Y - entity.Transform.Bounds.h / 2
+                X:entity.Transform.Pos.X - entity.Transform.Bounds.w / 2.0
+                Y:entity.Transform.Pos.Y - entity.Transform.Bounds.h / 2.0
                 W:entity.Transform.Texture.Width * entity.Transform.Scale.X
                 H:entity.Transform.Texture.Height * entity.Transform.Scale.Y];
         }
@@ -127,8 +127,8 @@
         entity.Transform.Scale.X = x; 
         entity.Transform.Scale.Y = y; 
         [entity.Transform 
-            X:entity.Transform.Pos.X - entity.Transform.Bounds.w / 2
-            Y:entity.Transform.Pos.Y - entity.Transform.Bounds.h / 2
+            X:entity.Transform.Pos.X - entity.Transform.Bounds.w / 2.0
+            Y:entity.Transform.Pos.Y - entity.Transform.Bounds.h / 2.0
             W:entity.Transform.Texture.Width * entity.Transform.Scale.X
             H:entity.Transform.Texture.Height * entity.Transform.Scale.Y];
 
@@ -198,64 +198,57 @@
 
             case TYPE_BULLET: 
                 if ([mGame.Bullets count] > 0) { 
-                    let node = mGame.Bullets[0];
-                    Vector2D* bullet = node;
+                    Vector2D *bullet = mGame.Bullets[0];
                     [Factory Bullet:entity X:bullet.X Y:bullet.Y];
-                    [mGame.Bullets removeObject:node];
+                    [mGame.Bullets removeObject:bullet];
                 }
                 break;
 
             case TYPE_ENEMY1: 
                 if ([mGame.Enemies1 count] > 0) { 
-                    let node = mGame.Enemies1[0];
-                    Vector2D* enemy = node;
+                    Vector2D *enemy = mGame.Enemies1[0];
                     [Factory Enemy1:entity X:enemy.X Y:enemy.Y];
-                    [mGame.Enemies1 removeObject:node];
+                    [mGame.Enemies1 removeObject:enemy];
                 }
                 break;
 
             case TYPE_ENEMY2: 
                 if ([mGame.Enemies2 count] > 0) { 
-                    let node = mGame.Enemies2[0];
-                    Vector2D* enemy = node;
+                    Vector2D *enemy = mGame.Enemies2[0];
                     [Factory Enemy2:entity X:enemy.X Y:enemy.Y];
-                    [mGame.Enemies2 removeObject:node];
+                    [mGame.Enemies2 removeObject:enemy];
                 }
                 break;
 
             case TYPE_ENEMY3: 
                 if ([mGame.Enemies3 count] > 0) { 
-                    let node = mGame.Enemies3[0];
-                    Vector2D* enemy = node;
+                    Vector2D* enemy = mGame.Enemies3[0];
                     [Factory Enemy3:entity X:enemy.X Y:enemy.Y];
-                    [mGame.Enemies3 removeObject:node];
+                    [mGame.Enemies3 removeObject:enemy];
                 }
                 break;
 
             case TYPE_EXPLOSION: 
                 if ([mGame.Explosions count] > 0) {
-                    let node = mGame.Explosions[0];
-                    Vector2D* exp = node;
+                    Vector2D* exp = mGame.Explosions[0];
                     [Factory Explosion:entity X:exp.X Y:exp.Y];
-                    [mGame.Explosions removeObject:node];
+                    [mGame.Explosions removeObject:exp];
                 }
                 break;
 
             case TYPE_BANG: 
                 if ([mGame.Bangs count] > 0) {
-                    let node = mGame.Bangs[0];
-                    Vector2D* exp = node;
+                    Vector2D* exp = mGame.Bangs[0];
                     [Factory Bang:entity X:exp.X Y:exp.Y];
-                    [mGame.Bangs removeObject:node];
+                    [mGame.Bangs removeObject:exp];
                 }
                 break;
 
             case TYPE_PARTICLE: 
                 if ([mGame.Particles count] > 0) {
-                    let node = mGame.Particles[0];
-                    Vector2D* exp = node;
+                    Vector2D* exp = mGame.Particles[0];
                     [Factory Particle:entity X:exp.X Y:exp.Y];
-                    [mGame.Particles removeObject:node];
+                    [mGame.Particles removeObject:exp];
                 }
                 break;
 

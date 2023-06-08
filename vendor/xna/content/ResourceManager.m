@@ -1,7 +1,8 @@
 #import "ResourceManager.h"
 #include <sys/stat.h>   // stat
+extern OpenGL GL;
 
-static BOOL file_exists (char *filename) {
+static BOOL file_exists (const char *filename) {
     struct stat   buffer;   
     return (stat (filename, &buffer) == 0);
 }
@@ -51,7 +52,10 @@ static NSMutableDictionary* _textures = nil;
 {
     for (NSString *key in _textures) {
         Texture2D *texture = [_textures objectForKey:key];
-        GL.DeleteTextures(1, texture.Id);
+        GLuint id[1] = { texture.Id };
+        GL.DeleteTextures(1, id);
+
+        // GL.DeleteTextures(1, texture.Id);
     }
 
     for (NSString *key in _shaders) {

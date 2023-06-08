@@ -1,4 +1,5 @@
 #import "SpriteRenderer.h"
+extern OpenGL GL;
 
 @implementation SpriteRenderer
 
@@ -13,7 +14,7 @@
 
 - (void)dealloc {
     GL.DeleteVertexArrays(1, &mQuadVAO);
-    // [super dealloc];
+    [super dealloc];
 }
 
 - (NSString*)ToString { return @"Shader"; }

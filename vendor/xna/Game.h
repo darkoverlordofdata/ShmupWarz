@@ -4,6 +4,7 @@
 #import <time.h>
 #import <sys/time.h>
 #import "OpenGL.h"
+extern OpenGL GL;
 
 #define TicksPerMillisecond  10000.0
 #define MillisecondsPerTick 1.0 / (TicksPerMillisecond)

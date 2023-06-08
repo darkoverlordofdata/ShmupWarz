@@ -58,7 +58,8 @@ Shmupwarz_RESOURCE_FILES = ShmupwarzInfo.plist \
 OBJCFLAGS=  -I./vendor \
 			-I./include \
 			-I/usr/local/include \
-			-I/usr/local/include/SDL2 
+			-I/usr/local/include/SDL2 \
+			-Wno-nullability-completeness -mavx
 
 LDFLAGS=  -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
 

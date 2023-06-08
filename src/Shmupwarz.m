@@ -3,6 +3,7 @@
 #import <stdio.h>
 #define var __auto_type
 #define let const var
+extern OpenGL GL;
 
 @implementation Shmupwarz
 
@@ -29,6 +30,8 @@
     }
     return self;
 }
+
+- (void)Initialize{};
 
 - (NSString*)ToString { return @"Shmupwarz"; }
 - (void)SetSystem:(Systems*)systems { mSystems = systems; }

@@ -28,11 +28,11 @@
 
 - (instancetype)initWithPath:(NSString*)path;
 - (instancetype)initWithPath:(NSString*)path 
-Alpha:(bool)alpha;
+    Alpha:(bool)alpha;
 - (NSString*)ToString;
 - (void)Generate:(unsigned char*)pixels 
-Width:(GLuint)width 
-Height:(GLuint)height;
+    Width:(GLuint)width 
+    Height:(GLuint)height;
 - (void)Bind;
 
 @end
