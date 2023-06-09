@@ -38,8 +38,9 @@ extern OpenGL GL;
 - (Entity*)GetEntity:(int)index { return Factory.Entities[index]; }
 
 - (void)Draw:(GLfloat) delta {
-    GL.ClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-    GL.Clear(GL_COLOR_BUFFER_BIT);
+    [self Draw:delta];
+    // GL.ClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+    // GL.Clear(GL_COLOR_BUFFER_BIT);
     // for (Entity* e in Factory.Entities) [mSystems DrawSystem:mRenderer Entity:e];
     for (Entity* e in Factory.Active) [mSystems Draw:mRenderer Entity:e];
     SDL_GL_SwapWindow(mWindow);

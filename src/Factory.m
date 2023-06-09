@@ -5,14 +5,14 @@
 @implementation Factory
 
 // entity cache:
-static NSMutableArray* mEntities = nil;
-static NSMutableArray* mActive = nil;
-static NSMutableArray* mInput = nil;
-static NSMutableArray* mSound = nil;
-static NSMutableArray* mVelocity = nil;
-static NSMutableArray* mExpire = nil;
-static NSMutableArray* mTween = nil;
-static NSMutableArray* mHealth = nil;
+static NSMutableArray<Entity*> *mEntities = nil;
+static NSMutableArray<Entity*> *mActive = nil;
+static NSMutableArray<Entity*> *mInput = nil;
+static NSMutableArray<Entity*> *mSound = nil;
+static NSMutableArray<Entity*> *mVelocity = nil;
+static NSMutableArray<Entity*> *mExpire = nil;
+static NSMutableArray<Entity*> *mTween = nil;
+static NSMutableArray<Entity*> *mHealth = nil;
 
 + (void) initialize {
     mEntities   = [NSMutableArray new];

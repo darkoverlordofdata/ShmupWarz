@@ -7,24 +7,24 @@
 
 @interface Shmupwarz : Game 
 {
-    Entity* mPlayer;
+    Entity *mPlayer;
     id mSystems;
     SpriteRenderer* mRenderer;
-    NSMutableArray* mBullets;
-    NSMutableArray* mEnemies1;
-    NSMutableArray* mEnemies2;
-    NSMutableArray* mEnemies3;
-    NSMutableArray* mExplosions;
-    NSMutableArray* mBangs;
-    NSMutableArray* mParticles;
+    NSMutableArray<Vector2D*> *mBullets;
+    NSMutableArray<Vector2D*> *mEnemies1;
+    NSMutableArray<Vector2D*> *mEnemies2;
+    NSMutableArray<Vector2D*> *mEnemies3;
+    NSMutableArray<Vector2D*> *mExplosions;
+    NSMutableArray<Vector2D*> *mBangs;
+    NSMutableArray<Vector2D*> *mParticles;
 }
-@property (nonatomic, retain) NSMutableArray* Bullets;
-@property (nonatomic, retain) NSMutableArray* Enemies1;
-@property (nonatomic, retain) NSMutableArray* Enemies2;
-@property (nonatomic, retain) NSMutableArray* Enemies3;
-@property (nonatomic, retain) NSMutableArray* Explosions;
-@property (nonatomic, retain) NSMutableArray* Bangs;
-@property (nonatomic, retain) NSMutableArray* Particles;
+@property (nonatomic, retain) NSMutableArray<Vector2D*> *Bullets;
+@property (nonatomic, retain) NSMutableArray<Vector2D*> *Enemies1;
+@property (nonatomic, retain) NSMutableArray<Vector2D*> *Enemies2;
+@property (nonatomic, retain) NSMutableArray<Vector2D*> *Enemies3;
+@property (nonatomic, retain) NSMutableArray<Vector2D*> *Explosions;
+@property (nonatomic, retain) NSMutableArray<Vector2D*> *Bangs;
+@property (nonatomic, retain) NSMutableArray<Vector2D*> *Particles;
 
 - (instancetype)initWithTitle:(NSString*)title
                         Width:(int)width 

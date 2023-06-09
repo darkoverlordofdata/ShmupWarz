@@ -59,8 +59,8 @@ OBJCFLAGS=  -I./vendor \
 			-I./include \
 			-I/usr/local/include \
 			-I/usr/local/include/SDL2 \
-			-Wno-nullability-completeness -mavx
-
+			-Wno-nullability-completeness
+			
 LDFLAGS=  -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
 
 

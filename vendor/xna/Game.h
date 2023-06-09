@@ -8,10 +8,8 @@ extern OpenGL GL;
 
 #define TicksPerMillisecond  10000.0
 #define MillisecondsPerTick 1.0 / (TicksPerMillisecond)
-
 #define TicksPerSecond TicksPerMillisecond * 1000.0   // 10,000,000
 #define SecondsPerTick  1.0 / (TicksPerSecond)         // 0.0001
-
 #define SCAN_MASK 0x1ff
 
 @interface Game : NSObject  
@@ -73,3 +71,4 @@ extern OpenGL GL;
 - (bool)GetKey:(int) Key;
 
 @end
+
