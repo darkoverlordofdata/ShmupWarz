@@ -14,7 +14,7 @@ extern OpenGL GL;
 
 - (void)dealloc {
     GL.DeleteVertexArrays(1, &mQuadVAO);
-    [super dealloc];
+    // [super dealloc];
 }
 
 - (NSString*)ToString { return @"Shader"; }

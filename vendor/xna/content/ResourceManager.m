@@ -79,9 +79,10 @@ static NSMutableDictionary* _textures = nil;
      * Otherwise, it's running from the build folder, 
      * so resources are based on the parent folder
      */
-    if (!file_exists([path UTF8String])) {
-        path = [path stringByReplacingOccurrencesOfString:@"build/Resources/shmupwarz" withString:@""];
-    }
+    // if (!file_exists([path UTF8String])) {
+    //     path = [path stringByReplacingOccurrencesOfString:@"build/Resources/Shmupwarz" withString:@""];
+    // }
+    NSLog(@"bundlePath = %@", path);
     return path;
 }
 

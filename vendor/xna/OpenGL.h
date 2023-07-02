@@ -27,11 +27,14 @@
 ******************************************************************************/
 #import <GL/gl.h>
 #import <SDL2/SDL.h>
+
+
+void SDL_GL_InitContext(SDL_Window *window);
+
 /*
  * OpenGL Struct
  * pointers to the api
  */
-typedef struct OpenGL OpenGL;   
 typedef struct OpenGL {
     
     const SDL_GLContext context;
@@ -87,5 +90,4 @@ typedef struct OpenGL {
     const void (*DeleteTextures) (GLsizei n, const GLuint* textures);
 
 } OpenGL;
-
 

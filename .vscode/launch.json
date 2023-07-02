@@ -8,9 +8,9 @@
             "name": "Debug",
             "type": "lldb-mi",
             "request": "launch",
-            "target": "${workspaceRoot}/build/shmupwarz",
+            "target": "${workspaceRoot}/build/Shmupwarz.app/Shmupwarz",
             "arguments": "",
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceRoot}/build/Shmupwarz.app",
             "valuesFormatting": "parseText"
         }
     ]

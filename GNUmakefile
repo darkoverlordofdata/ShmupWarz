@@ -16,6 +16,7 @@ Shmupwarz_HEADERS = include/Components.h \
 					include/Shmupwarz.h \
 					include/Systems.h \
 					vendor/xna/Game.h \
+					vendor/xna/OpenGL.h \
 					vendor/xna/content/ResourceManager.h \
 					vendor/xna/graphics/Shader.h \
 					vendor/xna/graphics/SpriteRenderer.h \
@@ -28,6 +29,7 @@ Shmupwarz_OBJC_FILES = 	src/main.m \
 					src/Shmupwarz.m \
 					src/Systems.m \
 					vendor/xna/Game.m \
+					vendor/xna/OpenGL.m \
 					vendor/xna/content/ResourceManager.m \
 					vendor/xna/graphics/Shader.m \
 					vendor/xna/graphics/SpriteRenderer.m \
@@ -59,8 +61,11 @@ OBJCFLAGS=  -I./vendor \
 			-I./include \
 			-I/usr/local/include \
 			-I/usr/local/include/SDL2 \
-			-Wno-nullability-completeness
+			-Wno-nullability-completeness \
+			-std=c18
 			
+CFLAGS= 	-std=c18
+
 LDFLAGS=  -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
 
 

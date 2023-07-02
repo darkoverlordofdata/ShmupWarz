@@ -1,13 +1,29 @@
 # shmupwarz-objc
 
 
-Hmm, I've never even known anyone who owns an Apple product, so ObjectiveC? Well, I do prefer c to c++.
-
 Features:
 
 * GNUstep objective-c framework
 * a custom gl loader using sdl - no glew/glu/glut or anything else, just gl.h
 * tglm (tiny glm) - clang native vector matrix math
-* compiled using c18 std with clang 10
+* compiled using c18 std with clang 13
 
 
+## objc on freebsd
+
+* sudo pkg install gnustep
+* sudo pkg install vscode
+
+* ext install webfreak.debug
+* ext install llvm-vs-code-extensions.vscode-clangd
+* ext install twxs.cmake
+* ext install ms-vscode.cmake-tools
+* ext install kuba-p.glsl-lsp
+
+```
+git clone https://github.com/lldb-tools/lldb-mi.git
+cd lldb-mi
+cmake .
+cmake --build .
+sudo cmake --install .
+```
