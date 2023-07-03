@@ -1,4 +1,4 @@
 {
     "cmake.configureOnOpen": true,
-    "cmake.buildDirectory": "${workspaceRoot}/Shmupwarz.app"
+    "cmake.buildDirectory": "${workspaceRoot}/${workspaceFolderBasename}"
 }

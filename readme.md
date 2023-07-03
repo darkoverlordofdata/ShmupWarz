@@ -8,12 +8,22 @@ Features:
 * tglm (tiny glm) - clang native vector matrix math
 * compiled using c18 std with clang 13
 
+## preferred build
+CMake Tools
+
+or try:
+```
+./configure
+cd Shmupwarz.app
+cmake --build .
+```
 
 ## objc on freebsd
 
 * sudo pkg install gnustep
 * sudo pkg install vscode
 
+ctrl-p
 * ext install webfreak.debug
 * ext install llvm-vs-code-extensions.vscode-clangd
 * ext install twxs.cmake
@@ -27,5 +37,3 @@ cmake .
 cmake --build .
 sudo cmake --install .
 ```
-144.5 on disk - 84.5
-276.5 file size - 161.1
