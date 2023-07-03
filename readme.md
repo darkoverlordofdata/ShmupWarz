@@ -27,3 +27,5 @@ cmake .
 cmake --build .
 sudo cmake --install .
 ```
+144.5 on disk - 84.5
+276.5 file size - 161.1
