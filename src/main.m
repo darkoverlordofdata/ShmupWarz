@@ -7,9 +7,10 @@
 int main(int argc, char *argv[]) 
 {
 
-    let game = [[Shmupwarz alloc]initWithTitle:@"Shmupwarz" Width:1080 Height:640];
-    [game SetSystem:[[Systems alloc]initWithGame:game]];
-    [game Run];
-
+    @autoreleasepool {
+        let game = [[Shmupwarz alloc]initWithTitle:@"Shmupwarz" Width:1080 Height:640];
+        [game SetSystem:[[Systems alloc]initWithGame:game]];
+        [game Run];
+    }
     return 0;
 }

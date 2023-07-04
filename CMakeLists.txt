@@ -68,14 +68,21 @@ set ( INCLUDES "${INCLUDES};/usr/local/GNUstep/System/Library/Headers" )
 #   compiler options
 #
 # Libs: 
-# set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fobjc-arc" )
-# set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fblocks" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -O2" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -pipe" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -std=c18" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -Wall" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -Wno-import" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -Wno-nullability-completeness" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fobjc-runtime=gnustep-2.0" )
-# set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fexceptions" )
-# set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fobjc-exceptions" )
-# set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -funwind-tables" )
-# set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -w -std=c18 -O3" )
-set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -std=c18 -Wno-nullability-completeness" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fblocks" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fobjc-arc" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fexceptions" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fobjc-exceptions" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fPIC" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fstack-protector-strong" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fno-strict-aliasing" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fconstant-string-class=NSConstantString" )
 
 
 link_directories ( "/usr/local/lib" )

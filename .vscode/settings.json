@@ -1,4 +1,4 @@
 {
     "cmake.configureOnOpen": true,
-    "cmake.buildDirectory": "${workspaceRoot}/${workspaceFolderBasename}"
+    "cmake.buildDirectory": "${workspaceRoot}/${workspaceFolderBasename}.app"
 }

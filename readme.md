@@ -37,3 +37,15 @@ cmake .
 cmake --build .
 sudo cmake --install .
 ```
+
+Failed to copy "/home/darko/Documents/GitHub/Shmupwarz/Shmupwarz.app/compile_commands.json" to "/home/darko/Documents/GitHub/Shmupwarz": Error: EISDIR: illegal operation on a directory, open '/home/darko/Documents/GitHub/Shmupwarz'
+
+"cmake.exportCompileCommandsFile": true
+
+### cmake
+file size 146.6kb
+on disk 512 bytes
+
+### gmake
+file size 161.1kb
+on disk 512 bytes
