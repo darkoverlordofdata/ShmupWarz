@@ -1,0 +1,16 @@
+  vendor/Artemis/Classes/CoreFoundation/CFBitVector.c
+  vendor/Artemis/Artemis_Lib.m
+  vendor/Artemis/Classes/ArtemisAspect.m
+  vendor/Artemis/Classes/ArtemisBag.m
+  vendor/Artemis/Classes/ArtemisBitSet.m
+  vendor/Artemis/Classes/ArtemisComponent.m
+  vendor/Artemis/Classes/ArtemisComponentManager.m
+  vendor/Artemis/Classes/ArtemisComponentMapper.m
+  vendor/Artemis/Classes/ArtemisComponentType.m
+  vendor/Artemis/Classes/ArtemisEntity.m
+  vendor/Artemis/Classes/ArtemisEntityManager.m
+  vendor/Artemis/Classes/ArtemisEntityObserver.m
+  vendor/Artemis/Classes/ArtemisEntitySystem.m
+  vendor/Artemis/Classes/ArtemisManager.m
+  vendor/Artemis/Classes/ArtemisWorld.m
+  vendor/Artemis/Classes/systems/ArtemisEntityProcessingSystem.m

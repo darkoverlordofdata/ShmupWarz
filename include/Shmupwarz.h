@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <xna/xna.h>
+#import <Artemis/Classes/Artemis.h>
+#import <Artemis/Examples/Examples.h>
 #import "Components.h"
 #import "Factory.h"
 
@@ -17,6 +19,12 @@
     NSMutableArray<Vector2D*> *mExplosions;
     NSMutableArray<Vector2D*> *mBangs;
     NSMutableArray<Vector2D*> *mParticles;
+    MovementSystem* mMovementSystem;
+    ArtemisEntity* mShip; 
+    ArtemisWorld* mWorld;
+    Position* mPosition;
+    Velocity* mVelocity;
+
 }
 @property (nonatomic, retain) NSMutableArray<Vector2D*> *Bullets;
 @property (nonatomic, retain) NSMutableArray<Vector2D*> *Enemies1;

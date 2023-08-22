@@ -34,6 +34,31 @@ set ( APP_HEADER_FILES
   vendor/xna/graphics/Shader.h 
   vendor/xna/graphics/SpriteRenderer.h 
   vendor/xna/graphics/Texture2D.h
+
+  vendor/Artemis/Classes/CoreFoundation/CFBitVector.h
+  vendor/Artemis/Classes/ObjectiveCExtensions/ArtemisWorld_Debug.h
+  vendor/Artemis/Classes/ObjectiveCExtensions/ObjectiveCGenerics.h
+  vendor/Artemis/Artemis_Lib.h
+  vendor/Artemis/Classes/Artemis.h
+  vendor/Artemis/Classes/ArtemisAspect.h
+  vendor/Artemis/Classes/ArtemisBag.h
+  vendor/Artemis/Classes/ArtemisBitSet.h
+  vendor/Artemis/Classes/ArtemisComponent.h
+  vendor/Artemis/Classes/ArtemisComponentManager.h
+  vendor/Artemis/Classes/ArtemisComponentMapper.h
+  vendor/Artemis/Classes/ArtemisComponentType.h
+  vendor/Artemis/Classes/ArtemisEntity.h
+  vendor/Artemis/Classes/ArtemisEntityManager.h
+  vendor/Artemis/Classes/ArtemisEntityObserver.h
+  vendor/Artemis/Classes/ArtemisEntitySystem.h
+  vendor/Artemis/Classes/ArtemisImmutableBag.h
+  vendor/Artemis/Classes/ArtemisManager.h
+  vendor/Artemis/Classes/ArtemisWorld.h
+  vendor/Artemis/Classes/systems/ArtemisEntityProcessingSystem.h
+  vendor/Artemis/Examples/Components/Position.h
+  vendor/Artemis/Examples/Components/Velocity.h
+  vendor/Artemis/Examples/Systems/MovementSystem.h
+
 )
 
 #
@@ -46,6 +71,26 @@ set ( APP_SOURCE_FILES
   vendor/xna/graphics/Shader.m 
   vendor/xna/graphics/SpriteRenderer.m 
   vendor/xna/graphics/Texture2D.m 
+
+  vendor/Artemis/Classes/CoreFoundation/CFBitVector.c
+  vendor/Artemis/Artemis_Lib.m
+  vendor/Artemis/Classes/ArtemisAspect.m
+  vendor/Artemis/Classes/ArtemisBag.m
+  vendor/Artemis/Classes/ArtemisBitSet.m
+  vendor/Artemis/Classes/ArtemisComponent.m
+  vendor/Artemis/Classes/ArtemisComponentManager.m
+  vendor/Artemis/Classes/ArtemisComponentMapper.m
+  vendor/Artemis/Classes/ArtemisComponentType.m
+  vendor/Artemis/Classes/ArtemisEntity.m
+  vendor/Artemis/Classes/ArtemisEntityManager.m
+  vendor/Artemis/Classes/ArtemisEntitySystem.m
+  vendor/Artemis/Classes/ArtemisManager.m
+  vendor/Artemis/Classes/ArtemisWorld.m
+  vendor/Artemis/Classes/systems/ArtemisEntityProcessingSystem.m
+  vendor/Artemis/Examples/Components/Position.m
+  vendor/Artemis/Examples/Components/Velocity.m
+  vendor/Artemis/Examples/Systems/MovementSystem.m
+
   src/Components.m 
   src/Factory.m 
   src/Shmupwarz.m 
@@ -67,7 +112,6 @@ set ( INCLUDES "${INCLUDES};/usr/local/GNUstep/System/Library/Headers" )
 #
 #   compiler options
 #
-# Libs: 
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -O2" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -pipe" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -std=c18" )
@@ -76,7 +120,7 @@ set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -Wno-import" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -Wno-nullability-completeness" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fobjc-runtime=gnustep-2.0" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fblocks" )
-set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fobjc-arc" )
+# set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fobjc-arc" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fexceptions" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fobjc-exceptions" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fPIC" )
@@ -84,7 +128,17 @@ set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fstack-protector-strong" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fno-strict-aliasing" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -fconstant-string-class=NSConstantString" )
 
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -DGNUSTEP" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -DGNUSTEP_BASE_LIBRARY=1" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -DGNU_GUI_LIBRARY=1" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -DGNUSTEP_RUNTIME=1" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -D_NONFRAGILE_ABI=1" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -D_NATIVE_OBJC_EXCEPTIONS" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -DGSWARN" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -DGSDIAGNOSE" )
 
+
+# Libs: 
 link_directories ( "/usr/local/lib" )
 link_directories ( "/usr/local/GNUstep/System/Library/Libraries" )
 

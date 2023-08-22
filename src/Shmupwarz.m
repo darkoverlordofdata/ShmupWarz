@@ -31,7 +31,28 @@ extern OpenGL GL;
     return self;
 }
 
-- (void)Initialize{};
+- (void)Initialize{
+
+    mWorld = [ArtemisWorld new];
+
+    mShip = [mWorld createEntity];
+    mPosition = [Position positionWithX:0 y:0];
+    mVelocity = [Velocity velocityWithDeltaX:10 deltaY:20];
+    [mShip addComponent:mPosition];
+    [mShip addComponent:mVelocity];
+    NSLog(@"entity: %@", mShip.description);
+
+    NSLog(@"Entity initizlized");
+
+    // mMovementSystem = [MovementSystem movementSystem];
+    // [mMovementSystem initialize];
+
+    // NSLog(@"System initizlized");
+    // [mWorld initialize];
+
+    // NSLog(@"World initizlized");
+
+};
 
 - (NSString*)ToString { return @"Shmupwarz"; }
 - (void)SetSystem:(Systems*)systems { mSystems = systems; }
