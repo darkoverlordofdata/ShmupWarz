@@ -2,6 +2,8 @@
 #import <xna/xna.h>
 #import <Components.h>
 
+// Entity Factory
+
 @interface Factory : NSObject  {}
 
 @property (class, nonatomic, readonly, retain) NSMutableArray* Entities;

@@ -33,6 +33,7 @@ extern OpenGL GL;
 
 - (void)Initialize{
 
+    NSLog(@"Initialize Artemis");
     mWorld = [ArtemisWorld new];
 
     mShip = [mWorld createEntity];
@@ -40,17 +41,12 @@ extern OpenGL GL;
     mVelocity = [Velocity velocityWithDeltaX:10 deltaY:20];
     [mShip addComponent:mPosition];
     [mShip addComponent:mVelocity];
-    NSLog(@"entity: %@", mShip.description);
 
-    NSLog(@"Entity initizlized");
-
-    // mMovementSystem = [MovementSystem movementSystem];
-    // [mMovementSystem initialize];
-
-    // NSLog(@"System initizlized");
-    // [mWorld initialize];
-
-    // NSLog(@"World initizlized");
+    mMovementSystem = [MovementSystem movementSystem];
+    [mMovementSystem initialize];
+    [mWorld initialize];
+    [mWorld setSystem:mMovementSystem];
+    [mWorld enable: mShip];
 
 };
 
@@ -69,6 +65,8 @@ extern OpenGL GL;
 
 - (void)Update:(GLfloat) delta {
 
+    [mWorld process];
+
     for (Entity* e in Factory.Input)    [mSystems Spawn:e];
     for (Entity* e in Factory.Input)    [mSystems Input:e];
     for (Entity* e in Factory.Health)   [mSystems Collision:e];
@@ -82,8 +80,8 @@ extern OpenGL GL;
 
 
     // Load shaders
-    [ResourceManager LoadShader:@"sprite"   Vertex:@"Resources/sprite.vs"   Fragment:@"Resources/sprite.frag"];
-    [ResourceManager LoadShader:@"particle" Vertex:@"Resources/particle.vs" Fragment:@"Resources/particle.frag"];
+    [ResourceManager LoadShader:@"sprite"   Vertex:@"sprite.vs"   Fragment:@"sprite.frag"];
+    [ResourceManager LoadShader:@"particle" Vertex:@"particle.vs" Fragment:@"particle.frag"];
 
 
     // Configure shaders
@@ -101,16 +99,16 @@ extern OpenGL GL;
 
 
     // Load textures
-    [ResourceManager LoadTexture:@"background"  Path:@"Resources/background.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"bang"        Path:@"Resources/bang.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"bullet"      Path:@"Resources/bullet.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"enemy1"      Path:@"Resources/enemy1.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"enemy2"      Path:@"Resources/enemy2.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"enemy3"      Path:@"Resources/enemy3.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"explosion"   Path:@"Resources/explosion.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"particle"    Path:@"Resources/particle.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"spaceshipspr" Path:@"Resources/spaceshipspr.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"star"        Path:@"Resources/star.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"background"  Path:@"background.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"bang"        Path:@"bang.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"bullet"      Path:@"bullet.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"enemy1"      Path:@"enemy1.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"enemy2"      Path:@"enemy2.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"enemy3"      Path:@"enemy3.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"explosion"   Path:@"explosion.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"particle"    Path:@"particle.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"spaceshipspr" Path:@"spaceshipspr.png" Alpha:GL_TRUE];
+    [ResourceManager LoadTexture:@"star"        Path:@"star.png" Alpha:GL_TRUE];
 
     // Create the entity pool
     [Factory CreateBackground];

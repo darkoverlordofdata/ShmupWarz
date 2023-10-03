@@ -2,6 +2,8 @@
 #define var __auto_type
 #define let const var
 
+// Entity Factory
+
 @implementation Factory
 
 // entity cache:
