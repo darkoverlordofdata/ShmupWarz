@@ -1,7 +1,7 @@
 /**
  * standalone version culled from 
  * https://github.com/gnustep/libs-corebase/blob/master/Source/CFBitVector.c
- */
+ */// why??? because freebsd is missing libgnustep-corebase
 # include "CFBitVector.h"
 
 #if defined(__GNUC__) || defined(__llvm__)

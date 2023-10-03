@@ -3,8 +3,6 @@ include $(GNUSTEP_MAKEFILES)/common.make
 FRAMEWORK_NAME = Artemis
 VERSION = 1.0
 
-Artemis_C_FILES = CoreFoundation/CFBitVector.c
-
 Artemis_OBJC_FILES = ArtemisAspect.m \
 						ArtemisBag.m \
 						ArtemisBitSet.m \
@@ -19,8 +17,7 @@ Artemis_OBJC_FILES = ArtemisAspect.m \
 						ArtemisWorld.m \
 						systems/ArtemisEntityProcessingSystem.m 
 
-Artemis_HEADER_FILES = CoreFoundation/CFBitVector.h \
-						ArtemisAspect.h \
+Artemis_HEADER_FILES = ArtemisAspect.h \
 						ArtemisBag.h \
 						ArtemisBitSet.h \
 						ArtemisComponent.h \

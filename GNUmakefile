@@ -59,6 +59,8 @@ Shmupwarz_RESOURCE_FILES = ShmupwarzInfo.plist \
 
 OBJCFLAGS=  -I./vendor \
 			-I./include \
+			-I/usr/include \
+			-I/usr/include/SDL2 \
 			-I/usr/local/include \
 			-I/usr/local/include/SDL2 \
 			-Wno-nullability-completeness \

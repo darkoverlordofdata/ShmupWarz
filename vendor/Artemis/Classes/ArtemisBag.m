@@ -1,7 +1,7 @@
 #import "ArtemisBag.h"
 
-#define TRUE (BOOL)1
-#define FALSE (BOOL)0
+// #define TRUE (BOOL)1
+// #define FALSE (BOOL)0
 
 @interface ArtemisBag()
 

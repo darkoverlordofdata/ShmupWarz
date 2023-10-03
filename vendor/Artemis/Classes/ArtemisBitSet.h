@@ -2,10 +2,17 @@
  ARGH! not in Artemis, instead a Java 7 feature
  */
 #import <Foundation/Foundation.h>
+#if OBJC_RUNTIME == 20
 #import "CoreFoundation/CFBitVector.h"
+#endif
+#if OBJC_RUNTIME == 21
+#import <CoreFoundation/CFBitVector.h>
+#define kCFAllocatorDefault NULL
+#endif
 
-#define TRUE (BOOL)1
-#define FALSE (BOOL)0
+// #define TRUE (BOOL)1
+// #define FALSE (BOOL)0
+#define kCFAllocatorDefault NULL
 
 @interface ArtemisBitSet : NSObject
 

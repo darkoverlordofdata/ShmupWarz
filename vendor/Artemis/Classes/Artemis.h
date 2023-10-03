@@ -24,7 +24,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+#if (OBJC_RUNTIME == 20)
 #import "CoreFoundation/CFBitVector.h"
+#endif
 #import "ArtemisAspect.h"
 #import "ArtemisBag.h"
 #import "ArtemisBitSet.h"
