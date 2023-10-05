@@ -18,34 +18,9 @@ cd Shmupwarz.app
 cmake --build .
 ```
 
-## objc on freebsd
+## compatabilty Ubuntu / FreeBSD
 
-* sudo pkg install gnustep
-* sudo pkg install vscode
+FreeBSD installs gnustep 2.0, and does not include libgnustep-corebase.so
 
-ctrl-p
-* ext install webfreak.debug
-* ext install llvm-vs-code-extensions.vscode-clangd
-* ext install twxs.cmake
-* ext install ms-vscode.cmake-tools
-* ext install kuba-p.glsl-lsp
+Ubuntu compiles gnustep 2.1 with libgnustep-corebase.so
 
-```
-git clone https://github.com/lldb-tools/lldb-mi.git
-cd lldb-mi
-cmake .
-cmake --build .
-sudo cmake --install .
-```
-
-Failed to copy "/home/darko/Documents/GitHub/Shmupwarz/Shmupwarz.app/compile_commands.json" to "/home/darko/Documents/GitHub/Shmupwarz": Error: EISDIR: illegal operation on a directory, open '/home/darko/Documents/GitHub/Shmupwarz'
-
-"cmake.exportCompileCommandsFile": true
-
-### cmake
-file size 146.6kb
-on disk 512 bytes
-
-### gmake
-file size 161.1kb
-on disk 512 bytes

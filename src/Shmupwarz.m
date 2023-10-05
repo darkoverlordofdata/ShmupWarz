@@ -36,17 +36,18 @@ extern OpenGL GL;
     NSLog(@"Initialize Artemis");
     mWorld = [ArtemisWorld new];
 
+    mMovementSystem = [MovementSystem movementSystem];
+
+    [mWorld setSystem:mMovementSystem];
+    [mWorld initialize];
+
     mShip = [mWorld createEntity];
     mPosition = [Position positionWithX:0 y:0];
     mVelocity = [Velocity velocityWithDeltaX:10 deltaY:20];
     [mShip addComponent:mPosition];
     [mShip addComponent:mVelocity];
+    [mWorld addEntity: mShip];
 
-    mMovementSystem = [MovementSystem movementSystem];
-    [mMovementSystem initialize];
-    [mWorld initialize];
-    [mWorld setSystem:mMovementSystem];
-    [mWorld enable: mShip];
 
 };
 
@@ -65,6 +66,7 @@ extern OpenGL GL;
 
 - (void)Update:(GLfloat) delta {
 
+    [mWorld setDelta:delta];
     [mWorld process];
 
     for (Entity* e in Factory.Input)    [mSystems Spawn:e];

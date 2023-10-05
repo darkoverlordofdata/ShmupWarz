@@ -123,6 +123,7 @@ set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -O2" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -pipe" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -std=c18" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -Wall" )
+set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -Wno-psabi" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -Wno-import" )
 set ( CMAKE_OBJC_FLAGS "${CMAKE_OBJC_FLAGS} -Wno-nullability-completeness" )
 
@@ -190,9 +191,18 @@ add_custom_command ( TARGET ${APP_NAME} PRE_BUILD
                       COMMAND ${CMAKE_COMMAND} -E copy
                         ${CMAKE_SOURCE_DIR}/${APP_NAME}Info.plist $<TARGET_FILE_DIR:${APP_NAME}>/Resources )
    
-install ( TARGETS ${APP_NAME} RUNTIME DESTINATION /Applications/Games/${APP_NAME}.app )
-install ( DIRECTORY Resources DESTINATION /Applications/Games/${APP_NAME}.app )
-install ( FILES ${APP_NAME}Info.plist DESTINATION /Applications/Games/${APP_NAME}.app/Resources )
+IF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+  install ( TARGETS ${APP_NAME} RUNTIME DESTINATION /Applications/Games/${APP_NAME}.app )
+  install ( DIRECTORY Resources DESTINATION /Applications/Games/${APP_NAME}.app )
+  install ( FILES ${APP_NAME}Info.plist DESTINATION /Applications/Games/${APP_NAME}.app/Resources )
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+  install ( TARGETS ${APP_NAME} RUNTIME DESTINATION /usr/GNUstep/Local/Applications/${APP_NAME}.app )
+  install ( DIRECTORY Resources DESTINATION /usr/GNUstep/Local/Applications/${APP_NAME}.app )
+  install ( FILES ${APP_NAME}Info.plist DESTINATION /usr/GNUstep/Local/Applications/${APP_NAME}.app/Resources )
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+
 
 include ( CPack )
 

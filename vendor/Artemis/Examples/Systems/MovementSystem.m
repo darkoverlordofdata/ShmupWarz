@@ -28,6 +28,7 @@
 	
 	pos.x += vel.dx;
 	pos.y += vel.dy;
+	NSLog(@"%f, %f", pos.x, pos.y);
 }
 
 @end
