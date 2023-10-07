@@ -15,12 +15,16 @@ Shmupwarz_HEADERS = include/Components.h \
 					include/Factory.h \
 					include/Shmupwarz.h \
 					include/Systems.h \
+					include/Components/Position.h \
+					include/Components/Velocity.h \
+					include/Systems/MovementSystem.h \
 					vendor/xna/Game.h \
 					vendor/xna/OpenGL.h \
 					vendor/xna/content/ResourceManager.h \
 					vendor/xna/graphics/Shader.h \
 					vendor/xna/graphics/SpriteRenderer.h \
-					vendor/xna/graphics/Texture2D.h
+					vendor/xna/graphics/Texture2D.h 
+
 
 
 Shmupwarz_OBJC_FILES = 	src/main.m \
@@ -28,13 +32,15 @@ Shmupwarz_OBJC_FILES = 	src/main.m \
 					src/Factory.m \
 					src/Shmupwarz.m \
 					src/Systems.m \
+					src/Components/Position.m \
+					src/Components/Velocity.m \
+					src/Systems/MovementSystem.m \
 					vendor/xna/Game.m \
 					vendor/xna/OpenGL.m \
 					vendor/xna/content/ResourceManager.m \
 					vendor/xna/graphics/Shader.m \
 					vendor/xna/graphics/SpriteRenderer.m \
 					vendor/xna/graphics/Texture2D.m 
-
 
 
 
@@ -64,11 +70,23 @@ OBJCFLAGS=  -I./vendor \
 			-I/usr/local/include \
 			-I/usr/local/include/SDL2 \
 			-Wno-nullability-completeness \
-			-std=c18
+			-std=c18 \
+
+
+_SYS := $(shell uname 2>/dev/null || echo Unknown)
+
+ifeq ($(_SYS),Linux)
+OBJCFLAGS+=	-DOBJC_RUNTIME=21
+endif
+
+ifeq ($(_SYS),FreeBSD)
+OBJCFLAGS+=	-DOBJC_RUNTIME=20
+endif
+
 			
 CFLAGS= 	-std=c18
 
-LDFLAGS=  -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
+LDFLAGS=  -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lgnustep-corebase -lartemis
 
 
 -include GNUmakefile.preamble

@@ -1,9 +1,11 @@
 #import <Foundation/Foundation.h>
 #import <xna/xna.h>
-#import <Artemis/Classes/Artemis.h>
-#import <Artemis/Examples/Examples.h>
+#import <Artemis/Artemis.h>
 #import "Components.h"
 #import "Factory.h"
+#import "Components/Position.h"
+#import "Components/Velocity.h"
+#import "Systems/MovementSystem.h"
 
 @class Systems;
 

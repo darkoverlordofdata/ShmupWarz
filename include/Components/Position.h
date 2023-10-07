@@ -2,8 +2,9 @@
  
  */
 #import <Foundation/Foundation.h>
+#import <Artemis/Artemis.h>
 
-#import "../../Classes/ArtemisComponent.h"
+// #import <Artemis/ArtemisComponent.h>
 
 @interface Position : ArtemisComponent
 

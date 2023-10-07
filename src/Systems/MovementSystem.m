@@ -1,6 +1,6 @@
-#import "MovementSystem.h"
+#import "Systems/MovementSystem.h"
 
-#import "../../Classes/ArtemisComponentMapper.h"
+#import <Artemis/ArtemisComponentMapper.h>
 
 @interface MovementSystem()
 @property(nonatomic,retain) ArtemisComponentMapper* positionMapper, * velocityMapper;

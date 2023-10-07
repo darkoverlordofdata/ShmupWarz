@@ -35,25 +35,25 @@ set ( APP_HEADER_FILES
   vendor/xna/graphics/SpriteRenderer.h 
   vendor/xna/graphics/Texture2D.h
 
-  vendor/Artemis/Classes/ObjectiveCExtensions/ArtemisWorld_Debug.h
-  vendor/Artemis/Classes/ObjectiveCExtensions/ObjectiveCGenerics.h
-  vendor/Artemis/Artemis_Lib.h
-  vendor/Artemis/Classes/Artemis.h
-  vendor/Artemis/Classes/ArtemisAspect.h
-  vendor/Artemis/Classes/ArtemisBag.h
-  vendor/Artemis/Classes/ArtemisBitSet.h
-  vendor/Artemis/Classes/ArtemisComponent.h
-  vendor/Artemis/Classes/ArtemisComponentManager.h
-  vendor/Artemis/Classes/ArtemisComponentMapper.h
-  vendor/Artemis/Classes/ArtemisComponentType.h
-  vendor/Artemis/Classes/ArtemisEntity.h
-  vendor/Artemis/Classes/ArtemisEntityManager.h
-  vendor/Artemis/Classes/ArtemisEntityObserver.h
-  vendor/Artemis/Classes/ArtemisEntitySystem.h
-  vendor/Artemis/Classes/ArtemisImmutableBag.h
-  vendor/Artemis/Classes/ArtemisManager.h
-  vendor/Artemis/Classes/ArtemisWorld.h
-  vendor/Artemis/Classes/systems/ArtemisEntityProcessingSystem.h
+  # vendor/Artemis/Classes/ObjectiveCExtensions/ArtemisWorld_Debug.h
+  # vendor/Artemis/Classes/ObjectiveCExtensions/ObjectiveCGenerics.h
+  # vendor/Artemis/Artemis_Lib.h
+  # vendor/Artemis/Classes/Artemis.h
+  # vendor/Artemis/Classes/ArtemisAspect.h
+  # vendor/Artemis/Classes/ArtemisBag.h
+  # vendor/Artemis/Classes/ArtemisBitSet.h
+  # vendor/Artemis/Classes/ArtemisComponent.h
+  # vendor/Artemis/Classes/ArtemisComponentManager.h
+  # vendor/Artemis/Classes/ArtemisComponentMapper.h
+  # vendor/Artemis/Classes/ArtemisComponentType.h
+  # vendor/Artemis/Classes/ArtemisEntity.h
+  # vendor/Artemis/Classes/ArtemisEntityManager.h
+  # vendor/Artemis/Classes/ArtemisEntityObserver.h
+  # vendor/Artemis/Classes/ArtemisEntitySystem.h
+  # vendor/Artemis/Classes/ArtemisImmutableBag.h
+  # vendor/Artemis/Classes/ArtemisManager.h
+  # vendor/Artemis/Classes/ArtemisWorld.h
+  # vendor/Artemis/Classes/systems/ArtemisEntityProcessingSystem.h
   vendor/Artemis/Examples/Components/Position.h
   vendor/Artemis/Examples/Components/Velocity.h
   vendor/Artemis/Examples/Systems/MovementSystem.h
@@ -74,20 +74,20 @@ set ( APP_SOURCE_FILES
   vendor/xna/graphics/SpriteRenderer.m 
   vendor/xna/graphics/Texture2D.m 
 
-  vendor/Artemis/Artemis_Lib.m
-  vendor/Artemis/Classes/ArtemisAspect.m
-  vendor/Artemis/Classes/ArtemisBag.m
-  vendor/Artemis/Classes/ArtemisBitSet.m
-  vendor/Artemis/Classes/ArtemisComponent.m
-  vendor/Artemis/Classes/ArtemisComponentManager.m
-  vendor/Artemis/Classes/ArtemisComponentMapper.m
-  vendor/Artemis/Classes/ArtemisComponentType.m
-  vendor/Artemis/Classes/ArtemisEntity.m
-  vendor/Artemis/Classes/ArtemisEntityManager.m
-  vendor/Artemis/Classes/ArtemisEntitySystem.m
-  vendor/Artemis/Classes/ArtemisManager.m
-  vendor/Artemis/Classes/ArtemisWorld.m
-  vendor/Artemis/Classes/systems/ArtemisEntityProcessingSystem.m
+  # vendor/Artemis/Artemis_Lib.m
+  # vendor/Artemis/Classes/ArtemisAspect.m
+  # vendor/Artemis/Classes/ArtemisBag.m
+  # vendor/Artemis/Classes/ArtemisBitSet.m
+  # vendor/Artemis/Classes/ArtemisComponent.m
+  # vendor/Artemis/Classes/ArtemisComponentManager.m
+  # vendor/Artemis/Classes/ArtemisComponentMapper.m
+  # vendor/Artemis/Classes/ArtemisComponentType.m
+  # vendor/Artemis/Classes/ArtemisEntity.m
+  # vendor/Artemis/Classes/ArtemisEntityManager.m
+  # vendor/Artemis/Classes/ArtemisEntitySystem.m
+  # vendor/Artemis/Classes/ArtemisManager.m
+  # vendor/Artemis/Classes/ArtemisWorld.m
+  # vendor/Artemis/Classes/systems/ArtemisEntityProcessingSystem.m
   vendor/Artemis/Examples/Components/Position.m
   vendor/Artemis/Examples/Components/Velocity.m
   vendor/Artemis/Examples/Systems/MovementSystem.m
@@ -181,7 +181,7 @@ add_executable (
 )
 
 
-target_link_libraries ( ${APP_NAME} m objc gnustep-corebase gnustep-base pthread SDL2 SDL2_image SDL2_mixer SDL2_ttf GL  )
+target_link_libraries ( ${APP_NAME} m objc gnustep-corebase gnustep-base pthread SDL2 SDL2_image SDL2_mixer SDL2_ttf GL artemis  )
 
 add_custom_command ( TARGET ${APP_NAME} PRE_BUILD
                       COMMAND ${CMAKE_COMMAND} -E copy_directory
