@@ -17,14 +17,7 @@ Shmupwarz_HEADERS = include/Components.h \
 					include/Systems.h \
 					include/Components/Position.h \
 					include/Components/Velocity.h \
-					include/Systems/MovementSystem.h \
-					vendor/xna/Game.h \
-					vendor/xna/OpenGL.h \
-					vendor/xna/content/ResourceManager.h \
-					vendor/xna/graphics/Shader.h \
-					vendor/xna/graphics/SpriteRenderer.h \
-					vendor/xna/graphics/Texture2D.h 
-
+					include/Systems/MovementSystem.h 
 
 
 Shmupwarz_OBJC_FILES = 	src/main.m \
@@ -34,15 +27,7 @@ Shmupwarz_OBJC_FILES = 	src/main.m \
 					src/Systems.m \
 					src/Components/Position.m \
 					src/Components/Velocity.m \
-					src/Systems/MovementSystem.m \
-					vendor/xna/Game.m \
-					vendor/xna/OpenGL.m \
-					vendor/xna/content/ResourceManager.m \
-					vendor/xna/graphics/Shader.m \
-					vendor/xna/graphics/SpriteRenderer.m \
-					vendor/xna/graphics/Texture2D.m 
-
-
+					src/Systems/MovementSystem.m 
 
 Shmupwarz_RESOURCE_FILES = ShmupwarzInfo.plist \
 							Resources/Shmupwarz.png \
@@ -86,7 +71,7 @@ endif
 			
 CFLAGS= 	-std=c18
 
-LDFLAGS=  -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lgnustep-corebase -lartemis
+LDFLAGS=  -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lgnustep-corebase -lartemis -lDarkoGameKit
 
 
 -include GNUmakefile.preamble

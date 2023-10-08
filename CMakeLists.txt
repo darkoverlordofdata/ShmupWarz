@@ -23,37 +23,10 @@ set ( CMAKE_EXPORT_COMPILE_COMMANDS ON )
 #
 include ( CMakeToolsHelpers OPTIONAL )
 
-set ( APP_HEADER_FILES
-  include/Components.h 
-  include/Factory.h 
-  include/Shmupwarz.h 
-  include/Systems.h 
-  include/Components/Position.h
-  include/Components/Velocity.h
-  include/Systems/MovementSystem.h
-  vendor/xna/Game.h 
-  vendor/xna/OpenGL.h 
-  vendor/xna/content/ResourceManager.h 
-  vendor/xna/graphics/Shader.h 
-  vendor/xna/graphics/SpriteRenderer.h 
-  vendor/xna/graphics/Texture2D.h
-
-)
-# IF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
-# 	set ( APP_HEADER_FILES "${APP_HEADER_FILES};vendor/Artemis/Classes/CoreFoundation/CFBitVector.h" )
-# ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
-
 #
 #   application source
 #
 set ( APP_SOURCE_FILES
-  vendor/xna/Game.m 
-  vendor/xna/OpenGL.m 
-  vendor/xna/content/ResourceManager.m 
-  vendor/xna/graphics/Shader.m 
-  vendor/xna/graphics/SpriteRenderer.m 
-  vendor/xna/graphics/Texture2D.m 
-
   src/Components.m 
   src/Factory.m 
   src/Shmupwarz.m 
@@ -63,10 +36,6 @@ set ( APP_SOURCE_FILES
   src/Components/Velocity.m
   src/Systems/MovementSystem.m
 )
-
-# IF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
-# 	set ( APP_SOURCE_FILES "${APP_SOURCE_FILES};vendor/Artemis/Classes/CoreFoundation/CFBitVector.m" )
-# ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
 
 
 #
@@ -146,7 +115,7 @@ add_executable (
 )
 
 
-target_link_libraries ( ${APP_NAME} m objc gnustep-corebase gnustep-base pthread SDL2 SDL2_image SDL2_mixer SDL2_ttf GL artemis  )
+target_link_libraries ( ${APP_NAME} m objc gnustep-corebase gnustep-base pthread SDL2 SDL2_image SDL2_mixer SDL2_ttf GL Artemis DarkoGameKit )
 
 add_custom_command ( TARGET ${APP_NAME} PRE_BUILD
                       COMMAND ${CMAKE_COMMAND} -E copy_directory

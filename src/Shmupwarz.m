@@ -82,35 +82,35 @@ extern OpenGL GL;
 
 
     // Load shaders
-    [ResourceManager LoadShader:@"sprite"   Vertex:@"sprite.vs"   Fragment:@"sprite.frag"];
-    [ResourceManager LoadShader:@"particle" Vertex:@"particle.vs" Fragment:@"particle.frag"];
+    [DGKResourceManager LoadShader:@"sprite"   Vertex:@"sprite.vs"   Fragment:@"sprite.frag"];
+    [DGKResourceManager LoadShader:@"particle" Vertex:@"particle.vs" Fragment:@"particle.frag"];
 
 
     // Configure shaders
     Mat projection = glm_ortho(0.0f, mWidth, mHeight, 0.0f, -1.0f, 1.0f);
 
-    let sprite = [ResourceManager GetShader:@"sprite"];
+    let sprite = [DGKResourceManager GetShader:@"sprite"];
     [sprite Use];
     [sprite SetInteger:"sprite" Value:0];
     [sprite SetMatrix4:"projection" Value:projection];
 
-    let particle = [ResourceManager GetShader:@"particle"];
+    let particle = [DGKResourceManager GetShader:@"particle"];
     [particle Use];
     [particle SetInteger:"particle" Value:0];
     [particle SetMatrix4:"projection" Value:projection];
 
 
     // Load textures
-    [ResourceManager LoadTexture:@"background"  Path:@"background.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"bang"        Path:@"bang.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"bullet"      Path:@"bullet.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"enemy1"      Path:@"enemy1.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"enemy2"      Path:@"enemy2.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"enemy3"      Path:@"enemy3.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"explosion"   Path:@"explosion.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"particle"    Path:@"particle.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"spaceshipspr" Path:@"spaceshipspr.png" Alpha:GL_TRUE];
-    [ResourceManager LoadTexture:@"star"        Path:@"star.png" Alpha:GL_TRUE];
+    [DGKResourceManager LoadTexture:@"background"  Path:@"background.png" Alpha:GL_TRUE];
+    [DGKResourceManager LoadTexture:@"bang"        Path:@"bang.png" Alpha:GL_TRUE];
+    [DGKResourceManager LoadTexture:@"bullet"      Path:@"bullet.png" Alpha:GL_TRUE];
+    [DGKResourceManager LoadTexture:@"enemy1"      Path:@"enemy1.png" Alpha:GL_TRUE];
+    [DGKResourceManager LoadTexture:@"enemy2"      Path:@"enemy2.png" Alpha:GL_TRUE];
+    [DGKResourceManager LoadTexture:@"enemy3"      Path:@"enemy3.png" Alpha:GL_TRUE];
+    [DGKResourceManager LoadTexture:@"explosion"   Path:@"explosion.png" Alpha:GL_TRUE];
+    [DGKResourceManager LoadTexture:@"particle"    Path:@"particle.png" Alpha:GL_TRUE];
+    [DGKResourceManager LoadTexture:@"spaceshipspr" Path:@"spaceshipspr.png" Alpha:GL_TRUE];
+    [DGKResourceManager LoadTexture:@"star"        Path:@"star.png" Alpha:GL_TRUE];
 
     // Create the entity pool
     [Factory CreateBackground];
@@ -123,7 +123,7 @@ extern OpenGL GL;
     for (int i=0; i<100; i++)   [Factory CreateParticle];
     mPlayer = [Factory CreatePlayer];
 
-    mRenderer = [[SpriteRenderer alloc]initWithShader:[ResourceManager GetShader:@"sprite"]];
+    mRenderer = [[DGKSpriteRenderer alloc]initWithShader:[DGKResourceManager GetShader:@"sprite"]];
 }
 
 @end

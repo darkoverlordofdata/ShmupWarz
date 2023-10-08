@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import <xna/xna.h>
+#import <DarkoGameKit/DarkoGameKit.h>
 
 typedef enum TypeOf {
     TYPE_NONE,
@@ -118,18 +118,18 @@ typedef enum CategoryOf {
 
 @interface Transform : Component 
 {
-    Texture2D* mTexture;
+    DGKTexture2D* mTexture;
     SDL_Rect mBounds;
     Vector2D* mPos;
     Vector2D* mScale;
 }
-@property (nonatomic, retain) Texture2D* Texture;
+@property (nonatomic, retain) DGKTexture2D* Texture;
 @property (nonatomic, assign) SDL_Rect Bounds;
 @property (nonatomic, assign, readonly) SDL_Rect* _Nullable RefBounds;
 @property (nonatomic, retain) Vector2D* Pos;
 @property (nonatomic, retain) Vector2D* Scale;
-- (instancetype)initWithTexture:(Texture2D*)texture;
-- (instancetype)initWithTexture:(Texture2D*)texture Scale:(double)scale;
+- (instancetype)initWithTexture:(DGKTexture2D*)texture;
+- (instancetype)initWithTexture:(DGKTexture2D*)texture Scale:(double)scale;
 - (void)X:(int)x Y:(int)y W:(int)w H:(int)h;
 @end
 

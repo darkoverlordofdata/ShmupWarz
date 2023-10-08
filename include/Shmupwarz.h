@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import <xna/xna.h>
+#import <DarkoGameKit/DarkoGameKit.h>
 #import <Artemis/Artemis.h>
 #import "Components.h"
 #import "Factory.h"
@@ -9,11 +9,11 @@
 
 @class Systems;
 
-@interface Shmupwarz : Game 
+@interface Shmupwarz : DGKGame 
 {
     Entity *mPlayer;
     id mSystems;
-    SpriteRenderer* mRenderer;
+    DGKSpriteRenderer* mRenderer;
     NSMutableArray<Vector2D*> *mBullets;
     NSMutableArray<Vector2D*> *mEnemies1;
     NSMutableArray<Vector2D*> *mEnemies2;

@@ -40,7 +40,7 @@ static NSMutableArray<Entity*> *mHealth = nil;
 + (void) CreateBackground { 
     let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"background" Active:true];
     entity.Identity = [[Identity alloc]initWithType:TYPE_BACKGROUND Category:CATEGORY_BACKGROUND];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"background"] Scale:2.0];
+    entity.Transform = [[Transform alloc]initWithTexture:[DGKResourceManager GetTexture:@"background"] Scale:2.0];
     [mActive addObject:entity];
     [mEntities addObject:entity];
 }
@@ -48,7 +48,7 @@ static NSMutableArray<Entity*> *mHealth = nil;
 + (Entity*) CreatePlayer { 
     let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"player" Active:true];
     entity.Identity = [[Identity alloc]initWithType:TYPE_PLAYER Category:CATEGORY_PLAYER];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"spaceshipspr"]];
+    entity.Transform = [[Transform alloc]initWithTexture:[DGKResourceManager GetTexture:@"spaceshipspr"]];
     [mActive addObject:entity];
     [mInput addObject:entity];
     [mEntities addObject:entity];
@@ -58,7 +58,7 @@ static NSMutableArray<Entity*> *mHealth = nil;
 + (void) CreateBullet { 
     let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"bullet" Active:false];
     entity.Identity = [[Identity alloc]initWithType:TYPE_BULLET Category:CATEGORY_BULLET];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"bullet"]];
+    entity.Transform = [[Transform alloc]initWithTexture:[DGKResourceManager GetTexture:@"bullet"]];
     [mSound addObject:entity];
     [mHealth addObject:entity];
     [mVelocity addObject:entity];
@@ -68,7 +68,7 @@ static NSMutableArray<Entity*> *mHealth = nil;
 + (void) CreateEnemy1 { 
     let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"enemy1" Active:false];
     entity.Identity = [[Identity alloc]initWithType:TYPE_ENEMY1 Category:CATEGORY_ENEMY];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"enemy1"]];
+    entity.Transform = [[Transform alloc]initWithTexture:[DGKResourceManager GetTexture:@"enemy1"]];
     [mHealth addObject:entity];
     [mVelocity addObject:entity];
     [mEntities addObject:entity];
@@ -77,7 +77,7 @@ static NSMutableArray<Entity*> *mHealth = nil;
 + (void) CreateEnemy2 { 
     let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"enemy2" Active:false];
     entity.Identity = [[Identity alloc]initWithType:TYPE_ENEMY2 Category:CATEGORY_ENEMY];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"enemy2"]];
+    entity.Transform = [[Transform alloc]initWithTexture:[DGKResourceManager GetTexture:@"enemy2"]];
     [mHealth addObject:entity];
     [mVelocity addObject:entity];
     [mEntities addObject:entity];
@@ -86,7 +86,7 @@ static NSMutableArray<Entity*> *mHealth = nil;
 + (void) CreateEnemy3 { 
     let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"enemy3" Active:false];
     entity.Identity = [[Identity alloc]initWithType:TYPE_ENEMY3 Category:CATEGORY_ENEMY];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"enemy3"]];
+    entity.Transform = [[Transform alloc]initWithTexture:[DGKResourceManager GetTexture:@"enemy3"]];
     [mHealth addObject:entity];
     [mVelocity addObject:entity];
     [mEntities addObject:entity];
@@ -95,7 +95,7 @@ static NSMutableArray<Entity*> *mHealth = nil;
 + (void) CreateExplosion { 
     let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"explosion" Active:false];
     entity.Identity = [[Identity alloc]initWithType:TYPE_EXPLOSION Category:CATEGORY_EXPLOSION];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"explosion"] Scale:0.6];
+    entity.Transform = [[Transform alloc]initWithTexture:[DGKResourceManager GetTexture:@"explosion"] Scale:0.6];
     [mTween addObject:entity];
     [mEntities addObject:entity];
 }
@@ -103,7 +103,7 @@ static NSMutableArray<Entity*> *mHealth = nil;
 + (void) CreateBang { 
     let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"bang" Active:false];
     entity.Identity = [[Identity alloc]initWithType:TYPE_BANG Category:CATEGORY_EXPLOSION];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"explosion"] Scale:0.4];
+    entity.Transform = [[Transform alloc]initWithTexture:[DGKResourceManager GetTexture:@"explosion"] Scale:0.4];
     [mTween addObject:entity];
     [mEntities addObject:entity];
 }
@@ -111,7 +111,7 @@ static NSMutableArray<Entity*> *mHealth = nil;
 + (void) CreateParticle { 
     let entity = [[Entity alloc]initWithId:[mEntities count] Name:@"particle" Active:false];
     entity.Identity = [[Identity alloc]initWithType:TYPE_PARTICLE Category:CATEGORY_PARTICLE];
-    entity.Transform = [[Transform alloc]initWithTexture:[ResourceManager GetTexture:@"star"]];
+    entity.Transform = [[Transform alloc]initWithTexture:[DGKResourceManager GetTexture:@"star"]];
     [mTween addObject:entity];
     [mVelocity addObject:entity];
     [mEntities addObject:entity];

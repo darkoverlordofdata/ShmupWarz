@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import <xna/xna.h>
+#import <DarkoGameKit/DarkoGameKit.h>
 #import <Components.h>
 
 // Entity Factory

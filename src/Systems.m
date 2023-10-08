@@ -19,7 +19,7 @@
 /**
  * Draw the entity
  */
-- (void) Draw:(SpriteRenderer*) renderer Entity:(Entity*) e {
+- (void) Draw:(DGKSpriteRenderer*) renderer Entity:(Entity*) e {
     if (!e.Active) return;
     var color = (Vec3) { 1, 1, 1 };
     if (e.Tint) {

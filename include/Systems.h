@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import <xna/xna.h>
+#import <DarkoGameKit/DarkoGameKit.h>
 #import "Components.h"
 #import "Factory.h"
 
@@ -17,7 +17,7 @@ static const double FireRate = 0.1;
 }
 
 - (instancetype)initWithGame:(Shmupwarz*)game;
-- (void) Draw:(SpriteRenderer*) renderer Entity:(Entity*) e;
+- (void) Draw:(DGKSpriteRenderer*) renderer Entity:(Entity*) e;
 - (void) Input:(Entity*) entity;
 - (void) Spawn:(Entity*) entity;
 - (void) Sound:(Entity*) entity;

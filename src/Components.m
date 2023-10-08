@@ -112,10 +112,10 @@
 @synthesize Bounds = mBounds;
 @synthesize Pos = mPos;
 @synthesize Scale = mScale;
-- (instancetype)initWithTexture:(Texture2D*)texture {
+- (instancetype)initWithTexture:(DGKTexture2D*)texture {
     return [self initWithTexture:texture Scale:1.0];
 }
-- (instancetype)initWithTexture:(Texture2D*)texture Scale:(double)scale {
+- (instancetype)initWithTexture:(DGKTexture2D*)texture Scale:(double)scale {
     if (self = [super init]) {
         mTexture = texture;
         mBounds = (SDL_Rect){ 0, 0, (int)texture.Width, (int)texture.Height};
