@@ -5,12 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "lldb",
-            "request": "launch",
             "name": "Debug",
-            "program": "${workspaceRoot}/${workspaceFolderBasename}.app/${workspaceFolderBasename}",
-            "args": [],
-            "cwd": "${workspaceRoot}/${workspaceFolderBasename}.app"
+            "type": "lldb-mi",
+            "request": "launch",
+            "target": "${workspaceRoot}/${workspaceFolderBasename}.app/${workspaceFolderBasename}",
+            "arguments": "",
+            "cwd": "${workspaceRoot}/${workspaceFolderBasename}.app",
+            "valuesFormatting": "parseText"
         }
     ]
 }

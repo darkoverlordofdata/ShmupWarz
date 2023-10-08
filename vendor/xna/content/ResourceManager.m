@@ -2,10 +2,10 @@
 #include <sys/stat.h>   // stat
 extern OpenGL GL;
 
-static BOOL file_exists (const char *filename) {
-    struct stat   buffer;   
-    return (stat (filename, &buffer) == 0);
-}
+// static BOOL file_exists (const char *filename) {
+//     struct stat   buffer;   
+//     return (stat (filename, &buffer) == 0);
+// }
 @implementation ResourceManager;
 
 static NSMutableDictionary* _shaders = nil;

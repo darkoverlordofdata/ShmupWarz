@@ -28,6 +28,9 @@ set ( APP_HEADER_FILES
   include/Factory.h 
   include/Shmupwarz.h 
   include/Systems.h 
+  include/Components/Position.h
+  include/Components/Velocity.h
+  include/Systems/MovementSystem.h
   vendor/xna/Game.h 
   vendor/xna/OpenGL.h 
   vendor/xna/content/ResourceManager.h 
@@ -35,33 +38,10 @@ set ( APP_HEADER_FILES
   vendor/xna/graphics/SpriteRenderer.h 
   vendor/xna/graphics/Texture2D.h
 
-  # vendor/Artemis/Classes/ObjectiveCExtensions/ArtemisWorld_Debug.h
-  # vendor/Artemis/Classes/ObjectiveCExtensions/ObjectiveCGenerics.h
-  # vendor/Artemis/Artemis_Lib.h
-  # vendor/Artemis/Classes/Artemis.h
-  # vendor/Artemis/Classes/ArtemisAspect.h
-  # vendor/Artemis/Classes/ArtemisBag.h
-  # vendor/Artemis/Classes/ArtemisBitSet.h
-  # vendor/Artemis/Classes/ArtemisComponent.h
-  # vendor/Artemis/Classes/ArtemisComponentManager.h
-  # vendor/Artemis/Classes/ArtemisComponentMapper.h
-  # vendor/Artemis/Classes/ArtemisComponentType.h
-  # vendor/Artemis/Classes/ArtemisEntity.h
-  # vendor/Artemis/Classes/ArtemisEntityManager.h
-  # vendor/Artemis/Classes/ArtemisEntityObserver.h
-  # vendor/Artemis/Classes/ArtemisEntitySystem.h
-  # vendor/Artemis/Classes/ArtemisImmutableBag.h
-  # vendor/Artemis/Classes/ArtemisManager.h
-  # vendor/Artemis/Classes/ArtemisWorld.h
-  # vendor/Artemis/Classes/systems/ArtemisEntityProcessingSystem.h
-  vendor/Artemis/Examples/Components/Position.h
-  vendor/Artemis/Examples/Components/Velocity.h
-  vendor/Artemis/Examples/Systems/MovementSystem.h
-
 )
-IF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
-	set ( APP_HEADER_FILES "${APP_HEADER_FILES};vendor/Artemis/Classes/CoreFoundation/CFBitVector.h" )
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+# IF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+# 	set ( APP_HEADER_FILES "${APP_HEADER_FILES};vendor/Artemis/Classes/CoreFoundation/CFBitVector.h" )
+# ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
 
 #
 #   application source
@@ -74,34 +54,19 @@ set ( APP_SOURCE_FILES
   vendor/xna/graphics/SpriteRenderer.m 
   vendor/xna/graphics/Texture2D.m 
 
-  # vendor/Artemis/Artemis_Lib.m
-  # vendor/Artemis/Classes/ArtemisAspect.m
-  # vendor/Artemis/Classes/ArtemisBag.m
-  # vendor/Artemis/Classes/ArtemisBitSet.m
-  # vendor/Artemis/Classes/ArtemisComponent.m
-  # vendor/Artemis/Classes/ArtemisComponentManager.m
-  # vendor/Artemis/Classes/ArtemisComponentMapper.m
-  # vendor/Artemis/Classes/ArtemisComponentType.m
-  # vendor/Artemis/Classes/ArtemisEntity.m
-  # vendor/Artemis/Classes/ArtemisEntityManager.m
-  # vendor/Artemis/Classes/ArtemisEntitySystem.m
-  # vendor/Artemis/Classes/ArtemisManager.m
-  # vendor/Artemis/Classes/ArtemisWorld.m
-  # vendor/Artemis/Classes/systems/ArtemisEntityProcessingSystem.m
-  vendor/Artemis/Examples/Components/Position.m
-  vendor/Artemis/Examples/Components/Velocity.m
-  vendor/Artemis/Examples/Systems/MovementSystem.m
-
   src/Components.m 
   src/Factory.m 
   src/Shmupwarz.m 
   src/Systems.m 
   src/main.m 
+  src/Components/Position.m
+  src/Components/Velocity.m
+  src/Systems/MovementSystem.m
 )
 
-IF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
-	set ( APP_SOURCE_FILES "${APP_SOURCE_FILES};vendor/Artemis/Classes/CoreFoundation/CFBitVector.m" )
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+# IF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+# 	set ( APP_SOURCE_FILES "${APP_SOURCE_FILES};vendor/Artemis/Classes/CoreFoundation/CFBitVector.m" )
+# ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
 
 
 #

@@ -28,6 +28,10 @@ SOFTWARE.
  *
  * opengl math helpers inspired by GLM.
  * using clang vector extensions and function overload.
+ *
+ *  Note: I've disabled AVX-512 warnings. My old cpu didn't support it, and new intels (alder lake) disable it.
+ *  I used it because it made this simple to write. It will compile into standard asm just fine without the extended
+ *  instructions.
  * 
  */
 #ifndef _TGLM_H
